@@ -1,0 +1,2554 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🇷🇸</text></svg>">
+<title>Почетак — Apprendre le serbe A1 & Culture</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400&family=PT+Sans:wght@400;700&display=swap');
+
+  :root{
+    --linen:#F1E9D8;
+    --linen-dark:#E4D8BE;
+    --madder:#C6363C;
+    --madder-dark:#8E232A;
+    --indigo:#12294A;
+    --gold:#C08A2E;
+    --sage:#5F7052;
+    --ok:#4C7A4C;
+    --bad:#C6363C;
+    --card:#fff;
+    --paper:#fdfaf3;
+    --muted:#a39c86;
+    --muted2:#7a745f;
+    --text2:#4a4536;
+    --text3:#6b654f;
+    --text4:#3a3528;
+    --header-bg:#12294A;
+    --btn-primary:#12294A;
+    --ok-bg:#E4EFE1;
+    --bad-bg:#F5DEDE;
+    font-size: 17px;
+    color-scheme: light;
+  }
+
+  /* ---- Thème sombre ---- */
+  :root[data-theme="dark"]{
+    --linen:#161a24;
+    --linen-dark:#2e3546;
+    --madder:#D8545C;
+    --madder-dark:#E58A98;
+    --indigo:#E6E0D0;
+    --gold:#D8A445;
+    --sage:#8FA57F;
+    --ok:#5E9A5E;
+    --bad:#D8545C;
+    --card:#1f2432;
+    --paper:#252b3b;
+    --muted:#8a8a99;
+    --muted2:#9c9aa8;
+    --text2:#c9c4b4;
+    --text3:#aaa79b;
+    --text4:#d8d3c4;
+    --hdr-text:#c9c4b4;
+    --header-bg:#0f131b;
+    --btn-primary:#3a4560;
+    --ok-bg:#1f3325;
+    --bad-bg:#3a2028;
+    color-scheme: dark;
+  }
+  :root[data-theme="light"] header h1{ color:#fff; }
+
+  body, .letter-card, .face, .info-card, .phrase, .story-card, .gram-card,
+  .quiz-box, .mini-table-wrap, .lucy-review, .culture-cta, .prayer-box, .opt-btn{
+    transition:background-color .25s, color .25s, border-color .25s;
+  }
+
+  #themeToggle{
+    position:absolute;
+    top:0; right:0;
+    width:42px; height:42px;
+    display:flex; align-items:center; justify-content:center;
+    background:rgba(255,255,255,.08);
+    border:1.5px solid var(--gold);
+    border-radius:50%;
+    color:var(--gold);
+    cursor:pointer;
+    padding:0;
+    transition:background .2s, transform .2s;
+  }
+  #themeToggle:hover{ background:rgba(255,255,255,.18); transform:rotate(-12deg); }
+  #themeToggle:focus-visible{ outline:2px solid #fff; outline-offset:2px; }
+  #themeToggle svg{ width:22px; height:22px; fill:currentColor; }
+  #themeToggle .icon-sun{ display:none; }
+  :root[data-theme="dark"] #themeToggle .icon-moon{ display:none; }
+  :root[data-theme="dark"] #themeToggle .icon-sun{ display:block; }
+  header h1{ padding-right:56px; }
+
+  *{ box-sizing:border-box; }
+
+  body{
+    margin:0;
+    background:var(--linen);
+    color:var(--indigo);
+    font-family:'PT Sans', Arial, sans-serif;
+    line-height:1.5;
+  }
+
+  h1,h2,h3{
+    font-family:'PT Serif', Georgia, serif;
+    font-weight:700;
+    margin:0 0 .4em 0;
+  }
+
+  /* Шевица : frise en points de croix (broderie traditionnelle) */
+  .shevitsa{
+    height:45px;
+    width:100%;
+    background-color:var(--paper);
+    background-image:linear-gradient(#C6363C 0 33%,#fff 33% 66%,#0C4076 66% 100%);
+    background-repeat:repeat-x;
+    background-position:center top;
+    background-size:auto 45px;
+    image-rendering:pixelated;
+    image-rendering:crisp-edges;
+    border-bottom:1px solid var(--linen-dark);
+  }
+  :root[data-theme="dark"] .shevitsa{
+    background-image:linear-gradient(#C6363C 0 33%,#fff 33% 66%,#0C4076 66% 100%);
+  }
+  @media (max-width:480px){
+    .shevitsa{ height:36px; background-size:auto 36px; }
+  }
+
+  header{
+    background:var(--header-bg);
+    color:var(--linen);
+    padding:2rem 1.5rem 1.6rem;
+  }
+  header .inner{
+    max-width:960px;
+    margin:0 auto;
+    position:relative;
+  }
+  header h1{
+    color:#fff;
+    font-size:2.1rem;
+    letter-spacing:.01em;
+  }
+  header .bg-title{
+    color:var(--gold);
+    font-size:1.15rem;
+    font-style:italic;
+    font-family:'PT Serif', Georgia, serif;
+  }
+  header .byline{
+    color:var(--gold);
+    font-size:1.3rem;
+    font-style:italic;
+    font-weight:700;
+    font-family:'PT Serif', Georgia, serif;
+    margin:.25rem 0 0;
+    letter-spacing:.02em;
+  }
+  header p{
+    max-width:58ch;
+    color:var(--hdr-text);
+    margin-top:.6rem;
+  }
+
+  nav{
+    max-width:960px;
+    margin:0 auto;
+    display:flex;
+    flex-wrap:wrap;
+    gap:.85rem 1.5rem;
+    padding:1rem 1.5rem 0;
+  }
+  .nav-group{
+    display:flex;
+    flex-direction:column;
+    gap:.3rem;
+  }
+  .nav-group .nav-label{
+    font-size:.68rem;
+    text-transform:uppercase;
+    letter-spacing:.07em;
+    font-weight:700;
+    color:var(--hdr-text);
+  }
+  .nav-group .nav-btns{
+    display:flex;
+    flex-wrap:wrap;
+    gap:.35rem;
+  }
+  nav button{
+    font-family:'PT Sans', Arial, sans-serif;
+    font-size:.78rem;
+    background:transparent;
+    border:1.5px solid var(--indigo);
+    color:var(--indigo);
+    padding:.32rem .6rem;
+    border-radius:2px;
+    cursor:pointer;
+    transition:background .15s, color .15s;
+    line-height:1.2;
+  }
+  nav button:hover{ background:var(--linen-dark); }
+  nav button.active{
+    background:var(--madder);
+    border-color:var(--madder);
+    color:#fff;
+  }
+  :root[data-theme="dark"] .nav-group .nav-label{ opacity:.75; }
+
+  /* ---- Cartes repliables (info-card en <details>) ---- */
+  details.info-card{ padding:0; }
+  details.info-card > summary{
+    color:var(--madder-dark);
+    font-size:1.15rem;
+    font-weight:700;
+    cursor:pointer;
+    list-style:none;
+    padding:.95rem 1.3rem;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:.6rem;
+  }
+  details.info-card > summary::-webkit-details-marker{ display:none; }
+  details.info-card > summary::after{
+    content:"▸";
+    font-size:.85rem;
+    color:var(--muted2);
+    transition:transform .18s;
+    flex-shrink:0;
+  }
+  details.info-card[open] > summary::after{ transform:rotate(90deg); }
+  details.info-card > summary:hover{ background:var(--linen); }
+  details.info-card > *:not(summary){
+    padding-left:1.3rem;
+    padding-right:1.3rem;
+  }
+  details.info-card > p:last-child,
+  details.info-card > .culture-cta{ margin-bottom:1.1rem; }
+  details.info-card > p:first-of-type{ margin-top:0; }
+
+  .section-toolbar{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:.6rem;
+    margin:-.4rem 0 1.1rem;
+  }
+  .section-toolbar .mini-btn{
+    font-family:'PT Sans', Arial, sans-serif;
+    font-size:.8rem;
+    background:transparent;
+    border:1.5px solid var(--sage);
+    color:var(--sage);
+    padding:.28rem .7rem;
+    border-radius:20px;
+    cursor:pointer;
+  }
+  .section-toolbar .mini-btn:hover{ background:var(--sage); color:#fff; }
+
+  main{
+    max-width:960px;
+    margin:0 auto;
+    padding:1.5rem 1.5rem 4rem;
+  }
+
+  .gram {
+  background-color: #f9f9f9; /* La couleur de fond (à adapter) */
+  padding: 15px 20px;
+  margin-bottom: 20px;
+  border-radius: 8px; /* Bords arrondis */
+  border-left: 4px solid var(--sage); /* Liseré coloré sur la gauche, optionnel */
+}
+
+/* Si vous avez un mode sombre, n'oubliez pas d'adapter le fond : */
+:root[data-theme="dark"] .gram {
+  background-color: #2c2c2c;
+}
+  section{ display:none; }
+  section.active{ display:block; }
+
+  .lead{
+    max-width:65ch;
+    color:var(--text2);
+    margin-bottom:1.4rem;
+  }
+
+  /* Alphabet */
+  .letters-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(210px,1fr));
+    gap:.9rem;
+  }
+  .letter-card{
+    background:var(--card);
+    border:1px solid var(--linen-dark);
+    border-left:5px solid var(--madder);
+    padding:.9rem 1rem;
+  }
+  .letter-card .glyph{
+    font-family:'PT Serif', Georgia, serif;
+    font-size:2rem;
+    color:var(--madder-dark);
+    line-height:1;
+  }
+  .accent-legend{
+  margin: .75rem 0 1rem;
+  padding: .8rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  color: var(--text);
+  line-height: 1.55;
+}
+.accent-legend strong{ color:var(--gold); }
+.accent-legend span{ color:var(--muted); }
+
+.letter-card .latin-letter{
+    font-family:'PT Serif', Georgia, serif;
+    font-size:1.35rem;
+    color:var(--gold);
+    margin-top:.25rem;
+    line-height:1.1;
+  }
+
+  .letter-card .name{
+    font-weight:700;
+    margin:.3rem 0 .15rem;
+  }
+  .letter-card .sound{
+    font-size:.88rem;
+    color:var(--text2);
+  }
+  .letter-card .ex{
+    font-size:.85rem;
+    margin-top:.35rem;
+    color:var(--sage);
+    font-style:italic;
+  }
+
+  /* Category chips */
+  .chips{
+    display:flex;
+    flex-wrap:wrap;
+    gap:.5rem;
+    margin-bottom:1.2rem;
+  }
+  .chip{
+    border:1.5px solid var(--sage);
+    color:var(--sage);
+    background:transparent;
+    padding:.35rem .85rem;
+    border-radius:20px;
+    font-size:.88rem;
+    cursor:pointer;
+  }
+  .chip.active{
+    background:var(--sage);
+    color:#fff;
+  }
+
+  /* Flashcards (French front, Serbian back) */
+  .flashcard-wrap{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:1rem;
+  }
+  .flashcard{
+    width:100%;
+    max-width:440px;
+    height:240px;
+    perspective:1200px;
+    cursor:pointer;
+  }
+  .flashcard-inner{
+    position:relative;
+    width:100%; height:100%;
+    text-align:center;
+    transition:transform .5s;
+    transform-style:preserve-3d;
+  }
+  .flashcard.flipped .flashcard-inner{ transform:rotateY(180deg); }
+  .face{
+    position:absolute; inset:0;
+    display:flex; flex-direction:column;
+    align-items:center; justify-content:center;
+    backface-visibility:hidden;
+    border:1px solid var(--linen-dark);
+    padding:1.2rem;
+    background:var(--card);
+  }
+  .face.front{
+    border-top:6px solid var(--sage); /* Front French */
+  }
+  .face.back{
+    transform:rotateY(180deg);
+    border-top:6px solid var(--madder); /* Back Serbian */
+  }
+  .face .word{
+    font-family:'PT Serif', Georgia, serif;
+    font-size:1.7rem;
+    color:var(--indigo);
+  }
+  .face .sub{
+    color:var(--muted2);
+    margin-top:.5rem;
+    font-size:.92rem;
+  }
+  .face .hint{
+    position:absolute;
+    bottom:.7rem;
+    font-size:.78rem;
+    color:var(--muted);
+  }
+
+  /* Culture (histoire / fêtes / fiertés) */
+  .flashcard.culture{ height:280px; }
+  .flashcard.culture .face.front{ border-top:6px solid var(--gold); }
+  .flashcard.culture .face.back{ border-top:6px solid var(--indigo); }
+  .flashcard.culture .face .word{ font-size:1.18rem; line-height:1.35; }
+  .flashcard.culture .face.back .word{ font-size:1.45rem; }
+  .flashcard.culture .face .sub{ font-size:.88rem; line-height:1.4; }
+  .culture-tools{
+    display:flex;
+    flex-wrap:wrap;
+    gap:.5rem;
+    margin:0 0 1.2rem;
+  }
+  .culture-cta{
+    background:var(--card);
+    border:1px solid var(--linen-dark);
+    border-left:5px solid var(--gold);
+    padding:.9rem 1rem;
+    margin:1.4rem 0 .4rem;
+    display:flex;
+    flex-wrap:wrap;
+    gap:.6rem;
+    align-items:center;
+  }
+  .culture-cta span{ font-size:.92rem; color:var(--text2); margin-right:.3rem; }
+
+  .card-controls{
+    display:flex;
+    gap:.6rem;
+    align-items:center;
+    flex-wrap:wrap;
+    justify-content:center;
+  }
+  button.action{
+    font-family:'PT Sans', Arial, sans-serif;
+    border:none;
+    padding:.6rem 1.1rem;
+    border-radius:2px;
+    cursor:pointer;
+    font-size:.92rem;
+  }
+  button.primary{ background:var(--btn-primary); color:#fff; }
+  button.ghost{ background:transparent; border:1.5px solid var(--indigo); color:var(--indigo); }
+  button.good{ background:var(--ok); color:#fff; }
+  button.bad{ background:var(--bad); color:#fff; }
+  button.action:hover{ opacity:.88; }
+  .progress-label{
+    font-size:.85rem;
+    color:var(--text3);
+    margin-top:.3rem;
+  }
+
+  .lucy-review{
+    background:var(--card);
+    border:1px solid var(--linen-dark);
+    border-left:5px solid var(--madder);
+    padding:1rem 1.2rem;
+    margin-bottom:1.2rem;
+  }
+  .lucy-review .bar-track{ margin-top:.35rem; }
+  .lucy-review-actions{
+    display:flex;
+    gap:.6rem;
+    flex-wrap:wrap;
+    margin-top:.9rem;
+  }
+
+  /* Lists & Cards */
+  .phrase-list{ display:flex; flex-direction:column; gap:.7rem; }
+  .phrase{
+    background:var(--card);
+    border:1px solid var(--linen-dark);
+    border-left:5px solid var(--gold);
+    padding:.75rem 1rem;
+    display:flex;
+    justify-content:space-between;
+    gap:1rem;
+    flex-wrap:wrap;
+  }
+  .phrase .bg{ font-family:'PT Serif', Georgia, serif; font-size:1.1rem; color:var(--madder-dark); }
+  .phrase .fr{ color:var(--text4); }
+
+  .mini-table-wrap{
+    background:var(--card);
+    border:1px solid var(--linen-dark);
+    border-left:5px solid var(--gold);
+    padding:.75rem 1rem;
+  }
+  .mini-table-title{
+    font-weight:700;
+    color:var(--madder-dark);
+    margin-bottom:.5rem;
+    font-size:.95rem;
+  }
+  table.mini-table{ width:100%; border-collapse:collapse; }
+  table.mini-table th, table.mini-table td{
+    text-align:left;
+    padding:.35rem .5rem;
+    border-bottom:1px solid var(--linen-dark);
+    font-size:.92rem;
+  }
+  table.mini-table th{
+    color:var(--gold);
+    font-weight:700;
+    text-transform:uppercase;
+    font-size:.75rem;
+    letter-spacing:.03em;
+  }
+  table.mini-table td.bg-cell{ font-family:'PT Serif', Georgia, serif; color:var(--madder-dark); }
+  table.mini-table tr:last-child td{ border-bottom:none; }
+
+  .info-card{
+    background:var(--card);
+    border:1px solid var(--linen-dark);
+    border-left:5px solid var(--madder);
+    padding:1.2rem 1.4rem;
+    margin-bottom:1.2rem;
+    border-radius:2px;
+  }
+  .info-card h3{
+    color:var(--madder-dark);
+    font-size:1.3rem;
+    margin-bottom:.5rem;
+  }
+  .info-card p{
+    margin:.4rem 0;
+    color:var(--text4);
+  }
+  .prayer-box{
+    background:var(--paper);
+    border:1px solid var(--linen-dark);
+    border-left:4px solid var(--gold);
+    padding:1.1rem;
+    margin:.8rem 0;
+    font-family:'PT Serif', Georgia, serif;
+    font-size:1.02rem;
+    line-height:1.6;
+    white-space:pre-line;
+  }
+
+  /* Quiz */
+  .quiz-box{
+    background:var(--card);
+    border:1px solid var(--linen-dark);
+    padding:1.4rem;
+    max-width:560px;
+  }
+  .quiz-progress{
+    font-size:.85rem;
+    color:var(--text3);
+    margin-bottom:.6rem;
+  }
+  .quiz-question{
+    font-family:'PT Serif', Georgia, serif;
+    font-size:1.4rem;
+    margin-bottom:1.1rem;
+  }
+  .quiz-options{
+    display:grid;
+    gap:.6rem;
+  }
+  .opt-btn{
+    text-align:left;
+    padding:.7rem .9rem;
+    border:1.5px solid var(--linen-dark);
+    background:var(--paper);
+    cursor:pointer;
+    font-size:1rem;
+    font-family:'PT Sans', Arial, sans-serif;
+    border-radius:2px;
+  }
+  .opt-btn:hover{ border-color:var(--sage); }
+  .opt-btn.correct{ background:var(--ok-bg); border-color:var(--ok); }
+  .opt-btn.incorrect{ background:var(--bad-bg); border-color:var(--bad); }
+  .opt-btn:disabled{ cursor:default; }
+
+  .quiz-result{ text-align:center; }
+  .quiz-result .score{
+    font-family:'PT Serif', Georgia, serif;
+    font-size:2.6rem;
+    color:var(--madder-dark);
+  }
+
+  .quiz-settings{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:.4rem .8rem;
+    margin-bottom:.7rem;
+  }
+  .quiz-settings .field-label{
+    font-size:.82rem;
+    color:var(--text3);
+    margin-right:.15rem;
+  }
+  .count-chip{
+    border:1.5px solid var(--muted);
+    color:var(--text3);
+    background:transparent;
+    padding:.25rem .7rem;
+    border-radius:20px;
+    font-size:.82rem;
+    cursor:pointer;
+  }
+  .count-chip.active{
+    background:var(--indigo);
+    border-color:var(--indigo);
+    color:#fff;
+  }
+  .chip.weak{
+    border-color:var(--gold);
+    color:var(--gold);
+  }
+  .chip.weak.active{
+    background:var(--gold);
+    color:#fff;
+  }
+  .quiz-weak-note{
+    font-size:.85rem;
+    color:var(--text3);
+    font-style:italic;
+    margin:-.3rem 0 1rem;
+  }
+
+  /* Progress page */
+  .prog-row{
+    display:flex;
+    align-items:center;
+    gap:1rem;
+    margin-bottom:1rem;
+  }
+  .prog-row .lbl{ width:170px; font-weight:700; flex-shrink:0; font-size:.9rem; }
+  .bar-track{
+    flex:1;
+    height:12px;
+    background:var(--linen-dark);
+    border-radius:6px;
+    overflow:hidden;
+  }
+  .bar-fill{ height:100%; background:var(--sage); }
+  .prog-row .num{ width:70px; text-align:right; font-size:.85rem; color:var(--text3); flex-shrink:0; }
+
+  .reset-link{
+    margin-top:2rem;
+    font-size:.85rem;
+    color:var(--muted);
+    background:none;
+    border:none;
+    text-decoration:underline;
+    cursor:pointer;
+    padding:0;
+  }
+
+  footer{
+    text-align:center;
+    padding:2rem 1rem;
+    color:var(--muted);
+    font-size:.85rem;
+  }
+
+  @media (max-width:480px){
+    .prog-row{ flex-wrap:wrap; }
+    .prog-row .lbl{ width:100%; }
+  }
+
+  /* Histoires & Grammaire */
+  .story-card, .gram-card{
+    background:var(--card);
+    border:1px solid var(--linen-dark);
+    border-left:5px solid var(--gold);
+    padding:1rem 1.15rem;
+    margin-bottom:1.1rem;
+  }
+  .gram-card{ border-left-color:var(--sage); }
+  .story-card h3, .gram-card h3{ margin-bottom:.5rem; }
+  .story-bg{
+    font-family:'PT Serif', Georgia, serif;
+    font-size:1.08rem;
+    line-height:1.85;
+    color:var(--indigo);
+  }
+  .story-card details, .gram-card details{
+    margin-top:.8rem;
+    border-top:1px dashed var(--linen-dark);
+    padding-top:.6rem;
+  }
+  .story-card summary, .gram-card summary{
+    cursor:pointer;
+    font-weight:700;
+    color:var(--madder-dark);
+    font-size:.92rem;
+  }
+  .story-fr{ color:var(--text2); margin-top:.5rem; }
+  .gtable{ width:100%; border-collapse:collapse; margin:.6rem 0; font-size:.94rem; }
+  .gtable td, .gtable th{ border:1px solid var(--linen-dark); padding:.35rem .55rem; text-align:left; }
+  .gtable th{ background:var(--linen-dark); }
+  .gtable td.bg-cell{ font-family:'PT Serif', Georgia, serif; color:var(--madder-dark); }
+  .tip{ background:var(--linen); border-left:3px solid var(--madder); padding:.5rem .75rem; margin:.6rem 0; font-size:.93rem; }
+  .wordbox{ font-size:.9rem; color:var(--sage); margin-top:.6rem; line-height:1.7; }
+
+  /* ---- Prononciation ---- */
+  .tbl-scroll{ overflow-x:auto; max-width:100%; }
+  .ipa{ font-family:'Noto Sans','Segoe UI','DejaVu Sans',Arial,sans-serif; color:var(--sage); white-space:nowrap; }
+  .st{ text-decoration:underline; text-decoration-thickness:2px; text-underline-offset:3px; text-decoration-color:var(--madder); font-weight:700; }
+  .say{
+    display:inline-block; cursor:pointer; user-select:none;
+    font-family:'PT Serif', Georgia, serif; color:var(--madder-dark);
+    border:1px solid var(--linen-dark); background:var(--linen);
+    border-radius:14px; padding:0 .55rem; margin:.15rem .1rem; line-height:1.6;
+    transition:background .15s, border-color .15s;
+  }
+  .say::after{ content:" 🔊"; font-size:.8em; }
+  .say:hover, .say:focus-visible{ border-color:var(--gold); background:var(--linen-dark); outline:none; }
+  .say.playing{ border-color:var(--madder); }
+  td > .say:empty{ padding:0 .4rem; }
+  td > .say:empty::after{ content:"🔊"; }
+  #sec-pronunciation ol, #sec-pronunciation ul{ padding-left:1.3rem; margin:.4rem 0; }
+  #sec-pronunciation li{ margin:.2rem 0; }
+
+  /* ---- Conjugaison (fiches + entraînement) ---- */
+  .cj-tabs{ display:flex; gap:.3rem; margin:0 0 1.3rem; border-bottom:2px solid var(--linen-dark); }
+  .cj-tab{
+    font-family:'PT Sans', Arial, sans-serif; font-size:1rem; background:transparent; border:none;
+    padding:.6rem 1.1rem; cursor:pointer; color:var(--text2);
+    border-bottom:3px solid transparent; margin-bottom:-2px;
+  }
+  .cj-tab:hover{ color:var(--madder-dark); }
+  .cj-tab.active{ color:var(--madder-dark); font-weight:700; border-bottom-color:var(--madder); }
+  .cj-card{ background:var(--card); border:1px solid var(--linen-dark); border-left:5px solid var(--sage); padding:1rem 1.15rem; margin-bottom:1.1rem; }
+  .cj-card h3{ margin-bottom:.5rem; }
+  .cj-label{ font-size:.78rem; text-transform:uppercase; letter-spacing:.08em; color:var(--muted2); font-weight:700; margin:1.1rem 0 .45rem; }
+  .cj-label:first-child{ margin-top:0; }
+  .cj-group-title{ font-size:.82rem; color:var(--muted2); margin:.7rem 0 .3rem; }
+  .cj-toolbar{ display:flex; flex-wrap:wrap; gap:.6rem 1.2rem; align-items:center; justify-content:space-between; margin-bottom:.8rem; }
+  .cj-check{ font-size:.9rem; color:var(--text2); display:inline-flex; gap:.4rem; align-items:center; cursor:pointer; }
+
+  .cj-head{ display:flex; flex-wrap:wrap; align-items:baseline; gap:.4rem 1rem; margin-bottom:.4rem; }
+  .cj-head .big{ font-family:'PT Serif', Georgia, serif; font-size:2rem; color:var(--madder-dark); line-height:1.1; }
+  .cj-head .fr{ font-size:1.1rem; color:var(--text2); }
+  .cj-badge{ display:inline-block; font-size:.76rem; border:1px solid var(--sage); color:var(--sage); border-radius:12px; padding:.05rem .6rem; }
+  .cj-badge.gold{ border-color:var(--gold); color:var(--gold); }
+  .cj-tr{ display:block; font-size:.78rem; color:var(--muted2); font-style:italic; font-family:'PT Sans', Arial, sans-serif; }
+  .cj-noTr .cj-tr{ display:none; }
+  table.cj-table td.f{ font-family:'PT Serif', Georgia, serif; color:var(--madder-dark); font-size:1.02rem; }
+  table.cj-table td.p{ color:var(--text2); white-space:nowrap; }
+  table.cj-table td.p small{ color:var(--muted2); }
+  .cj-cta{ display:flex; flex-wrap:wrap; gap:.6rem; margin-top:.8rem; }
+
+  /* Entraînement : réglages */
+  .cj-modes{ display:grid; grid-template-columns:repeat(auto-fill, minmax(215px,1fr)); gap:.7rem; }
+  .cj-mode{
+    text-align:left; background:var(--paper); border:1.5px solid var(--linen-dark); padding:.75rem .9rem;
+    cursor:pointer; font-family:'PT Sans', Arial, sans-serif; color:var(--indigo); border-radius:2px;
+  }
+  .cj-mode b{ display:block; font-size:1rem; margin-bottom:.15rem; }
+  .cj-mode span{ font-size:.82rem; color:var(--text3); line-height:1.35; display:block; }
+  .cj-mode:hover{ border-color:var(--sage); }
+  .cj-mode.active{ border-color:var(--madder); background:var(--card); box-shadow:inset 4px 0 0 var(--madder); }
+  .cj-seg{ display:inline-flex; border:1.5px solid var(--indigo); border-radius:2px; overflow:hidden; }
+  .cj-seg button{ font-family:'PT Sans', Arial, sans-serif; font-size:.92rem; background:transparent; color:var(--indigo); border:none; padding:.4rem .9rem; cursor:pointer; }
+  .cj-seg button + button{ border-left:1.5px solid var(--indigo); }
+  .cj-seg button.active{ background:var(--indigo); color:var(--linen); }
+  .cj-chipline{ display:flex; flex-wrap:wrap; gap:.45rem; }
+  .cj-chipline .chip{ font-family:'PT Sans', Arial, sans-serif; }
+  .cj-chipline .chip.q{ border-color:var(--gold); color:var(--gold); }
+  .cj-chipline .chip.q:hover{ background:var(--gold); color:#fff; }
+  .cj-start{ margin-top:1.3rem; display:flex; flex-wrap:wrap; gap:.8rem; align-items:center; }
+  .cj-start button.action{ font-size:1.02rem; padding:.75rem 1.6rem; }
+  .cj-hint{ font-size:.85rem; color:var(--muted2); }
+
+  /* Entraînement : question */
+  .cj-stage{ max-width:680px; }
+  .cj-top{ display:flex; align-items:center; gap:.9rem; margin-bottom:.9rem; font-size:.85rem; color:var(--text3); }
+  .cj-top .bar-track{ height:8px; }
+  .cj-top .bar-fill{ background:var(--gold); transition:width .3s; }
+  .cj-streak{ white-space:nowrap; font-weight:700; color:var(--madder-dark); min-width:3.2rem; text-align:right; }
+  .cj-quit{ background:none; border:none; color:var(--muted2); text-decoration:underline; cursor:pointer; font-size:.82rem; font-family:inherit; }
+  .cj-qbox{ background:var(--card); border:1px solid var(--linen-dark); padding:1.3rem 1.4rem; }
+  .cj-kind{ font-size:.78rem; text-transform:uppercase; letter-spacing:.08em; color:var(--muted2); margin-bottom:.5rem; }
+  .cj-q{ font-family:'PT Serif', Georgia, serif; font-size:1.3rem; line-height:1.5; margin-bottom:1.1rem; }
+  .cj-q .v{ color:var(--madder-dark); font-weight:700; }
+  .cj-q .pill{ display:inline-block; font-family:'PT Sans', Arial, sans-serif; font-size:.82rem; border-radius:12px; padding:.05rem .65rem; background:var(--linen); border:1px solid var(--linen-dark); color:var(--text2); vertical-align:middle; }
+  .cj-q .pill.t{ background:var(--sage); border-color:var(--sage); color:#fff; }
+  .cj-q .pill.p{ background:var(--gold); border-color:var(--gold); color:#fff; }
+  .cj-form{ font-family:'PT Serif', Georgia, serif; font-size:2rem; color:var(--madder-dark); margin:.2rem 0 .1rem; display:block; }
+  .cj-blank{ display:inline-block; min-width:5.5rem; border-bottom:3px solid var(--gold); text-align:center; color:var(--madder-dark); font-weight:700; margin:0 .2rem; }
+  .cj-sent-fr{ font-family:'PT Sans', Arial, sans-serif; font-size:.9rem; color:var(--text3); font-style:italic; margin-top:.3rem; }
+  .cj-opts{ display:grid; grid-template-columns:1fr 1fr; gap:.6rem; }
+  @media (max-width:560px){ .cj-opts{ grid-template-columns:1fr; } }
+  .cj-opts .opt-btn{ font-family:'PT Serif', Georgia, serif; font-size:1.08rem; }
+  .cj-opts .opt-btn .n{ display:inline-block; width:1.4rem; color:var(--muted2); font-family:'PT Sans', Arial, sans-serif; font-size:.8rem; }
+  .cj-input{
+    width:100%; font-family:'PT Serif', Georgia, serif; font-size:1.3rem; padding:.6rem .8rem;
+    border:1.5px solid var(--linen-dark); background:var(--paper); color:var(--indigo); border-radius:2px;
+  }
+  .cj-input:focus{ outline:none; border-color:var(--gold); }
+  .cj-input.correct{ background:var(--ok-bg); border-color:var(--ok); }
+  .cj-input.incorrect{ background:var(--bad-bg); border-color:var(--bad); }
+  .cj-kbd{ margin-top:.8rem; }
+  .cj-kbd summary{ cursor:pointer; font-size:.85rem; color:var(--muted2); }
+  .cj-keys{ display:flex; flex-wrap:wrap; gap:.3rem; margin-top:.5rem; }
+  .cj-key{
+    font-family:'PT Serif', Georgia, serif; font-size:1.05rem; min-width:2.15rem; height:2.3rem; padding:0 .4rem;
+    background:var(--paper); border:1px solid var(--linen-dark); color:var(--indigo); cursor:pointer; border-radius:3px;
+  }
+  .cj-key:hover{ border-color:var(--gold); }
+  .cj-key.wide{ min-width:5rem; font-family:'PT Sans', Arial, sans-serif; font-size:.85rem; }
+  .cj-actions{ display:flex; flex-wrap:wrap; gap:.6rem; margin-top:1rem; align-items:center; }
+  .cj-fill{ display:grid; grid-template-columns:auto 1fr; gap:.45rem .8rem; align-items:center; margin-bottom:.3rem; }
+  .cj-fill label{ color:var(--text2); font-size:.95rem; white-space:nowrap; }
+  .cj-fill .cj-input{ font-size:1.1rem; padding:.4rem .65rem; }
+  .cj-fill .cell-fb{ grid-column:2; font-size:.85rem; margin-top:-.25rem; color:var(--bad); font-family:'PT Serif', Georgia, serif; }
+
+  .cj-fb{ margin-top:1rem; padding:.8rem 1rem; border-left:5px solid var(--ok); background:var(--ok-bg); }
+  .cj-fb.ko{ border-left-color:var(--bad); background:var(--bad-bg); }
+  .cj-fb .verdict{ font-weight:700; margin-bottom:.15rem; }
+  .cj-fb .ans{ font-family:'PT Serif', Georgia, serif; font-size:1.25rem; color:var(--madder-dark); }
+  .cj-fb .why{ font-size:.88rem; color:var(--text2); margin-top:.4rem; }
+  .cj-para{ display:grid; grid-template-columns:repeat(3, 1fr); gap:.35rem; margin-top:.6rem; }
+  @media (max-width:520px){ .cj-para{ grid-template-columns:repeat(2, 1fr); } }
+  .cj-para div{ background:var(--card); border:1px solid var(--linen-dark); padding:.3rem .5rem; font-family:'PT Serif', Georgia, serif; font-size:1rem; color:var(--madder-dark); }
+  .cj-para div small{ display:block; font-family:'PT Sans', Arial, sans-serif; font-size:.72rem; color:var(--muted2); }
+  .cj-para div.hi{ border-color:var(--gold); box-shadow:inset 0 0 0 1px var(--gold); font-weight:700; }
+
+  /* Résultats */
+  .cj-result{ background:var(--card); border:1px solid var(--linen-dark); padding:1.4rem; text-align:center; }
+  .cj-result .score{ font-family:'PT Serif', Georgia, serif; font-size:3rem; color:var(--madder-dark); line-height:1.1; }
+  .cj-result .pct{ font-size:1.1rem; color:var(--text2); }
+  .cj-result .msg{ margin:.6rem 0 1rem; font-family:'PT Serif', Georgia, serif; font-size:1.15rem; }
+  .cj-result .new{ display:inline-block; background:var(--gold); color:#fff; font-size:.8rem; padding:.05rem .6rem; border-radius:12px; margin-left:.4rem; vertical-align:middle; }
+  .cj-brk{ text-align:left; margin:1rem 0; }
+  .cj-brk .prog-row{ margin-bottom:.5rem; }
+  .cj-brk .prog-row .lbl{ width:110px; font-weight:400; }
+  .cj-errs{ text-align:left; margin-top:1.2rem; }
+  .cj-err{ border-left:4px solid var(--bad); background:var(--paper); padding:.5rem .8rem; margin-bottom:.5rem; font-size:.92rem; }
+  .cj-err .bgf{ font-family:'PT Serif', Georgia, serif; color:var(--madder-dark); font-size:1.02rem; }
+  .cj-err .was{ color:var(--bad); text-decoration:line-through; font-family:'PT Serif', Georgia, serif; }
+  .cj-callout{ background:var(--card); border:1px solid var(--linen-dark); border-left:5px solid var(--madder); padding:.8rem 1rem; margin-bottom:1.2rem; display:flex; flex-wrap:wrap; gap:.6rem 1rem; align-items:center; justify-content:space-between; font-size:.95rem; color:var(--text2); }
+
+  /* ---------- Carte interactive des monuments ---------- */
+  .mon-map-card{ background:var(--card); border:1px solid var(--linen-dark); border-radius:10px; padding:1rem 1.1rem 1.2rem; margin-bottom:1.3rem; }
+  .mon-map-legend{ display:flex; flex-wrap:wrap; gap:.5rem; margin-bottom:.8rem; }
+  .mon-chip{ display:inline-flex; align-items:center; gap:.4rem; border:1.5px solid var(--linen-dark); background:transparent; color:var(--text2); padding:.3rem .7rem; border-radius:20px; font-size:.82rem; cursor:pointer; font-family:'PT Sans', Arial, sans-serif; }
+  .mon-chip .dot{ width:10px; height:10px; border-radius:50%; flex:none; }
+  .mon-chip.off{ opacity:.4; }
+  .mon-map-wrap{ position:relative; }
+  #monuments-map{ height:440px; width:100%; border-radius:8px; border:1px solid var(--linen-dark); background:var(--paper); z-index:0; }
+  .mon-map-hint{ font-size:.82rem; color:var(--muted2); margin-top:.5rem; }
+  .leaflet-popup-content-wrapper{ background:var(--card); color:var(--indigo); border-radius:8px; }
+  .leaflet-popup-tip{ background:var(--card); }
+  .mon-pop b{ font-family:'PT Serif', Georgia, serif; color:var(--madder-dark); }
+  .mon-pop p{ margin:.3rem 0 0; font-size:.85rem; color:var(--text2); }
+</style>
+<script>
+(function(){
+  var t = null;
+  try{ t = localStorage.getItem('sr_theme'); }catch(e){}
+  if(!t){ t = 'light'; }
+  document.documentElement.setAttribute('data-theme', t);
+})();
+</script>
+</head>
+<body>
+<header><div class="inner">
+    <button id="themeToggle" type="button" aria-label="Activer le thème sombre" title="Thème sombre">
+      <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 1.5v3M12 19.5v3M1.5 12h3M19.5 12h3M4.6 4.6l2.1 2.1M17.3 17.3l2.1 2.1M4.6 19.4l2.1-2.1M17.3 6.7l2.1-2.1"/></g></svg>
+    </button>
+<div class="bg-title">Српски језик и култура</div>
+<h1>Apprendre le serbe — A1 & Culture</h1>
+<p class="byline">by Dobrev Mathis</p>
+<p>Alphabet cyrillique, prononciation, vocabulaire, conjugaison, grammaire, flashcards, quiz, histoires, histoire, fêtes, cuisine, monuments et costumes traditionnels serbes.</p>
+</div></header>
+<div class="shevitsa"></div>
+<nav id="nav">
+<div class="nav-group"><span class="nav-label">📖 Langue</span><div class="nav-btns">
+<button data-target="alphabet" class="active">Alphabet</button>
+<button data-target="pronunciation">Prononciation 🔊</button>
+<button data-target="vocab">Vocabulaire</button>
+<button data-target="verbs">Verbes</button>
+<button data-target="conjugation">Conjugaison ✍️</button>
+<button data-target="grammar-course">Grammaire A1-A2</button>
+</div></div>
+<div class="nav-group"><span class="nav-label">🎯 Entraînement</span><div class="nav-btns">
+<button data-target="flashcards">Flashcards</button>
+<button data-target="quiz">Quiz</button>
+<button data-target="culture">Culture : cartes & quiz</button>
+<button data-target="stories">Histoires A1</button>
+<button data-target="progress">Progression</button>
+</div></div>
+<div class="nav-group"><span class="nav-label">🇷🇸 Culture & patrimoine</span><div class="nav-btns">
+<button data-target="history">Histoire</button>
+<button data-target="holidays">Fêtes</button>
+<button data-target="pride">Fiertés 🇷🇸</button>
+<button data-target="cuisine">Cuisine 🍽️</button>
+<button data-target="monuments">Monuments 🏛️</button>
+<button data-target="nosiya">Носије 👗</button>
+</div></div>
+<div class="nav-group"><span class="nav-label">🙏 Spiritualité & notes</span><div class="nav-btns">
+<button data-target="prayers">Prières</button>
+<button data-target="lucy">Notes & Expressions</button>
+</div></div>
+</nav>
+<main>
+<section id="sec-alphabet" class="active">
+<h2>L'alphabet cyrillique serbe</h2>
+<p class="lead">30 lettres, parfaitement phonétiques : une lettre = un son. Le serbe s'écrit aussi en alphabet latin (gajica), avec les mêmes correspondances lettre à lettre.</p>
+<div class="letters-grid" id="letters-grid"></div>
+<div class="gram" style="margin-top:1.4rem"><h3>Les 5 lettres à retenir</h3><ul>
+<li><b>Ј ј</b> = « y » (<span class="bg-cell">јабука</span>) · <b>Љ љ</b> = « ill » · <b>Њ њ</b> = « gn » d'<i>agneau</i>.</li>
+<li><b>Ђ ђ</b> et <b>Ћ ћ</b> : sons « mouillés », proches de « dj » et « tch » mais plus doux (<span class="bg-cell">ђак</span>, <span class="bg-cell">кућа</span>).</li>
+<li><b>Џ џ</b> = « dj » de <i>djihad</i> · <b>Х х</b> = « h » aspiré · <b>Р р</b> = « r » roulé.</li>
+<li>L'accent est mélodique (ton montant/descendant) ; au début, mémorise simplement les mots avec leur lecture latine.</li></ul></div>
+</section>
+  <section id="sec-vocab">
+    <h2>Vocabulaire complet par thème</h2>
+    <p class="lead">Sélectionne un thème pour réviser l'ensemble des mots et notions de base.</p>
+    <div class="chips" id="vocab-chips"></div>
+    <div class="phrase-list" id="vocab-list"></div>
+  </section>
+<section id="sec-verbs">
+<h2>Verbes essentiels</h2>
+<p class="lead">Les verbes indispensables du serbe avec leur présent (je, tu, il/elle).</p>
+<div class="phrase-list" id="verb-list"></div>
+</section>
+  <section id="sec-lucy">
+    <h2>Notes de cours & Expressions du quotidien</h2>
+    <p class="lead">Toutes les tournures, phrases pratiques, conjonctions et expressions utiles relevées dans vos leçons.</p>
+
+    <div class="lucy-review">
+      <div class="progress-label" id="lucy-progress-label">Progression : —</div>
+      <div class="bar-track"><div class="bar-fill" id="lucy-progress-bar" style="width:0%"></div></div>
+      <div class="lucy-review-actions">
+        <button class="action primary" id="lucy-go-flashcards">📇 Réviser avec les flashcards</button>
+        <button class="action ghost" id="lucy-go-quiz">📝 Faire le quiz</button>
+      </div>
+    </div>
+
+    <div class="phrase-list" id="lucy-list"></div>
+  </section>
+  <section id="sec-flashcards">
+    <h2>Flashcards (Français ➔ Serbe)</h2>
+    <p class="lead">Le mot en **français** s'affiche en premier. Clique sur la carte pour découvrir le serbe.</p>
+    <div class="chips" id="fc-chips"></div>
+    <div class="flashcard-wrap">
+      <div class="flashcard" id="flashcard">
+        <div class="flashcard-inner">
+          <div class="face front">
+            <div class="word" id="fc-front-word">—</div>
+            <div class="hint">clique pour voir en serbe</div>
+          </div>
+          <div class="face back">
+            <div class="word" id="fc-back-word">—</div>
+            <div class="sub" id="fc-back-sub"></div>
+            <div class="hint">clique pour revenir</div>
+          </div>
+        </div>
+      </div>
+      <div class="card-controls">
+        <button class="action ghost" id="fc-prev">← Précédent</button>
+        <button class="action bad" id="fc-dontknow">Pas encore</button>
+        <button class="action good" id="fc-know">Je connais</button>
+        <button class="action ghost" id="fc-next">Suivant →</button>
+      </div>
+      <div class="progress-label" id="fc-progress"></div>
+    </div>
+  </section>
+<section id="sec-quiz">
+    <h2>Quiz</h2>
+    <p class="lead" id="quiz-lead">Teste tes connaissances (Français ➔ Serbe).</p>
+    <div class="quiz-settings">
+      <span class="field-label">Nombre de questions :</span>
+      <div class="chips" id="quiz-count-chips" style="margin-bottom:0;"></div>
+    </div>
+    <div class="chips" id="quiz-chips"></div>
+    <p class="quiz-weak-note" id="quiz-weak-note" style="display:none;">🎯 Priorité aux mots que tu maîtrises le moins bien, toutes catégories confondues.</p>
+    <div class="quiz-box" id="quiz-box"></div>
+  </section>
+  <section id="sec-progress">
+    <h2>Ta progression</h2>
+    <p class="lead">Cartes maîtrisées et scores aux quiz.</p>
+    <div id="progress-flashcards"></div>
+    <h3 style="margin-top:1.6rem;">Meilleurs scores aux quiz</h3>
+    <div id="progress-quiz"></div>
+    <h3 style="margin-top:1.6rem;">Culture : histoire, fêtes et fiertés</h3>
+    <div id="progress-culture"></div>
+    <button class="reset-link" id="reset-all">Réinitialiser toute la progression</button>
+  </section>
+  <section id="sec-culture">
+    <h2>Culture serbe : flashcards & quiz</h2>
+    <p class="lead">Révise l'histoire, les fêtes et les fiertés serbes. Choisis un thème, puis entraîne-toi avec les cartes (question ➔ réponse) ou teste-toi avec le quiz.</p>
+
+    <div class="chips" id="cu-chips"></div>
+
+    <div class="culture-tools">
+      <button class="action primary" id="cu-mode-cards">📇 Flashcards</button>
+      <button class="action ghost" id="cu-mode-quiz">📝 Quiz</button>
+    </div>
+
+    <div id="cu-cards-wrap" class="flashcard-wrap">
+      <div class="flashcard culture" id="cu-flashcard">
+        <div class="flashcard-inner">
+          <div class="face front">
+            <div class="word" id="cu-front-word">—</div>
+            <div class="hint">clique pour voir la réponse</div>
+          </div>
+          <div class="face back">
+            <div class="word" id="cu-back-word">—</div>
+            <div class="sub" id="cu-back-sub"></div>
+            <div class="hint">clique pour revenir</div>
+          </div>
+        </div>
+      </div>
+      <div class="card-controls">
+        <button class="action ghost" id="cu-prev">← Précédent</button>
+        <button class="action bad" id="cu-dontknow">Pas encore</button>
+        <button class="action good" id="cu-know">Je connais</button>
+        <button class="action ghost" id="cu-next">Suivant →</button>
+      </div>
+      <div class="card-controls">
+        <button class="action ghost" id="cu-shuffle">🔀 Mélanger les cartes</button>
+      </div>
+      <div class="progress-label" id="cu-progress"></div>
+    </div>
+
+    <div class="quiz-box" id="cu-quiz-box" style="display:none;"></div>
+  </section>
+<section id="sec-pronunciation">
+    <h2>Prononciation : avoir un vrai accent serbe</h2>
+    <p class="lead">Connaître l'alphabet ne suffit pas : il faut apprendre les sons réels, l'accent tonique, la longueur des voyelles et l'enchaînement des consonnes. Clique sur 🔊 pour écouter.</p>
+    <div class="tip">Convention : la voyelle <span class="st">soulignée</span> est la voyelle accentuée. Les transcriptions [API/IPA] sont volontairement approximatives ; le but est de t'orienter, pas de remplacer l'écoute de vrais locuteurs.</div>
+    <div class="gram-card"><h3>1. Le principe : écrit ≠ prononcé</h3>
+      <p>Le serbe est très phonétique : une lettre correspond généralement à un son, mais la position de l'accent et la longueur vocalique comptent. Travaille avec le <b>cyrillique + l'accent + l'API</b> plutôt qu'avec une romanisation approximative.</p>
+      <p><b>Ordre de priorité pour un francophone :</b></p><ol>
+      <li>р : abandonner le /ʁ/ français et faire un r de la pointe de la langue</li><li>љ / њ : apprendre les consonnes palatalisées</li><li>ј / j et њ / љ : comprendre leur vraie fonction</li><li>accent tonique : apprendre le mot avec son accent et sa longueur</li><li>opposition consonnes sourdes / sonores</li><li>assimilation du voisement</li><li>enchaînement naturel des groupes consonantiques</li></ol>
+    </div>
+    <div class="gram-card"><h3>2. L'accent tonique : mobile et mélodique</h3>
+      <p>Le serbe possède un accent <b>mobile</b> et <b>mélodique</b>. En description pédagogique, on distingue notamment l'accent court montant, court descendant, long montant et long descendant. L'orthographe courante ne note pas l'accent.</p>
+      <p>Une syllabe accentuée peut être plus longue et plus saillante, mais la <b>mélodie</b> de la syllabe compte aussi. N'apprends donc pas seulement « où tombe l'accent » : écoute la hauteur et la durée.</p>
+      <div class="tip">Erreur française typique : prononcer toutes les syllabes avec la même énergie et ignorer la longueur. Un mot peut être parfaitement compréhensible tout en gardant un accent étranger.</div>
+    </div>
+    <div class="gram-card"><h3>3. Les voyelles</h3><div class="tbl-scroll"><table class="gtable">
+      <tr><th>Lettre</th><th>API</th><th>Approximation</th><th>Piège</th></tr>
+      <tr><td class="bg-cell">а</td><td class="ipa">/a/</td><td>a français</td><td>Voyelle pleine, sans réduction systématique</td></tr>
+      <tr><td class="bg-cell">е</td><td class="ipa">/e/</td><td>é français</td><td>Pas le « è » serbe</td></tr>
+      <tr><td class="bg-cell">и</td><td class="ipa">/i/</td><td>i (« si »)</td><td>Voyelle stable</td></tr>
+      <tr><td class="bg-cell">о</td><td class="ipa">/o/</td><td>o fermé</td><td>Ne le transforme pas en /u/</td></tr>
+      <tr><td class="bg-cell">у</td><td class="ipa">/u/</td><td>ou (« tout »)</td><td>Bien arrondir les lèvres</td></tr>
+    </table></div></div>
+    <div class="gram-card"><h3>4. Ј, љ, њ et les sons « mouillés »</h3>
+      <p><b>ј</b> correspond à /j/ comme le y de « yeux ». <b>љ</b> représente /ʎ/ et <b>њ</b> /ɲ/. Ils ne sont pas deux sons séparés : ce sont des consonnes propres au système serbe.</p>
+      <p>À écouter et répéter : <span class="say" data-say="љубав">љубав</span> <span class="say" data-say="њега">њега</span> <span class="say" data-say="ја">ја</span> <span class="say" data-say="боље">боље</span> <span class="say" data-say="њива">њива</span>.</p>
+    </div>
+    <div class="gram-card"><h3>5. Les consonnes</h3><div class="tbl-scroll"><table class="gtable">
+      <tr><th>Lettre</th><th>API</th><th>Comme…</th><th>Piège</th></tr>
+      <tr><td class="bg-cell">г</td><td class="ipa">/ɡ/</td><td>« gare »</td><td>Son dur</td></tr><tr><td class="bg-cell">ж</td><td class="ipa">/ʒ/</td><td>« jour »</td><td>Comme j français</td></tr><tr><td class="bg-cell">ш</td><td class="ipa">/ʃ/</td><td>« chat »</td><td>—</td></tr><tr><td class="bg-cell">ч</td><td class="ipa">/tʃ/</td><td>« tchèque »</td><td>—</td></tr><tr><td class="bg-cell">ћ</td><td class="ipa">/tɕ/</td><td>son serbe doux entre t et ch</td><td>À distinguer de ч</td></tr><tr><td class="bg-cell">ђ</td><td class="ipa">/dʑ/</td><td>son serbe doux entre d et j</td><td>À distinguer de dž</td></tr><tr><td class="bg-cell">ц</td><td class="ipa">/ts/</td><td>« pizza »</td><td>—</td></tr><tr><td class="bg-cell">х</td><td class="ipa">/x/</td><td>j espagnol / ch de Bach</td><td>Friction au fond de la gorge</td></tr><tr><td class="bg-cell">ј</td><td class="ipa">/j/</td><td>y de « yeux »</td><td>Consonne, pas voyelle</td></tr><tr><td class="bg-cell">љ</td><td class="ipa">/ʎ/</td><td>ll mouillé</td><td>Un seul phonème</td></tr><tr><td class="bg-cell">њ</td><td class="ipa">/ɲ/</td><td>gn de « montagne »</td><td>Un seul phonème</td></tr>
+    </table></div></div>
+    <div class="gram-card"><h3>6. Р et Л</h3><p><b>р</b> = /r/ battu ou roulé, avec la pointe de la langue contre les alvéoles. Jamais le /ʁ/ français. <b>л</b> est généralement un /l/ clair, tandis que <b>љ</b> est le son palatal /ʎ/. Exerce-toi : <span class="say" data-say="ра">ра</span> <span class="say" data-say="ре">ре</span> <span class="say" data-say="ри">ри</span> <span class="say" data-say="ро">ро</span> <span class="say" data-say="ру">ру</span>.</p></div>
+    <div class="gram-card"><h3>7. Assimilation du voisement</h3><p>À l'intérieur d'un groupe de consonnes, les consonnes s'influencent. Une consonne sonore peut devenir sourde devant une sourde et inversement. Par exemple, <span class="bg-cell">свадба</span> se réalise avec assimilation du groupe <i>дб</i>. À l'oral, écoute surtout le groupe entier plutôt que chaque lettre isolément.</p></div>
+    <div class="gram-card"><h3>8. Rythme et enchaînement</h3><ul><li>Pas de <i>e</i> muet français ajouté entre les consonnes.</li><li>Les groupes consonantiques sont fréquents : <span class="say" data-say="здраво">здраво</span>, <span class="say" data-say="трг">трг</span>.</li><li>Ne sur-articule pas : le serbe oral est fluide et fortement coarticulé.</li><li>La longueur vocalique et l'intonation doivent être apprises avec le mot.</li></ul></div>
+    <div class="gram-card"><h3>9. Paires minimales à entraîner</h3><div class="tbl-scroll"><table class="gtable">
+      <tr><th>Contraste</th><th>Paire</th><th>Sens</th></tr><tr><td>ч / ћ</td><td class="bg-cell">чаша / ћас</td><td>contraste de prononciation</td></tr><tr><td>џ / ђ</td><td class="bg-cell">џак / ђак</td><td>sac / élève</td></tr><tr><td>л / љ</td><td class="bg-cell">лак / љак</td><td>contraste l / lj</td></tr><tr><td>н / њ</td><td class="bg-cell">на / ња</td><td>contraste n / nj</td></tr><tr><td>с / з</td><td class="bg-cell">село / зелено</td><td>sourd / sonore</td></tr>
+    </table></div></div>
+    <div class="gram-card"><h3>10. Mots fréquents avec accent pédagogique</h3><div class="tbl-scroll"><table class="gtable">
+      <tr><th>Mot</th><th>API approximative</th><th>Sens</th></tr><tr><td class="bg-cell">здраво</td><td class="ipa">[ˈzdravo]</td><td>salut / bonjour</td></tr><tr><td class="bg-cell">хвала</td><td class="ipa">[ˈxʋala]</td><td>merci</td></tr><tr><td class="bg-cell">молим</td><td class="ipa">[ˈmɔlim]</td><td>s'il vous plaît / de rien</td></tr><tr><td class="bg-cell">извиниони</td><td class="ipa">[iziˈʋitɛ]</td><td>excusez-moi</td></tr><tr><td class="bg-cell">добар дан</td><td class="ipa">[ˈdɔbar dan]</td><td>bonjour</td></tr><tr><td class="bg-cell">довиђења</td><td class="ipa">[dɔˈʋiɟɛɲa]</td><td>au revoir</td></tr><tr><td class="bg-cell">Србија</td><td class="ipa">[ˈsr̩bija]</td><td>Serbie</td></tr><tr><td class="bg-cell">српски</td><td class="ipa">[ˈsr̩pski]</td><td>serbe</td></tr><tr><td class="bg-cell">кућа</td><td class="ipa">[ˈkutɕa]</td><td>maison</td></tr><tr><td class="bg-cell">хлеб</td><td class="ipa">[xlɛb]</td><td>pain</td></tr><tr><td class="bg-cell">љубав</td><td class="ipa">[ˈʎubɑʋ]</td><td>amour</td></tr><tr><td class="bg-cell">вода</td><td class="ipa">[ˈʋɔda]</td><td>eau</td></tr></table></div></div>
+    <div class="gram-card"><h3>11. Méthode d'entraînement en 4 passes</h3><ol><li><b>Lecture lente</b> : chaque phonème bien contrôlé.</li><li><b>Vitesse normale</b> : garde l'accent et la longueur.</li><li><b>Parole naturelle</b> : laisse l'assimilation se faire.</li><li><b>Imitation</b> : copie le rythme, la hauteur et la mélodie d'un natif.</li></ol><div class="tip">Astuce : enregistre-toi, réécoute et compare avec un locuteur natif, une phrase à la fois.</div></div>
+  </section>
+
+<section id="sec-prayers"><h2>Spiritualité : prières orthodoxes serbes</h2><p class="lead">Le Notre Père et le Symbole de la foi dans la tradition liturgique serbe, avec le français.</p>
+  <div class="info-card"><h3>1. Le Notre Père (« Оче наш »)</h3><div class="prayer-box"><strong>En serbe :</strong>
+Оче наш, који си на небесима,
+да се свети име Твоје,
+да дође царство Твоје,
+да буде воља Твоја,
+и на земљи као на небу.
+Хлеб наш насушни дај нам данас,
+и опрости нам дугове наше,
+као шоно и ми опраштамо дужницима својим,
+и не уведи нас у искушење,
+но избави нас од злога. Амин.</div><div class="prayer-box"><strong>En français :</strong> Notre Père, qui es aux cieux, que ton nom soit sanctifié, que ton règne vienne, que ta volonté soit faite sur la terre comme au ciel. Donne-nous aujourd'hui notre pain de ce jour. Pardonne-nous nos offenses, comme nous pardonnons aussi à ceux qui nous ont offensés. Et ne nous laisse pas entrer en tentation, mais délivre-nous du Mal. Amen.</div></div>
+  <div class="info-card"><h3>2. Le Credo orthodoxe (« Символ вере »)</h3><div class="prayer-box"><strong>En serbe :</strong>
+Верујем у једнога Бога Оца, Сведржиониља, Творца неба и земље и свега видљивог и невидљивог.
+И у једнога Господа Исуса Христа, Сина Божијег, Јединородног, од Оца рођеног пре свих векова; Светлост од Светлости, Бога истинионог од Бога истинионог, рођеног, нествореног, једносуштног Оцу, кроз Кога је све постало.
+Који је ради нас људи и ради нашега спасења сишао с небеса, и оваплотио се од Духа Свеонога и Марије Дјеве, и постао човек.
+И који је распет за нас у време Понтија Пилата, и страдао и погребен.
+И који је васкрсао у трећи дан по Писму.
+И који се вјанео на небеса и седи са десне стране Оца.
+И који ће опет доћи са славом да суди живима и мртвима, и Његовом Царству неће бити краја.
+И у Духа Свеонога, Господа, Животворног, који од Оца исходи, који се са Оцем и Сином заједно поштује и слави, који је говорио кроз пророке.
+У једну, свету, саборну и апосонолску Цркву.
+Исповедам једно кршониње за опрошониње грехова.
+Чекам васкрсење мртвих.
+И живот будућег века. Амин.</div></div></section>
+
+<section id="sec-history"><h2>Histoire de la Serbie : principautés, empire, résistance et État moderne</h2><p class="lead">Des premiers États serbes médiévaux à la dynastie des Nemanjić, au Kosovo, à la domination ottomane, aux soulèvements du XIXe siècle et à la Serbie contemporaine.</p>
+  <div class="info-card"><h3>1. Les premiers États serbes</h3><p>Les principautés serbes se structurent dans les Balkans au Moyen Âge. La dynastie des Vlastimirović joue un rôle précoce dans la consolidation de la principauté de Serbie.</p></div>
+  <div class="info-card"><h3>2. Stefan Nemanja et les Nemanjić</h3><p><strong>Stefan Nemanja</strong> consolide l'État serbe à la fin du XIIe siècle. La dynastie des <strong>Nemanjić</strong> devient centrale dans l'histoire politique, religieuse et culturelle serbe.</p></div>
+  <div class="info-card"><h3>3. Saint Sava et l'Église serbe</h3><p><strong>Saint Sava (Sveti Sava)</strong>, fils de Stefan Nemanja, fonde l'autonomie de l'Église serbe en 1219 et devient l'une des figures les plus importantes de la culture et de la spiritualité serbes.</p></div>
+  <div class="info-card"><h3>4. Stefan Dušan et l'apogée médiévale</h3><p><strong>Stefan Dušan</strong> règne au XIVe siècle et étend fortement l'État serbe. Son <strong>Code de Dušan</strong> constitue un texte juridique majeur du Moyen Âge balkanique.</p></div>
+  <div class="info-card"><h3>5. Kosovo Polje (1389)</h3><p>La <strong>bataille de Kosovo Polje</strong> du 28 juin 1389 devient un événement fondateur de la mémoire historique serbe. La réalité militaire et politique est complexe, mais la bataille occupe une place centrale dans la tradition nationale.</p></div>
+  <div class="info-card"><h3>6. Domination ottomane et mémoire historique</h3><p>Après la conquête progressive des territoires serbes, une grande partie de la région passe sous domination ottomane. La mémoire de la période ottomane reste liée aux migrations, aux monastères, aux révoltes et aux traditions populaires.</p></div>
+  <div class="info-card"><h3>7. Soulèvements et autonomie</h3><p><strong>Premier soulèvement serbe (1804)</strong> sous Karađorđe et <strong>Second soulèvement serbe (1815)</strong> sous Miloš Obrenović ouvrent la voie à une autonomie puis à l'indépendance de la Serbie.</p></div>
+  <div class="info-card"><h3>8. Indépendance et royaume</h3><p>La Serbie obtient la reconnaissance internationale de son indépendance au <strong>Congrès de Berlin en 1878</strong>. En 1882, la principauté devient royaume sous Milan Ier.</p></div>
+  <div class="info-card"><h3>9. XXe siècle</h3><p>Après les guerres balkaniques et la Première Guerre mondiale, le Royaume des Serbes, Croates et Slovènes est créé en 1918, puis devient le Royaume de Yougoslavie en 1929. Après 1945, la Serbie fait partie de la Yougoslavie socialiste.</p></div>
+  <div class="info-card"><h3>10. Serbie contemporaine</h3><p>Après l'éclatement de la Yougoslavie, la Serbie devient un État indépendant en 2006. Belgrade est la capitale et le principal centre politique, économique et culturel du pays.</p></div>
+  <div class="culture-cta"><span>Réviser cette partie :</span><button class="action primary cu-jump" data-cat="hist" data-mode="cards">📇 Flashcards</button><button class="action ghost cu-jump" data-cat="hist" data-mode="quiz">📝 Quiz</button></div></section>
+
+<section id="sec-holidays"><h2>Fêtes, saints et grandes dates serbes</h2><p class="lead">Un calendrier réunissant fêtes orthodoxes, traditions populaires et grandes dates de la mémoire serbe.</p>
+  <div class="info-card"><h3>1. Нова година — Nouvel An (1er janvier)</h3><p>Le Nouvel An est célébré avec des réunions familiales, des repas festifs et des célébrations publiques.</p></div>
+  <div class="info-card"><h3>2. Божић — Noël orthodoxe (7 janvier)</h3><p>La tradition orthodoxe serbe célèbre Noël le 7 janvier. On retrouve notamment <em>česnica</em>, le <em>badnjak</em> et le salut <strong>Hristos se rodi! — Vaistinu se rodi!</strong></p></div>
+  <div class="info-card"><h3>3. Богојављење — Théophanie (19 janvier)</h3><p>Grande fête orthodoxe associée au baptême du Christ. Dans de nombreuses localités, une croix est jetée dans l'eau et des nageurs tentent de la récupérer.</p></div>
+  <div class="info-card"><h3>4. Среониње — Sretenje (15 février)</h3><p>Fête religieuse et fête nationale serbe, commémorant notamment le Premier soulèvement serbe et la première Constitution moderne de 1835.</p></div>
+  <div class="info-card"><h3>5. Васкрс — Pâques orthodoxes</h3><p>La plus grande fête chrétienne : œufs teints, liturgie pascale et salut traditionnel <strong>Hristos vaskrse! — Vaistinu vaskrse!</strong></p></div>
+  <div class="info-card"><h3>6. Ђурђевдан — Saint-Georges (6 mai)</h3><p>Grande fête religieuse et populaire, liée au printemps et à de nombreuses traditions familiales et pastorales.</p></div>
+  <div class="info-card"><h3>7. Видовдан — Vidovdan (28 juin)</h3><p>Une des dates les plus chargées de mémoire historique serbe, notamment en raison de la bataille de Kosovo de 1389.</p></div>
+  <div class="info-card"><h3>8. Преображење — Transfiguration (19 août)</h3><p>Fête orthodoxe importante, associée dans la tradition populaire au changement de saison.</p></div>
+  <div class="info-card"><h3>9. Митровдан — Saint-Démètre (8 novembre)</h3><p>Fête religieuse et populaire traditionnellement associée au passage vers la saison hivernale.</p></div>
+  <div class="info-card"><h3>10. Никољдан — Saint-Nicolas (19 décembre)</h3><p>La <em>slava</em> de Saint-Nicolas est l'une des plus répandues en Serbie. Les familles orthodoxes célèbrent leur saint patron avec un repas rituel, le <em>slavski kolač</em> et le <em>koljivo</em>.</p></div>
+  <div class="info-card"><h3>11. Слава — Slava familiale</h3><p>Tradition serbe particulière : chaque famille célèbre son saint patron. Les slavas les plus connues incluent Saint-Nicolas, Saint-Georges, Saint-Jean et Saint-Michel.</p></div>
+  <div class="culture-cta"><span>Réviser le calendrier :</span><button class="action primary cu-jump" data-cat="fetes" data-mode="cards">📇 Flashcards</button><button class="action ghost cu-jump" data-cat="fetes" data-mode="quiz">📝 Quiz</button></div></section>
+
+<section id="sec-pride"><h2>🇷🇸 Fiertés serbes : héros, patrimoine, culture et symboles</h2><p class="lead">Une encyclopédie de révision consacrée à l'histoire, à la culture, à la spiritualité et aux symboles associés à la Serbie.</p>
+  <div class="info-card"><h3>🏆 Grandes figures historiques</h3><p><strong>Stefan Nemanja</strong> · <strong>Saint Sava</strong> · <strong>Stefan Dušan</strong> · <strong>Knez Lazar</strong> · <strong>Despot Stefan Lazarević</strong> · <strong>Karađorđe</strong> · <strong>Miloš Obrenović</strong> · <strong>Mihajlo Pupin</strong> · <strong>Nikola Tesla</strong>.</p></div>
+  <div class="info-card"><h3>🦅 Héros et personnalités</h3><p><strong>Karađorđe</strong> — chef du Premier soulèvement serbe · <strong>Miloš Obrenović</strong> — fondateur de la principauté autonome moderne · <strong>Milunka Savić</strong> — héroïne militaire · <strong>Vuk Karadžić</strong> — réformateur de la langue serbe.</p></div>
+  <div class="info-card"><h3>☦️ Spiritualité et monastères</h3><p>Les monastères de <strong>Studenica</strong>, <strong>Žiča</strong>, <strong>Visoki Dečani</strong>, <strong>Gračanica</strong>, <strong>Manasija</strong> et <strong>Sopoćani</strong> sont des repères majeurs de l'art et de la spiritualité orthodoxes serbes.</p></div>
+  <div class="info-card"><h3>📚 Langue, alphabet et littérature</h3><p><strong>Vuk Karadžić</strong> joue un rôle central dans la réforme de la langue et de l'orthographe serbes au XIXe siècle. La tradition littéraire comprend notamment <strong>Dositej Obradović</strong>, <strong>Petar II Petrović-Njegoš</strong> et de nombreux auteurs modernes.</p></div>
+  <div class="info-card"><h3>🏛️ Lieux emblématiques</h3><p><strong>Belgrade</strong> · <strong>forteresse de Kalemegdan</strong> · <strong>monastère de Studenica</strong> · <strong>Žiča</strong> · <strong>Sopoćani</strong> · <strong>Gamzigrad-Romuliana</strong> · <strong>forteresse de Golubac</strong> · <strong>Drvengrad</strong> · <strong>Đavolja Varoš</strong>.</p></div>
+  <div class="info-card"><h3>🎶 Folklore et traditions</h3><p><strong>kolo</strong> (danse en chaîne) · musique traditionnelle · <strong>gusle</strong> · costumes régionaux · <strong>slava</strong> · traditions de Noël · <strong>badnjak</strong> · <strong>česnica</strong>.</p></div>
+  <div class="info-card"><h3>⚽ Réussites sportives</h3><p>La Serbie est particulièrement connue pour le basketball, le tennis, le water-polo, le volleyball et certains sports collectifs. Parmi les figures internationales : <strong>Novak Đoković</strong>, <strong>Vlade Divac</strong>, <strong>Dejan Bodiroga</strong>, <strong>Ana Ivanović</strong> et <strong>Jelena Janković</strong>.</p></div>
+  <div class="info-card"><h3>🇷🇸 Symboles nationaux</h3><p>Le drapeau est <strong>rouge, bleu, blanc</strong>. Le <strong>lion bicéphale blanc</strong> et les armoiries royales sont des symboles historiques importants. L'hymne national est <strong>Bože pravde</strong>.</p></div>
+  <div class="culture-cta"><span>Réviser les fiertés :</span><button class="action primary cu-jump" data-cat="fierte" data-mode="cards">📇 Flashcards</button><button class="action ghost cu-jump" data-cat="fierte" data-mode="quiz">📝 Quiz</button></div></section>
+
+<section id="sec-cuisine"><h2>🍽️ Cuisine et patrimoine culinaire serbe</h2><p class="lead">La cuisine serbe associe grillades, pains, légumes, produits laitiers, préparations de fête et influences balkaniques, ottomanes et austro-hongroises.</p><div class="section-toolbar"><button type="button" class="mini-btn" data-expand="all">Tout déplier</button><button type="button" class="mini-btn" data-expand="none">Tout replier</button></div>
+  <details class="info-card" open><summary>⭐ Les incontournables</summary><p>• <strong>Ćevapi — Ћевапи</strong> : petits rouleaux de viande hachée grillée, servis avec oignons et pain.</p><p>• <strong>Pljeskavica — Пљескавица</strong> : galette de viande hachée grillée, emblématique des grillades serbes.</p><p>• <strong>Ajvar — Ајвар</strong> : préparation de poivrons rouges rôtis, souvent conservée pour l'hiver.</p><p>• <strong>Gibanica — Гибаница</strong> : gâteau salé de pâte filo et de fromage frais.</p><p>• <strong>Kajmak — Кајмак</strong> : produit laitier crémeux traditionnel.</p><p>• <strong>Proja — Проја</strong> : pain/gâteau de maïs traditionnel.</p><p>• <strong>Rakija — Ракија</strong> : eau-de-vie de fruits, notamment šljivovica à base de prune.</p></details>
+  <details class="info-card"><summary>🥗 Salades et préparations froides</summary><p>Šopska salata, srpska salata, urnebes, ajvar et poivrons rôtis sont des classiques de table.</p></details>
+  <details class="info-card"><summary>🍲 Soupes et plats mijotés</summary><p>La <strong>čorba</strong>, la <strong>pasulj</strong> (haricots) et diverses soupes de légumes occupent une place importante dans la cuisine familiale.</p></details>
+  <details class="info-card"><summary>🥘 Viandes et grillades</summary><p>Ćevapi, pljeskavica, ražnjići, kobasice et rôti d'agneau sont très présents dans la cuisine et les restaurants.</p></details>
+  <details class="info-card"><summary>🥧 Pains et pâtisseries salées</summary><p>Gibanica, burek, proja et différents pains régionaux accompagnent les repas et les fêtes.</p></details>
+  <details class="info-card"><summary>🍰 Desserts</summary><p>Baklava, vanilice, palačinke, tufahije et diverses pâtisseries de fête montrent les influences balkaniques et ottomanes.</p></details>
+  <details class="info-card"><summary>🎄 Cuisine rituelle</summary><p>Pour Noël orthodoxe, on retrouve notamment <strong>česnica</strong> et le <strong>badnjak</strong>. La <strong>slava</strong> s'accompagne de <strong>slavski kolač</strong> et de <strong>koljivo</strong>.</p></details>
+  <details class="info-card"><summary>🗺️ Spécialités régionales</summary><p>La Voïvodine possède une forte influence pannonienne et austro-hongroise ; la Šumadija est connue pour ses vergers et sa šljivovica ; le sud de la Serbie est réputé pour ses grillades et ses préparations pimentées.</p></details></section>
+
+<section id="sec-monuments">
+    <div class="mon-map-card">
+      <h3 style="margin-bottom:.6rem">🗺️ Carte interactive des monuments</h3>
+      <div class="mon-map-legend" id="mon-legend"></div>
+      <div class="mon-map-wrap"><div id="monuments-map"></div></div>
+      <p class="mon-map-hint">Clique sur un repère pour voir le monument. Les boutons permettent d'afficher ou masquer les catégories.</p>
+    </div>
+<h2>🏛️ Les monuments les plus célèbres de Serbie</h2><p class="lead">Des monastères médiévaux aux forteresses, sites romains et monuments modernes.</p>
+  <details class="info-card" open><summary>⭐ Icônes nationales</summary><p><strong>Forteresse de Belgrade</strong> · <strong>église Saint-Sava</strong> · <strong>monastère de Studenica</strong> · <strong>Golubac</strong> · <strong>Žiča</strong>.</p></details>
+  <details class="info-card"><summary>🏺 Antiquité romaine</summary><p><strong>Gamzigrad-Romuliana</strong>, palais de l'empereur Galère, est l'un des grands sites romains de Serbie.</p></details>
+  <details class="info-card"><summary>☦️ Serbie médiévale orthodoxe</summary><p>Studenica, Sopoćani, Žiča, Manasija et les monastères du Kosovo-Métochie constituent un patrimoine majeur de l'art serbe médiéval.</p></details>
+  <details class="info-card"><summary>🏰 Forteresses</summary><p>Forteresse de Belgrade, Golubac, Smederevo, Niš et Maglič sont parmi les plus connues.</p></details>
+  <details class="info-card"><summary>🏙️ Belgrade</summary><p>À connaître : Kalemegdan, Knez Mihailova, Skadarlija, église Saint-Marc, temple Saint-Sava et confluence de la Save et du Danube.</p></details>
+  <details class="info-card"><summary>🌄 Nature et patrimoine</summary><p>Đavolja Varoš, Tara, Đerdap et Uvac complètent le patrimoine culturel et naturel du pays.</p></details></section>
+
+<section id="sec-nosiya"><h2>👗 Носије — Les costumes traditionnels serbes par région</h2><p class="lead">Les costumes traditionnels serbes varient selon la Šumadija, la Voïvodine, l'est, le sud et les régions montagneuses.</p>
+  <details class="info-card" open><summary>🌾 Šumadijska nošnja — Šumadija</summary><p>Costumes ruraux caractérisés par des chemises brodées, gilets, ceintures et coiffes, avec de fortes variantes locales.</p></details>
+  <details class="info-card"><summary>🌾 Vojvođanska nošnja — Voïvodine</summary><p>Influences pannoniennes et austro-hongroises, avec tissus, tabliers et coiffes caractéristiques.</p></details>
+  <details class="info-card"><summary>⛰️ Costume des régions montagneuses</summary><p>La laine, les gilets, les chaussettes épaisses et les ornements colorés répondent aux conditions climatiques.</p></details>
+  <details class="info-card"><summary>🧵 Основни делови — Les pièces du costume</summary><p>Chemise (<strong>кошуља</strong>), gilet (<strong>јелек</strong>), ceinture (<strong>појас</strong>), tablier (<strong>прегача</strong>), chaussures traditionnelles (<strong>опанци</strong>) et coiffes.</p></details>
+  <details class="info-card"><summary>🪡 Шаре и вез — Broderies</summary><p>Les broderies utilisent des motifs géométriques, floraux et symboliques qui peuvent identifier une région ou une occasion.</p></details>
+  <details class="info-card"><summary>🎉 Quand porte-t-on les costumes ?</summary><p>Lors de fêtes religieuses, mariages, festivals folkloriques, danses et événements culturels.</p></details></section>
+
+<section id="sec-stories"><h2>5 histoires courtes (niveau A1)</h2>
+  <div class="info-card"><h3>1. Јутро у Београду <span style="font-weight:400;font-size:.9rem;color:var(--muted2)">— Une matinée à Belgrade</span></h3><p class="story-sr">Марко живи у Београду. Има тридесет година.<br>Сваког јутра устаје у седам сати.<br>Пије кафу и једе хлеб и сир.<br>Затим се тушира и облачи.<br>У осам сати излјаи из куће и иде на посао.<br>Увече се враћа кући, спрема вечеру и чита.</p><details><summary>▸ Traduction française</summary><div class="story-fr">Marko habite à Belgrade. Il a trente ans. Chaque matin, il se lève à sept heures. Il boit du café et mange du pain et du fromage. Ensuite il se douche et s'habille. À huit heures il sort de chez lui et va au travail. Le soir il rentre, prépare le dîner et lit.</div></details><details><summary>▸ Mots utiles</summary><div class="wordbox">живети (habiter) • устајати (se lever) • сваки дан (chaque jour) • излјаити (sortir) • враћати се (rentrer) • кући (à la maison)</div></details></div>
+  <div class="info-card"><h3>2. У продавници <span style="font-weight:400;font-size:.9rem;color:var(--muted2)">— Au magasin</span></h3><p class="story-sr">Марија иде у продавницу у суботу.<br>Жели да купи воће и поврће.<br>— Добар дан! Колико коштају парадајз и краставци?<br>— Три евра за килограм, одговара продавац.<br>— Хвала. Желим килограм парадајза и два краставца, молим.<br>Марија плаћа и каже: — Довиђења!<br>— Пријатан дан! каже продавац.</p></div>
+  <div class="info-card"><h3>3. Моја породица <span style="font-weight:400;font-size:.9rem;color:var(--muted2)">— Ma famille</span></h3><p class="story-sr">Зовем се Петар и живим у Новом Саду. Имам велику породицу. Мој отац је лекар, а мајка је наставница. Имам брата и сестру. Недељом сви ручамо заједно.</p></div>
+  <div class="info-card"><h3>4. Један дан у Новом Саду <span style="font-weight:400;font-size:.9rem;color:var(--muted2)">— Une journée à Novi Sad</span></h3><p class="story-sr">Лети сам био у Новом Саду са породицом. Шетали смо поред Дунава и посетили Петроварадинску тврђаву. Време је било лепо и дан је био диван.</p></div>
+  <div class="info-card"><h3>5. Код лекара <span style="font-weight:400;font-size:.9rem;color:var(--muted2)">— Chez le médecin</span></h3><p class="story-sr">Ана се не осећа добро. Има онимпературу и кашље. Иде код лекара. Лекар је прегледа и каже да треба да се одмара и пије много воде.</p></div></section>
+
+<section id="sec-grammar-course"><h2>Cours de grammaire A1 – A2</h2><p class="lead">Douze leçons courtes qui couvrent l'essentiel du serbe de base. Chaque leçon contient une règle, un tableau et des exemples.</p>
+  <div class="gram-card"><h3>1. Le genre des noms</h3><p>Le serbe a trois genres : masculin, féminin et neutre.</p><table class="gtable"><tr><th>Genre</th><th>Terminaison fréquente</th><th>Exemples</th></tr><tr><td>Masculin</td><td>consonne</td><td class="bg-cell">град, соно, пријаониљ</td></tr><tr><td>Féminin</td><td>-а / -ост</td><td class="bg-cell">жена, књига, радост</td></tr><tr><td>Neutre</td><td>-о / -е</td><td class="bg-cell">деони, море, село</td></tr></table><div class="tip">Le genre commande l'accord : <span class="bg-cell">велики град</span>, <span class="bg-cell">велика кућа</span>, <span class="bg-cell">велико деони</span>.</div></div>
+  <div class="gram-card"><h3>2. L'article défini : il n'existe pas</h3><p>Contrairement au serbe, le serbe n'a pas d'article défini. Le contexte, l'ordre des mots et les démonstratifs indiquent la référence.</p><table class="gtable"><tr><th>Français</th><th>Serbe</th></tr><tr><td>une ville</td><td class="bg-cell">град</td></tr><tr><td>la ville</td><td class="bg-cell">град</td></tr><tr><td>cette ville</td><td class="bg-cell">тај град</td></tr><tr><td>les villes</td><td class="bg-cell">градови</td></tr></table></div>
+  <div class="gram-card" id="declinaison-serbe">
+    <h3>3. Déclinaison — les 7 cas serbes</h3>
+    <p>En serbe, le <strong>cas</strong> indique le rôle du nom dans la phrase. On ne mémorise donc pas seulement un mot : on apprend aussi ses formes. Il existe <strong>7 cas</strong> : nominatif, génitif, datif, accusatif, vocatif, instrumental et locatif.</p>
+    <div class="tip"><strong>Réflexe :</strong> commence par la question du cas. <span class="bg-cell">ko? šta?</span> → nominatif · <span class="bg-cell">koga? čega?</span> → génitif · <span class="bg-cell">kome? čemu?</span> → datif · <span class="bg-cell">koga? šta?</span> → accusatif · <span class="bg-cell">o kome? o čemu?</span> → locatif.</div>
+    <div class="tbl-scroll">
+      <table class="gtable">
+        <tr><th>Cas</th><th>Question</th><th>Usage principal</th><th>Exemple</th></tr>
+        <tr><td><b>Nominatif</b></td><td>ko? šta?</td><td>sujet, identification</td><td class="bg-cell">Žena je ovde. — La femme est ici.</td></tr>
+        <tr><td><b>Génitif</b></td><td>koga? čega?</td><td>possession, absence, quantité, origine</td><td class="bg-cell">Nema vode. — Il n'y a pas d'eau.</td></tr>
+        <tr><td><b>Datif</b></td><td>kome? čemu?</td><td>destinataire, direction vers quelqu'un</td><td class="bg-cell">Dajem knjigu Mariji. — Je donne le livre à Marija.</td></tr>
+        <tr><td><b>Accusatif</b></td><td>koga? šta?</td><td>objet direct, mouvement vers un lieu</td><td class="bg-cell">Vidim grad. — Je vois la ville.</td></tr>
+        <tr><td><b>Vocatif</b></td><td>—</td><td>apostrophe, interpellation</td><td class="bg-cell">Marija! Petre! — Marie ! Pierre !</td></tr>
+        <tr><td><b>Instrumental</b></td><td>s kim? čim?</td><td>avec, moyen / instrument</td><td class="bg-cell">Idem vozom. — Je vais en train.</td></tr>
+        <tr><td><b>Locatif</b></td><td>o kome? o čemu?</td><td>lieu, sujet de conversation avec une préposition</td><td class="bg-cell">Živim u Beogradu. — J'habite à Belgrade.</td></tr>
+      </table>
+    </div>
+
+    <h4 style="margin-top:1.2rem">📐 Les trois modèles à connaître</h4>
+    <p class="lead" style="font-size:.95rem">Apprends d'abord ces trois noms : <strong>žena</strong> (féminin), <strong>grad</strong> (masculin) et <strong>selo</strong> (neutre).</p>
+    <div class="tbl-scroll">
+      <table class="gtable">
+        <tr><th>Cas</th><th>žena — femme</th><th>grad — ville</th><th>selo — village</th></tr>
+        <tr><td><b>Nominatif</b></td><td class="bg-cell">žena</td><td class="bg-cell">grad</td><td class="bg-cell">selo</td></tr>
+        <tr><td><b>Génitif</b></td><td class="bg-cell">žene</td><td class="bg-cell">grada</td><td class="bg-cell">sela</td></tr>
+        <tr><td><b>Datif</b></td><td class="bg-cell">ženi</td><td class="bg-cell">gradu</td><td class="bg-cell">selu</td></tr>
+        <tr><td><b>Accusatif</b></td><td class="bg-cell">ženu</td><td class="bg-cell">grad</td><td class="bg-cell">selo</td></tr>
+        <tr><td><b>Vocatif</b></td><td class="bg-cell">ženo</td><td class="bg-cell">grade</td><td class="bg-cell">selo</td></tr>
+        <tr><td><b>Instrumental</b></td><td class="bg-cell">ženom</td><td class="bg-cell">gradom</td><td class="bg-cell">selom</td></tr>
+        <tr><td><b>Locatif</b></td><td class="bg-cell">ženi</td><td class="bg-cell">gradu</td><td class="bg-cell">selu</td></tr>
+      </table>
+    </div>
+
+    <div class="tip"><strong>À retenir pour l'accusatif :</strong> pour un masculin animé, l'accusatif prend généralement la forme du génitif : <span class="bg-cell">Vidim čoveka.</span> = Je vois l'homme. Pour un masculin inanimé, il reste souvent identique au nominatif : <span class="bg-cell">Vidim grad.</span> = Je vois la ville.</div>
+    <div class="tip"><strong>Prépositions très utiles :</strong> <span class="bg-cell">bez + génitif</span> (sans), <span class="bg-cell">od + génitif</span> (de), <span class="bg-cell">do + génitif</span> (jusqu'à) · <span class="bg-cell">ka + datif</span> (vers), <span class="bg-cell">prema + datif</span> (vers) · <span class="bg-cell">u/na + accusatif</span> (mouvement), <span class="bg-cell">u/na + locatif</span> (position) · <span class="bg-cell">sa/s + instrumental</span> (avec).</div>
+
+    <details class="info-card" open><summary>🔎 Le piège « où ? » / « où aller ? »</summary>
+      <p><span class="bg-cell">Živim u Beogradu.</span> = J'habite à Belgrade → <strong>locatif</strong>, position.</p>
+      <p><span class="bg-cell">Idem u Beograd.</span> = Je vais à Belgrade → <strong>accusatif</strong>, mouvement vers une destination.</p>
+      <p>Même logique avec <span class="bg-cell">na</span> : <span class="bg-cell">na poslu</span> (au travail, lieu) mais <span class="bg-cell">na posao</span> (au travail, destination).</p>
+    </details>
+  </div>
+  <div class="gram-card"><h3>4. Le verbe « être » (бити)</h3><table class="gtable"><tr><td class="bg-cell">ја сам</td><td>je suis</td><td class="bg-cell">ми смо</td><td>nous sommes</td></tr><tr><td class="bg-cell">ти си</td><td>tu es</td><td class="bg-cell">ви смо</td><td>vous êtes</td></tr><tr><td class="bg-cell">он / она / оно је</td><td>il / elle est</td><td class="bg-cell">они / оне / она су</td><td>ils / elles sont</td></tr></table><p>Négation : <span class="bg-cell">нисам, ниси, није, нисмо, нисмо, нису</span>.</p></div>
+  <div class="gram-card"><h3>5. Le présent</h3><table class="gtable"><tr><th></th><th>читати</th><th>говорити</th><th>радити</th></tr><tr><td>ја</td><td class="bg-cell">читам</td><td class="bg-cell">говорим</td><td class="bg-cell">радим</td></tr><tr><td>ти</td><td class="bg-cell">читаш</td><td class="bg-cell">говориш</td><td class="bg-cell">радиш</td></tr><tr><td>он/она</td><td class="bg-cell">чита</td><td class="bg-cell">говори</td><td class="bg-cell">ради</td></tr><tr><td>ми</td><td class="bg-cell">читамо</td><td class="bg-cell">говоримо</td><td class="bg-cell">радимо</td></tr><tr><td>ви</td><td class="bg-cell">читаони</td><td class="bg-cell">говориони</td><td class="bg-cell">радиони</td></tr><tr><td>они</td><td class="bg-cell">читају</td><td class="bg-cell">говоре</td><td class="bg-cell">раде</td></tr></table><div class="tip">Le pronom sujet est souvent omis : <span class="bg-cell">Говорим француски.</span> = Je parle français.</div></div>
+  <div class="gram-card"><h3>6. Poser une question</h3><p>La particule <span class="bg-cell">ли</span> se place généralement après le mot mis en tête : <span class="bg-cell">Говориони ли француски?</span> = Parlez-vous français ?</p><p>On utilise aussi l'intonation : <span class="bg-cell">Да ли долјаиш?</span> = Est-ce que tu viens ?</p></div>
+  <div class="gram-card"><h3>7. L'infinitif et les constructions da</h3><p>Le serbe possède un infinitif, mais <span class="bg-cell">да + présent</span> est extrêmement courant : <span class="bg-cell">Желим да учим.</span> = Je veux étudier. <span class="bg-cell">Морам да радим.</span> = Je dois travailler.</p></div>
+  <div class="gram-card"><h3>8. Le futur : ћу / ћеш / ће…</h3><p>Le futur se forme avec les formes clitiques de <span class="bg-cell">хонити</span> : <span class="bg-cell">ја ћу, ти ћеш, он ће, ми ћемо, ви ћеони, они ће</span> + infinitif ou da + présent selon la structure.</p><ul><li><span class="bg-cell">Пуоноваћу сутра.</span> — Je voyagerai demain.</li><li><span class="bg-cell">Они ће доћи у осам.</span> — Ils viendront à huit heures.</li></ul></div>
+  <div class="gram-card"><h3>9. Le passé</h3><p>Le passé composé serbe se construit avec le présent de <span class="bg-cell">бити</span> et le participe passé : <span class="bg-cell">радио сам</span> (homme), <span class="bg-cell">радила сам</span> (femme).</p></div>
+  <div class="gram-card"><h3>10. Pronoms compléments et possessifs</h3><table class="gtable"><tr><th>Français</th><th>Serbe</th></tr><tr><td>me / à moi</td><td class="bg-cell">ме / ми</td></tr><tr><td>te / à toi</td><td class="bg-cell">они / ти</td></tr><tr><td>le / lui</td><td class="bg-cell">га / му</td></tr><tr><td>la / lui</td><td class="bg-cell">је / јој</td></tr><tr><td>nous</td><td class="bg-cell">нас / нам</td></tr><tr><td>vous</td><td class="bg-cell">вас / вам</td></tr><tr><td>les / leur</td><td class="bg-cell">их / им</td></tr></table></div>
+  <div class="gram-card"><h3>11. Comparatif et superlatif</h3><p><span class="bg-cell">-ји / -ији / -ши</span> et la forme superlative <span class="bg-cell">нај-</span> : <span class="bg-cell">већи</span> = plus grand, <span class="bg-cell">највећи</span> = le plus grand.</p></div>
+  <div class="gram-card"><h3>12. Réflexifs et impératif</h3><p>Le réfléchi utilise <span class="bg-cell">се</span> : <span class="bg-cell">зовем се</span> (je m'appelle), <span class="bg-cell">осећам се</span> (je me sens). Exemples d'impératif : <span class="bg-cell">Говори!</span>, <span class="bg-cell">Говориони!</span>, <span class="bg-cell">Дођи!</span>, <span class="bg-cell">Не пуши!</span>.</p></div>
+  </section>
+
+<section id="sec-conjugation">
+    <h2>Conjugaison</h2>
+    <p class="lead">Consulte les fiches de 14 verbes essentiels (présent, passé, futur, impératif), puis entraîne-toi avec des exercices variés : choix, saisie, reconnaissance, phrases à trous et tableaux à remplir.</p>
+    <div class="cj-tabs" role="tablist">
+      <button type="button" class="cj-tab active" data-cj="fiches" role="tab">📖 Fiches</button>
+      <button type="button" class="cj-tab" data-cj="train" role="tab">📝 Entraînement</button>
+    </div>
+
+    <div id="cj-pane-fiches">
+      <div class="cj-toolbar">
+        <div id="cj-vchips"></div>
+        <label class="cj-check"><input type="checkbox" id="cj-tr-toggle" checked> Afficher la prononciation</label>
+      </div>
+      <div class="cj-card" id="cj-fiche"></div>
+
+      <div class="cj-card">
+        <h3>Les terminaisons du présent</h3>
+        <div class="tbl-scroll">
+        <table class="gtable">
+          <tr><th></th><th>1<sup>re</sup> (-е)</th><th>2<sup>e</sup> (-и)</th><th>3<sup>e</sup> (-а)</th></tr>
+          <tr><td>ја</td><td class="bg-cell">-а / -я</td><td class="bg-cell">-я / -а</td><td class="bg-cell">-ам / -једем</td></tr>
+          <tr><td>ти</td><td class="bg-cell">-еш</td><td class="bg-cell">-иш</td><td class="bg-cell">-аш</td></tr>
+          <tr><td>он / она / оно</td><td class="bg-cell">-е</td><td class="bg-cell">-и</td><td class="bg-cell">-а</td></tr>
+          <tr><td>ние</td><td class="bg-cell">-ем</td><td class="bg-cell">-им</td><td class="bg-cell">-аме</td></tr>
+          <tr><td>вие</td><td class="bg-cell">-еони</td><td class="bg-cell">-иони</td><td class="bg-cell">-аони</td></tr>
+          <tr><td>они</td><td class="bg-cell">-ат / -ят</td><td class="bg-cell">-ят / -ат</td><td class="bg-cell">-ат</td></tr>
+          <tr><td><i>Exemple</i></td><td class="bg-cell">чета</td><td class="bg-cell">говоря</td><td class="bg-cell">искам</td></tr>
+        </table>
+        </div>
+        <div class="tip">Le passé (aoriste) se forme sur le même radical : <b>-х</b>, <b>—</b>, <b>—</b>, <b>-хме</b>, <b>-хони</b>, <b>-ха</b> (ex. <span class="bg-cell">работих, работи, работи, работихме, работихони, работиха</span>).</div>
+      </div>
+
+      <div class="cj-card">
+        <h3>Construire les autres temps</h3>
+        <table class="gtable">
+          <tr><td><b>Futur</b></td><td class="bg-cell">ће + présent</td><td class="bg-cell">Ће рабоона утре.</td></tr>
+          <tr><td><b>Futur négatif</b></td><td class="bg-cell">нједема да + présent</td><td class="bg-cell">Нједема да рабоона утре.</td></tr>
+          <tr><td><b>Négation</b></td><td class="bg-cell">не + verbe</td><td class="bg-cell">Не говоря френски.</td></tr>
+          <tr><td><b>« Infinitif »</b></td><td class="bg-cell">да + présent</td><td class="bg-cell">Искам да пия вода.</td></tr>
+          <tr><td><b>Impératif</b></td><td class="bg-cell">-и / -еони (ou -й / -йони)</td><td class="bg-cell">Говори по-бавно!</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div id="cj-pane-train" style="display:none;">
+      <div class="cj-stage" id="cj-stage"></div>
+    </div>
+  </section>
+</main>
+<footer>Срећно! (Bonne chance !) — apprends un peu chaque jour.</footer>
+<script>
+const ALPHABET = [
+{l:"А а",name:"a",sound:'comme "a" de "papa"',ex:"адреса — adresse"},
+{l:"Б б",name:"be",sound:'comme "b"',ex:"бака — grand-mère"},
+{l:"В в",name:"ve",sound:'comme "v"',ex:"вода — eau"},
+{l:"Г г",name:"ge",sound:'"g" dur de "gare"',ex:"град — ville"},
+{l:"Д д",name:"de",sound:'comme "d"',ex:"дан — jour"},
+{l:"Ђ ђ",name:"đe",sound:'"dj" mouillé, doux',ex:"ђак — élève"},
+{l:"Е е",name:"e",sound:'comme "è" de "mère"',ex:"ево — voici"},
+{l:"Ж ж",name:"že",sound:'comme "j" de "jour"',ex:"жена — femme"},
+{l:"З з",name:"ze",sound:'comme "z"',ex:"зима — hiver"},
+{l:"И и",name:"i",sound:'comme "i" de "ici"',ex:"име — prénom"},
+{l:"Ј ј",name:"je",sound:'comme "y" de "yaourt"',ex:"јабука — pomme"},
+{l:"К к",name:"ka",sound:'comme "k"',ex:"кућа — maison"},
+{l:"Л л",name:"el",sound:'comme "l"',ex:"лето — été"},
+{l:"Љ љ",name:"elj",sound:'comme "ill" de "billet"',ex:"љубав — amour"},
+{l:"М м",name:"em",sound:'comme "m"',ex:"море — mer"},
+{l:"Н н",name:"en",sound:'comme "n"',ex:"небо — ciel"},
+{l:"Њ њ",name:"enj",sound:'comme "gn" d\'"agneau"',ex:"њива — champ"},
+{l:"О о",name:"o",sound:'comme "o" de "porte"',ex:"око — œil"},
+{l:"П п",name:"pe",sound:'comme "p"',ex:"пријатељ — ami"},
+{l:"Р р",name:"er",sound:'"r" roulé',ex:"риба — poisson"},
+{l:"С с",name:"es",sound:'comme "s" de "sale"',ex:"сунце — soleil"},
+{l:"Т т",name:"te",sound:'comme "t"',ex:"тата — papa"},
+{l:"Ћ ћ",name:"će",sound:'"tch" mouillé, doux',ex:"ћерка — fille"},
+{l:"У у",name:"u",sound:'comme "ou" de "fou"',ex:"улица — rue"},
+{l:"Ф ф",name:"ef",sound:'comme "f"',ex:"филм — film"},
+{l:"Х х",name:"ha",sound:'"h" aspiré',ex:"хлеб — pain"},
+{l:"Ц ц",name:"ce",sound:'comme "ts" de "tsar"',ex:"цвет — fleur"},
+{l:"Ч ч",name:"če",sound:'comme "tch" de "tchèque"',ex:"час — heure"},
+{l:"Џ џ",name:"dže",sound:'comme "dj" de "djihad"',ex:"џеп — poche"},
+{l:"Ш ш",name:"še",sound:'comme "ch" de "chat"',ex:"шума — forêt"},
+];
+function getWordItems(catKey){ return VOCAB[catKey].items.filter(it => it.type !== "table"); }
+const SERBIAN_ACCENTS = {
+  "az":"ȁz","ti":"tȋ","on":"ȏn","ona":"ȍna","ono":"ȍno","mi":"mȋ","vi":"vȋ","oni":"ȍni",
+  "čovek":"čȍvek","ljudi":"ljȗdi","muškarac":"mȕškarac","žena":"žèna","dete":"dȅte","dečak":"dȅčak","devojčica":"dȅvojčica",
+  "prijatelj":"prìjatelj","prijateljica":"prìjateljica","sused":"sȕsed","susetka":"sȕsetka","gospodin":"gospòdin","gospođa":"gȍspođa","gospođica":"gȍspođica",
+  "ime":"ȉme","prezime":"prèzime","adresa":"àdresa","telefon":"telèfon","zemlja":"zèmlja","država":"držȁva","grad":"grȃd","selo":"sèlo",
+  "jezik":"jèzik","reč":"rȇč","pitanje":"pìtanje","odgovor":"odgòvor","problem":"pròblem","nešto":"nèšto","ništa":"nȉšta","sve":"svȅ","neko":"nȅko","niko":"nȉko",
+  "zdravo":"zdrȁvo","dobar dan":"dȍbar dȃn","dobro jutro":"dȍbro jȗtro","dobro veče":"dȍbro vȇče","laku noć":"lȁku nȏć","doviđenja":"dovìđenja","ćao":"ćȃo",
+  "hvala":"hvȃla","molim":"mȍlim","izvini":"ìzvini","izvinite":"ìzvinite","žao mi je":"žȃo mi je","da":"dȁ","ne":"nȅ","dobro":"dȍbro","loše":"lȍše",
+  "može":"mȍže","naravno":"nàrȁvno","tačno":"tȁčno","pogrešno":"pȍgrešno","kako":"kȁko","šta":"štȁ","ko":"kȏ","koja":"kȍja","koje":"kȍje","koji":"kȍji",
+  "gde":"gdȅ","odakle":"òdakle","kuda":"kȕda","kada":"kȁda","zašto":"zȁšto","koliko":"kȍliko","čiji":"čȉji","čija":"čȉja",
+  "ovaj":"ȍvaj","ova":"ȍva","ovo":"ȍvo","ovi":"ȍvi","onaj":"ȍnaj","ona":"ȍna","ono":"ȍno","oni":"ȍni","moj":"mȍj","tvoj":"tvȏj","njegov":"njȅgov","njen":"njȅn","naš":"nȁš","vaš":"vȁš","njihov":"njȉhov","sebe":"sȅbe",
+  "ovde":"ȍvde","tamo":"tȁmo","sada":"sȁda","kasnije":"kȁsnije","već":"vȅć","još":"jȍš","mnogo":"mnȍgo","malo":"mȁlo",
+  "sećam se":"sȅćam se","lepo je":"lȇpo je","tako li?":"tȁko li?","tako":"tȁko","juče":"jȕče","pre":"prȅ","posle":"pȍsle","sledeće nedelje":"slèdeće nȅdelje","sutra":"sȕtra","danas":"dȁnas",
+  "ima":"ȉma","da bi":"dȁ bi","treba mi":"trȅba mi","pomoć":"pȍmoć","otac":"ȍtac","tokom":"tȍkom","u toku":"ȕ toku","jedanaest":"jedànȁest","dvadeset":"dvȁdeset","dvadeset devet":"dvȁdeset dȅvet",
+  "doći ću":"dȍći ću","krenućemo":"krènȕćemo","uopšte":"ȕopšte","sat":"sȃt","u kojem":"u kȍjem","žedan":"žȇdan","žedna":"žȇdna","pomaže":"pȍmaže","poklon":"pȍklon","autobuska stanica":"àutobuska stȁnica","aerodrom":"aerȍdrom","levo":"lȇvo","desno":"dȇsno","veoma ukusno!":"vȅoma ȕkusno!","koliko košta?":"kȍliko kȍšta?"
+};
+
+function accentSerbian(text){
+  return text.replace(/\p{L}+(?:[’']\p{L}+)?/gu, word => {
+    const key = word.toLowerCase();
+    return SERBIAN_ACCENTS[key] || word;
+  });
+}
+
+const P=s=>s.trim().split("\n").map(x=>{const[a,b,c]=x.split("|");return{bg:a,tr:b,fr:c};});
+const VOCAB = {
+base:{label:"Base : pronoms, gens & questions",items:P(`
+az|az|je
+ti|ti|tu
+on|on|il
+ona|ona|elle
+ono|ono|il/elle (neutre)
+mi|mi|nous
+vi|vi|vous
+oni|oni|ils / elles
+човек|čovek|personne / être humain
+људи|ljudi|gens
+мушкарац|muškarac|homme
+жена|žena|femme
+дете|dete|enfant
+дечак|dečak|garçon
+девојчица|devojčica|fille
+пријатељ|prijatelj|ami
+пријатељица|prijateljica|amie
+сусед|sused|voisin
+сусетка|susetka|voisine
+господин|gospodin|monsieur
+госпођа|gospođa|madame
+госпођица|gospođica|mademoiselle
+име|ime|nom / prénom
+презиме|prezime|nom de famille
+адреса|adresa|adresse
+телефон|telefon|téléphone
+земља|zemlja|pays
+држава|država|État / pays
+град|grad|ville
+село|selo|village
+језик|jezik|langue
+реч|reč|mot
+питање|pitanje|question
+одговор|odgovor|réponse
+проблем|problem|problème
+нешто|nešto|quelque chose
+ништа|ništa|rien
+све|sve|tout
+неко|neko|quelqu'un
+нико|niko|personne (ne… personne)
+здраво|zdravo|salut / bonjour
+добар дан|dobar dan|bonjour
+добро јутро|dobro jutro|bonjour (le matin)
+добро вече|dobro veče|bonsoir
+лаку ноћ|laku noć|bonne nuit
+довиђења|doviđenja|au revoir
+ћао|ćao|salut / au revoir
+хвала|hvala|merci
+молим|molim|s'il vous plaît / de rien
+извини|izvini|excuse-moi
+извините|izvinite|excusez-moi
+жао ми је|žao mi je|je suis désolé
+да|da|oui
+не|ne|non / ne… pas
+добро|dobro|bien
+лоше|loše|mal
+може|može|c'est possible / on peut
+наравно|naravno|bien sûr
+тачно|tačno|vrai / correct
+погрешно|pogrešno|faux / incorrect
+како|kako|comment
+шта|šta|quoi / que
+ко|ko|qui
+која|koja|qui (fém.)
+које|koje|lequel / laquelle (neutre)
+који|koji|lesquels
+где|gde|où
+одакле|odakle|d'où
+куда|kuda|vers où
+када|kada|quand
+зашто|zašto|pourquoi
+колико|koliko|combien
+чији|čiji|à qui / de qui
+чија|čija|à qui (fém.)
+овај|ovaj|ce / cet
+ова|ova|cette
+ово|ovo|ceci / cela
+ови|ovi|ces
+онај|onaj|celui-là
+она|ona|celle-là
+оно|ono|cela (là-bas)
+они|oni|ceux-là
+мој|moj|mon / mien
+твој|tvoj|ton / tien
+његов|njegov|son / le sien
+њен|njen|son / le sien (fém.)
+наш|naš|notre / nôtre
+ваш|vaš|votre / vôtre
+њихов|njihov|leur / le leur
+себе|sebe|soi-même
+овде|ovde|ici
+тамо|tamo|là-bas
+сада|sada|maintenant
+касније|kasnije|après / plus tard
+већ|već|déjà
+још|još|encore
+много|mnogo|beaucoup / très
+мало|malo|peu / un peu`)},
+difficult:{label:"Mots difficiles ⭐",items:P(`
+сусед|sused|voisin
+сусетка|susetka|voisine
+име|ime|nom / prénom
+презиме|prezime|nom de famille
+земља|zemlja|pays
+држава|država|État / pays
+село|selo|village
+реч|reč|mot
+питање|pitanje|question
+одговор|odgovor|réponse
+нешто|nešto|quelque chose
+неко|neko|quelqu'un
+нико|niko|personne (ne… personne)
+извини|izvini|excuse-moi
+жао ми је|žao mi je|je suis désolé
+лоше|loše|mal
+наравно|naravno|bien sûr
+тачно|tačno|vrai / correct
+погрешно|pogrešno|faux / incorrect
+како|kako|comment
+шта|šta|quoi / que
+ко|ko|qui
+која|koja|qui (fém.)
+које|koje|lequel / laquelle (neutre)
+који|koji|lesquels
+одакле|odakle|d'où
+куда|kuda|vers où
+када|kada|quand
+чији|čiji|à qui / de qui
+чија|čija|à qui (fém.)
+овај|ovaj|ce / cet
+ова|ova|cette
+ово|ovo|ceci / cela
+ови|ovi|ces
+онај|onaj|celui-là
+она|ona|celle-là
+оно|ono|cela (là-bas)
+они|oni|ceux-là
+мој|moj|mon / mien
+твој|tvoj|ton / tien
+његов|njegov|son / le sien
+њен|njen|son / le sien (fém.)
+наш|naš|notre / nôtre
+ваш|vaš|votre / vôtre
+њихов|njihov|leur / le leur
+себе|sebe|soi-même
+касније|kasnije|après / plus tard
+већ|već|déjà
+још|još|encore
+Сећам се|Sećam se|je m'en rappelle
+Лепо је|Lepo je|c'est beau
+Тако ли?|Tako li?|Ah bon ? / Vraiment ?
+тако|tako|comme ça / ainsi / de cette manière
+Јуче|Juče|hier
+пре|pre|avant
+после|posle|après
+следеће недеље|sledeće nedelje|la semaine prochaine
+Сутра|Sutra|demain
+Данас|Danas|aujourd'hui
+да|da|à, que
+има|ima|il y a
+да би|da bi|pour que
+Желим да добијем бугарско држављанство|Želim da dobijem bugarsko državljanstvo|Je veux obtenir la nationalité bulgare.
+Треба ми помоћ|Treba mi pomoć|J'ai besoin d'aide.
+Ако је Бог за нас, ко може бити против нас?|Ako je Bog za nas, ko može biti protiv nas?|Si Dieu est pour nous, qui peut être contre nous ?
+Мој отац|Moj otac|mon père
+Током|Tokom|pendant (la réunion)
+У току|U toku|pendant (3 semaines)
+једанаест|jedanaest|onze (11)
+двадесет|dvadeset|vingt (20)
+двадесет девет|dvadeset devet|vingt-neuf (29)
+Доћи ћу.|Doći ću.|Je viendrai.
+Кренућемо.|Krenućemo.|Nous partirons.
+Уопште|Uopšte|pas du tout
+сат|sat|l'heure
+у којем|u kojem|à laquelle
+жедан/жедна сам|žedan/žedna sam|j'ai soif
+треба ми|treba mi|j'ai besoin de
+Помаже|Pomaže|ça aide
+Поклон|Poklon|cadeau
+аутобуска станица|autobuska stanica|la gare routière
+аеродром|aerodrom|l'aéroport
+лево|levo|à gauche
+десно|desno|à droite
+Веома укусно!|Veoma ukusno!|Délicieux !
+Колико кошта?|Koliko košta?|Combien ça coûte ?`)},
+greetings:{label:"Salutations & Civilités",items:P(`
+Здраво|Zdravo|Salut / Bonjour
+Добро јутро|Dobro jutro|Bonjour (matin)
+Добар дан|Dobar dan|Bonjour (journée)
+Добро вече|Dobro veče|Bonsoir
+Лаку ноћ|Laku noć|Bonne nuit
+Довиђења|Doviđenja|Au revoir
+Ћао|Ćao|Salut (bonjour / au revoir)
+Хвала|Hvala|Merci
+Молим|Molim|S'il vous plaît / Je vous en prie
+Извините|Izvinite|Excusez-moi
+Жао ми је|Žao mi je|Désolé(e)
+Да|Da|Oui
+Не|Ne|Non
+Како си?|Kako si?|Comment vas-tu ?
+Добро сам|Dobro sam|Je vais bien
+Драго ми је|Drago mi je|Enchanté(e)
+Зовем се...|Zovem se...|Je m'appelle...
+Како се зовете?|Kako se zovete?|Comment vous appelez-vous ?
+Одакле сте?|Odakle ste?|D'où êtes-vous ?
+Ја сам из Француске|Ja sam iz Francuske|Je viens de France
+Не разумем|Ne razumem|Je ne comprends pas`)},
+numbers:{label:"Nombres",items:P(`
+један|jedan|un
+два|dva|deux
+три|tri|trois
+четири|četiri|quatre
+пет|pet|cinq
+шест|šest|six
+седам|sedam|sept
+осам|osam|huit
+девет|devet|neuf
+десет|deset|dix
+двадесет|dvadeset|vingt
+сто|sto|cent
+хиљада|hiljada|mille`)},
+food:{label:"Nourriture, boissons & restaurant",items:P(`
+хлеб|hleb|pain
+вода|voda|eau
+млеко|mleko|lait
+сир|sir|fromage
+месо|meso|viande
+риба|riba|poisson
+јаје|jaje|œuf
+јабука|jabuka|pomme
+кафа|kafa|café
+чај|čaj|thé
+пиво|pivo|bière
+вино|vino|vin
+Пријатно!|Prijatno!|Bon appétit !
+Живели!|Živeli!|Santé !
+Рачун, молим|Račun, molim|L'addition, s'il vous plaît
+Могу ли добити мени?|Mogu li dobiti meni?|Puis-je avoir le menu ?`)},
+travel:{label:"Ville, transport & directions",items:P(`
+хотел|hotel|hôtel
+улица|ulica|rue
+град|grad|ville
+аутобус|autobus|bus
+воз|voz|train
+аеродром|aerodrom|aéroport
+железничка станица|železnička stanica|gare
+карта|karta|billet
+Где је...?|Gde je...?|Où est... ?
+лево|levo|à gauche
+десно|desno|à droite
+право|pravo|tout droit
+Колико кошта?|Koliko košta?|Combien ça coûte ?`)},
+verbs:{label:"Verbes essentiels",items:P(`
+бити (сам, си, је)|biti (sam, si, je)|être
+имати (имам, имаш, има)|imati (imam, imaš, ima)|avoir
+радити (радим, радиш, ради)|raditi (radim, radiš, radi)|faire / travailler
+моћи (могу, можеш, може)|moći (mogu, možeš, može)|pouvoir
+хтети (хоћу, хоћеш, хоће)|hteti (hoću, hoćeš, hoće)|vouloir
+знати (знам, знаш, зна)|znati (znam, znaš, zna)|savoir
+разумети (разумем, разумеш)|razumeti (razumem, razumeš)|comprendre
+говорити (говорим, говориш)|govoriti (govorim, govoriš)|parler
+ићи (идем, идеш, иде)|ići (idem, ideš, ide)|aller
+јести (једем, једеш, једе)|jesti (jedem, jedeš, jede)|manger
+пити (пијем, пијеш, пије)|piti (pijem, piješ, pije)|boire
+живети (живим, живиш, живи)|živeti (živim, živiš, živi)|vivre / habiter
+волети (волим, волиш, воли)|voleti (volim, voliš, voli)|aimer`)},
+lucy:{label:"Notes & Expressions",items:P(`
+Ја сам Француз|Ja sam Francuz|Je suis français
+Ја сам Францускиња|Ja sam Francuskinja|Je suis française
+Колико имаш година?|Koliko imaš godina?|Quel âge as-tu ?
+Учим српски|Učim srpski|J'apprends le serbe
+Говорим мало српски|Govorim malo srpski|Je parle un peu serbe
+Волим Србију|Volim Srbiju|J'aime la Serbie
+Можете ли да поновите?|Možete li da ponovite?|Pouvez-vous répéter ?
+Спорије, молим|Sporije, molim|Plus lentement, s'il vous plaît
+Шта значи...?|Šta znači...?|Que signifie... ?
+Како се каже...?|Kako se kaže...?|Comment dit-on... ?
+Нема проблема|Nema problema|Pas de problème
+Наравно|Naravno|Bien sûr
+Можда|Možda|Peut-être
+Видимо се|Vidimo se|À bientôt`)},
+};
+const C=s=>s.trim().split("\n").map(x=>{const[q,a,n]=x.split("|");return{q,a,n};});
+const CULTURE = {
+hist:{label:"Histoire",items:C(`
+Quelle dynastie fonde l'État serbe médiéval ?|Les Némanides|Stefan Nemanja, grand župan vers 1166.
+Qui fonde l'Église serbe autocéphale en 1219 ?|Saint Sava|Fils de Stefan Nemanja, premier archevêque.
+Quelle bataille de 1389 marque la mémoire serbe ?|Bataille du Kosovo|Le prince Lazar affronte les Ottomans, le 28 juin.
+Quel souverain promulgue le Code (Zakonik) en 1349 ?|Stefan Dušan|Couronné tsar en 1346.
+En quelle année éclate le Premier soulèvement serbe ?|1804|Mené par Karađorđe contre les Ottomans.
+Qui mène le Second soulèvement serbe en 1815 ?|Miloš Obrenović|Il devient prince de Serbie.
+Quand la Serbie est-elle reconnue indépendante au Congrès de Berlin ?|1878|Reconnaissance internationale de l'indépendance.
+Quelle victoire serbe a lieu en août 1914 ?|Bataille de la Cer|Première victoire alliée de la Grande Guerre.`)},
+fetes:{label:"Fêtes & calendrier",items:C(`
+Quelle fête est célébrée le 28 juin ?|Vidovdan|Commémoration de la bataille du Kosovo.
+Quand est fêté Noël orthodoxe en Serbie ?|7 janvier|Božić, calendrier julien.
+Quelle fête familiale est propre aux Serbes ?|La Slava|Fête du saint patron de la famille.
+Que célèbre le 15 février ?|Sretenje|Fête de l'État et de la Constitution de 1835.
+Comment dit-on Pâques en serbe ?|Uskrs|On casse des œufs colorés (tucanje).
+Quand tombe le Nouvel An orthodoxe serbe ?|13 janvier|Srpska Nova godina.`)},
+fierte:{label:"Fiertés 🇷🇸",items:C(`
+Quel inventeur d'origine serbe a développé le courant alternatif ?|Nikola Tesla|Né en 1856 à Smiljan.
+Quel tennisman serbe a été n°1 mondial de nombreuses années ?|Novak Djoković|Né à Belgrade.
+Quel écrivain yougoslave a reçu le Nobel de littérature en 1961 ?|Ivo Andrić|Auteur du « Pont sur la Drina ».
+Quel savant a décrit les cycles climatiques liés à l'orbite terrestre ?|Milutin Milanković|Les « cycles de Milanković ».
+Quel instrument accompagne la poésie épique serbe ?|La gusle|Instrument à corde unique.
+Quelle danse collective serbe est inscrite à l'UNESCO ?|Le kolo|Inscrite au patrimoine immatériel en 2017.`)},
+cuisine:{label:"Cuisine 🍽️",items:C(`
+Quelle purée de poivrons grillés est une spécialité serbe ?|L'ajvar|Souvent servie avec du pain.
+Quelle eau-de-vie de prune est emblématique ?|La šljivovica|Boisson nationale de la rakija de prune.
+Quelles petites saucisses grillées sont très populaires ?|Les ćevapi|Servis avec pain lepinja et oignon.
+Quelle crème lactée épaisse accompagne grillades et pain ?|Le kajmak|Spécialité de produit laitier.
+Comment s'appellent les feuilles de chou farcies ?|Sarma|Plat d'hiver et de fêtes.`)},
+};
+
+const STORE_KEY = "sr_a1_progress_v1";
+function loadProgress(){
+  try{
+    return JSON.parse(localStorage.getItem(STORE_KEY)) || {known:{}, quizScores:{}};
+  }catch(e){ return {known:{}, quizScores:{}}; }
+}
+function saveProgress(p){ localStorage.setItem(STORE_KEY, JSON.stringify(p)); }
+let progress = loadProgress();
+
+/* ---------------- NAV ---------------- */
+const navButtons = document.querySelectorAll("#nav button");
+navButtons.forEach(btn=>{
+  btn.addEventListener("click", ()=>{
+    navButtons.forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+    document.querySelectorAll("main section").forEach(s=>s.classList.remove("active"));
+    document.getElementById("sec-"+btn.dataset.target).classList.add("active");
+    if(btn.dataset.target==="progress"){ renderProgressPage(); if(typeof renderCultureProgress==="function") renderCultureProgress(); }
+    if(btn.dataset.target==="lucy") renderLucyMiniProgress();
+  });
+});
+
+/* ---------------- SECTION TOOLBAR (déplier / replier) ---------------- */
+document.querySelectorAll(".section-toolbar .mini-btn").forEach(btn=>{
+  btn.addEventListener("click", ()=>{
+    const section = btn.closest("section");
+    const open = btn.dataset.expand === "all";
+    section.querySelectorAll("details.info-card").forEach(d=>{ d.open = open; });
+  });
+});
+
+/* ---------------- ALPHABET ---------------- */
+const lettersGrid = document.getElementById("letters-grid");
+const LATIN_ALPHABET = [
+  "A a","B b","V v","G g","D d","Đ đ","E e","Ž ž","Z z","I i","J j","K k","L l","Lj lj",
+  "M m","N n","Nj nj","O o","P p","R r","S s","T t","Ć ć","U u","F f","H h","C c","Č č","Dž dž","Š š"
+];
+ALPHABET.forEach((a,i)=>{
+  const div = document.createElement("div");
+  div.className = "letter-card";
+  div.innerHTML = `<div class="glyph">${a.l}</div><div class="latin-letter">${LATIN_ALPHABET[i]}</div><div class="name">${a.name}</div><div class="sound">${a.sound}</div><div class="ex">${a.ex}</div>`;
+  lettersGrid.appendChild(div);
+});
+
+/* ---------------- VOCAB LISTS ---------------- */
+const accentLegend = document.createElement("div");
+accentLegend.className = "accent-legend";
+accentLegend.innerHTML = `<strong>Accents toniques serbes :</strong> ȁ = court descendant · ȃ = long descendant · à = court montant · á = long montant. <span>Les accents sont indiqués ici pour l’apprentissage ; l’orthographe courante ne les note normalement pas.</span>`;
+document.getElementById("vocab-list").before(accentLegend);
+const vocabChips = document.getElementById("vocab-chips");
+const vocabList = document.getElementById("vocab-list");
+let currentVocabCat = Object.keys(VOCAB)[0];
+
+function renderVocabChips(){
+  vocabChips.innerHTML = "";
+  Object.entries(VOCAB).forEach(([key, cat])=>{
+    const chip = document.createElement("button");
+    chip.className = "chip" + (key===currentVocabCat ? " active":"");
+    chip.textContent = cat.label;
+    chip.addEventListener("click", ()=>{ currentVocabCat = key; renderVocabChips(); renderVocabList(); });
+    vocabChips.appendChild(chip);
+  });
+}
+function renderVocabList(){
+  vocabList.innerHTML = "";
+  getWordItems(currentVocabCat).forEach(it=>{
+    const div = document.createElement("div");
+    div.className = "phrase";
+    div.innerHTML = `<span class="fr">${it.fr}</span> <span class="bg">${it.bg} <span style="color:var(--muted);font-size:.82rem;">(${accentSerbian(it.tr)})</span></span>`;
+    vocabList.appendChild(div);
+  });
+}
+renderVocabChips();
+renderVocabList();
+
+/* ---------------- VERBS SECTION LIST ---------------- */
+const verbListEl = document.getElementById("verb-list");
+VOCAB.verbs.items.forEach(v=>{
+  const div = document.createElement("div");
+  div.className = "phrase";
+  div.innerHTML = `<span class="fr">${v.fr}</span> <span class="bg">${v.bg} <span style="color:var(--muted);font-size:.82rem;">(${v.tr})</span></span>`;
+  verbListEl.appendChild(div);
+});
+
+/* ---------------- LUCY SECTION LIST ---------------- */
+const lucyListEl = document.getElementById("lucy-list");
+VOCAB.lucy.items.forEach(l=>{
+  if(l.type === "table"){
+    const wrap = document.createElement("div");
+    wrap.className = "mini-table-wrap";
+    const rowsHtml = l.rows.map(r=>`<tr><td>${r[0]}</td><td class="bg-cell">${r[1]}</td></tr>`).join("");
+    wrap.innerHTML = `
+      <div class="mini-table-title">${l.title}</div>
+      <table class="mini-table">
+        <thead><tr><th>Français</th><th>Serbe</th></tr></thead>
+        <tbody>${rowsHtml}</tbody>
+      </table>`;
+    lucyListEl.appendChild(wrap);
+    return;
+  }
+  const div = document.createElement("div");
+  div.className = "phrase";
+  div.innerHTML = `<span class="fr">${l.fr}</span> <span class="bg">${l.bg} <span style="color:var(--muted);font-size:.82rem;">(${l.tr})</span></span>`;
+  lucyListEl.appendChild(div);
+});
+
+/* ---------------- FLASHCARDS (French front, Serbian back) ---------------- */
+const fcChips = document.getElementById("fc-chips");
+let fcCat = Object.keys(VOCAB)[0];
+let fcIndex = 0;
+let fcFlipped = false;
+
+function renderFcChips(){
+  fcChips.innerHTML = "";
+  Object.entries(VOCAB).forEach(([key, cat])=>{
+    const chip = document.createElement("button");
+    chip.className = "chip" + (key===fcCat ? " active":"");
+    chip.textContent = cat.label;
+    chip.addEventListener("click", ()=>{ fcCat = key; fcIndex = 0; renderFcChips(); renderFlashcard(); });
+    fcChips.appendChild(chip);
+  });
+}
+
+const flashcardEl = document.getElementById("flashcard");
+flashcardEl.addEventListener("click", ()=>{
+  fcFlipped = !fcFlipped;
+  flashcardEl.classList.toggle("flipped", fcFlipped);
+});
+
+function knownKey(cat, idx){ return cat + ":" + idx; }
+
+function renderFlashcard(){
+  const items = getWordItems(fcCat);
+  const it = items[fcIndex];
+  // FRONT = French, BACK = Serbian
+  document.getElementById("fc-front-word").textContent = it.fr;
+  document.getElementById("fc-back-word").textContent = it.bg;
+  document.getElementById("fc-back-sub").textContent = accentSerbian(it.tr);
+  fcFlipped = false;
+  flashcardEl.classList.remove("flipped");
+  const knownCount = items.filter((_, i)=>progress.known[knownKey(fcCat,i)]).length;
+  document.getElementById("fc-progress").textContent =
+    `Carte ${fcIndex+1} / ${items.length} — ${knownCount}/${items.length} maîtrisées dans ce thème`;
+}
+
+document.getElementById("fc-next").addEventListener("click", ()=>{
+  const items = getWordItems(fcCat);
+  fcIndex = (fcIndex+1) % items.length;
+  renderFlashcard();
+});
+document.getElementById("fc-prev").addEventListener("click", ()=>{
+  const items = getWordItems(fcCat);
+  fcIndex = (fcIndex-1+items.length) % items.length;
+  renderFlashcard();
+});
+document.getElementById("fc-know").addEventListener("click", ()=>{
+  progress.known[knownKey(fcCat, fcIndex)] = true;
+  saveProgress(progress);
+  renderLucyMiniProgress();
+  document.getElementById("fc-next").click();
+});
+document.getElementById("fc-dontknow").addEventListener("click", ()=>{
+  delete progress.known[knownKey(fcCat, fcIndex)];
+  saveProgress(progress);
+  renderLucyMiniProgress();
+  document.getElementById("fc-next").click();
+});
+
+renderFcChips();
+renderFlashcard();
+
+/* ---------------- QUIZ ---------------- */
+const quizChips = document.getElementById("quiz-chips");
+const quizCountChipsEl = document.getElementById("quiz-count-chips");
+const quizWeakNoteEl = document.getElementById("quiz-weak-note");
+const quizBox = document.getElementById("quiz-box");
+const WEAK_KEY = "__weak__";
+const QUIZ_COUNTS = [5,10,15,20,"all"];
+
+if(!progress.quizSettings) progress.quizSettings = {count:10};
+if(!progress.quizStats) progress.quizStats = {};
+
+let quizCat = Object.keys(VOCAB)[0];
+let quizCount = QUIZ_COUNTS.includes(progress.quizSettings.count) ? progress.quizSettings.count : 10;
+let quizQuestions = [];
+let quizIndex = 0;
+let quizScore = 0;
+let lastShownFr = null; // évite qu'une même question ne retombe juste après elle-même
+
+const THEME_WEAK_KEY = "__theme_weak__";
+let quizSessionWrong = []; // mots ratés pendant la série de thème en cours (dédupliqués par fr)
+let lastThemeWeakItems = []; // dernière liste utilisée pour une série "points faibles de ce thème"
+
+function quizCatLabel(catKey){
+  return catKey===WEAK_KEY ? "Points faibles" : VOCAB[catKey].label;
+}
+
+function renderQuizCountChips(){
+  quizCountChipsEl.innerHTML = "";
+  QUIZ_COUNTS.forEach(c=>{
+    const chip = document.createElement("button");
+    chip.type = "button";
+    chip.className = "count-chip" + (quizCount===c ? " active":"");
+    chip.textContent = c==="all" ? "Toutes" : String(c);
+    chip.addEventListener("click", ()=>{
+      quizCount = c;
+      progress.quizSettings.count = c;
+      saveProgress(progress);
+      renderQuizCountChips();
+      startQuiz();
+    });
+    quizCountChipsEl.appendChild(chip);
+  });
+}
+
+function renderQuizChips(){
+  quizChips.innerHTML = "";
+
+  const weakChip = document.createElement("button");
+  weakChip.type = "button";
+  weakChip.className = "chip weak" + (quizCat===WEAK_KEY ? " active":"");
+  weakChip.textContent = "🎯 Points faibles";
+  weakChip.addEventListener("click", ()=>{ quizCat = WEAK_KEY; renderQuizChips(); startQuiz(); });
+  quizChips.appendChild(weakChip);
+
+  Object.entries(VOCAB).forEach(([key, cat])=>{
+    const chip = document.createElement("button");
+    chip.type = "button";
+    chip.className = "chip" + (key===quizCat ? " active":"");
+    chip.textContent = cat.label;
+    chip.addEventListener("click", ()=>{ quizCat = key; renderQuizChips(); startQuiz(); });
+    quizChips.appendChild(chip);
+  });
+
+  quizWeakNoteEl.style.display = quizCat===WEAK_KEY ? "block" : "none";
+}
+
+function shuffle(arr){
+  const a = arr.slice();
+  for(let i=a.length-1;i>0;i--){
+    const j = Math.floor(Math.random()*(i+1));
+    [a[i],a[j]] = [a[j],a[i]];
+  }
+  return a;
+}
+
+/* --- Statistiques par mot (pour détecter les points faibles) --- */
+function statKey(catKey, item){ return catKey + "||" + item.fr; }
+
+function weakScore(catKey, item){
+  const st = progress.quizStats[statKey(catKey, item)];
+  if(!st) return 0;
+  // plus le score est haut, plus le mot est "faible" (fautes récentes comptent double)
+  return (st.wrong||0)*2 - (st.right||0);
+}
+
+function recordAnswer(catKey, item, correct){
+  const k = statKey(catKey, item);
+  const st = progress.quizStats[k] || {right:0, wrong:0};
+  if(correct) st.right++; else st.wrong++;
+  progress.quizStats[k] = st;
+  saveProgress(progress);
+}
+
+function getAllVocabItems(){
+  return Object.entries(VOCAB).flatMap(([key,cat])=>
+    getWordItems(key).map(it=>({...it, __cat:key}))
+  );
+}
+
+/* Sélectionne les mots les plus faibles, tous thèmes confondus (avec un peu
+   d'aléatoire pour départager les mots jamais ratés / jamais vus) */
+function buildWeakPool(){
+  return getAllVocabItems()
+    .map(it=>({ it, score: weakScore(it.__cat, it) + Math.random()*0.5 }))
+    .sort((a,b)=> b.score - a.score)
+    .map(x=>x.it);
+}
+
+/* Réordonne la sélection pour qu'un même mot ne tombe jamais deux fois de
+   suite, ni juste après la dernière question du quiz précédent */
+function avoidAdjacentRepeats(pool){
+  if(pool.length<2) return pool;
+  const a = pool.slice();
+  if(a[0].fr===lastShownFr){
+    const idx = a.findIndex((it,i)=> i>0 && it.fr!==lastShownFr && it.fr!==a[1].fr);
+    if(idx>0){ [a[0],a[idx]] = [a[idx],a[0]]; }
+  }
+  for(let i=1;i<a.length;i++){
+    if(a[i].fr===a[i-1].fr){
+      let swapped = false;
+      for(let j=i+1;j<a.length;j++){
+        if(a[j].fr!==a[i-1].fr){
+          [a[i],a[j]] = [a[j],a[i]];
+          swapped = true;
+          break;
+        }
+      }
+      if(!swapped){
+        for(let j=i-2;j>=0;j--){
+          if(a[j].fr!==a[i-1].fr && a[j].fr!==a[i].fr){
+            [a[i],a[j]] = [a[j],a[i]];
+            break;
+          }
+        }
+      }
+    }
+  }
+  return a;
+}
+
+function makeQuestion(correct){
+  const cat = correct.__cat;
+  let distractors = shuffle(getWordItems(cat).filter(i=>i.fr!==correct.fr)).slice(0,3);
+  if(distractors.length<3){
+    const extra = shuffle(
+      getAllVocabItems().filter(i=> i.fr!==correct.fr && !distractors.some(d=>d.fr===i.fr))
+    ).slice(0, 3-distractors.length);
+    distractors = distractors.concat(extra);
+  }
+  const options = shuffle([correct, ...distractors]);
+  return { fr: correct.fr, correctBg: correct.bg, cat, options: options.map(o=>o.bg) };
+}
+
+function buildQuestions(catKey, count){
+  let selected;
+  if(catKey===WEAK_KEY){
+    const pool = buildWeakPool();
+    const n = count==="all" ? pool.length : Math.min(count, pool.length);
+    selected = shuffle(pool.slice(0, n));
+  } else {
+    const items = getWordItems(catKey).map(it=>({...it, __cat:catKey}));
+    const n = count==="all" ? items.length : Math.min(count, items.length);
+    selected = shuffle(items).slice(0, n);
+  }
+  selected = avoidAdjacentRepeats(selected);
+
+  return selected.map(makeQuestion);
+}
+
+function startQuiz(){
+  quizQuestions = buildQuestions(quizCat, quizCount);
+  quizIndex = 0;
+  quizScore = 0;
+  quizSessionWrong = [];
+  renderQuizQuestion();
+}
+
+/* Relance une série ciblée sur une liste précise de mots (ex : les erreurs
+   de la série de thème qui vient de se terminer) */
+function startThemeWeakQuiz(items){
+  if(!items || !items.length) return;
+  lastThemeWeakItems = items.slice();
+  quizCat = THEME_WEAK_KEY;
+  const pool = avoidAdjacentRepeats(shuffle(items));
+  quizQuestions = pool.map(makeQuestion);
+  quizIndex = 0;
+  quizScore = 0;
+  quizSessionWrong = [];
+  renderQuizQuestion();
+}
+
+function renderQuizQuestion(){
+  if(quizIndex >= quizQuestions.length){
+    renderQuizResult();
+    return;
+  }
+  const q = quizQuestions[quizIndex];
+  quizBox.innerHTML = `
+    <div class="quiz-progress">Question ${quizIndex+1} / ${quizQuestions.length} — ${VOCAB[q.cat].label}</div>
+    <div class="quiz-question">Quel est le serbe pour : "${q.fr}" ?</div>
+    <div class="quiz-options" id="quiz-options"></div>
+  `;
+  const optionsEl = document.getElementById("quiz-options");
+  q.options.forEach(opt=>{
+    const b = document.createElement("button");
+    b.className = "opt-btn";
+    b.textContent = opt;
+    b.addEventListener("click", ()=>{
+      const buttons = optionsEl.querySelectorAll(".opt-btn");
+      buttons.forEach(bb=>bb.disabled = true);
+      const isCorrect = opt === q.correctBg;
+      if(isCorrect){
+        b.classList.add("correct");
+        quizScore++;
+      } else {
+        b.classList.add("incorrect");
+        buttons.forEach(bb=>{ if(bb.textContent===q.correctBg) bb.classList.add("correct"); });
+        if(!quizSessionWrong.some(it=>it.fr===q.fr)){
+          quizSessionWrong.push({fr:q.fr, bg:q.correctBg, __cat:q.cat});
+        }
+      }
+      recordAnswer(q.cat, {fr:q.fr, bg:q.correctBg}, isCorrect);
+      lastShownFr = q.fr;
+      setTimeout(()=>{ quizIndex++; renderQuizQuestion(); }, 700);
+    });
+    optionsEl.appendChild(b);
+  });
+}
+
+function renderQuizResult(){
+  const total = quizQuestions.length;
+  const isThemeWeak = quizCat===THEME_WEAK_KEY;
+
+  let bestLineHtml = "";
+  if(!isThemeWeak){
+    const best = progress.quizScores[quizCat] || 0;
+    if(quizScore > best){
+      progress.quizScores[quizCat] = quizScore;
+      saveProgress(progress);
+    }
+    const scopeLabel = quizCat===WEAK_KEY ? "sur cette sélection de points faibles" : "dans ce thème";
+    bestLineHtml = `<p>Meilleur score ${scopeLabel} : ${Math.max(quizScore,best)} / ${total}</p>`;
+  }
+  renderLucyMiniProgress();
+
+  const nbWrong = quizSessionWrong.length;
+  let weakBtnHtml = "";
+  if(!isThemeWeak && nbWrong>0){
+    weakBtnHtml = `<button class="action ghost" id="quiz-weak-theme-btn" style="margin-top:.6rem;margin-left:.5rem;">🎯 Travailler ${nbWrong===1 ? "le mot raté" : "les "+nbWrong+" mots ratés"} de ce thème</button>`;
+  } else if(isThemeWeak){
+    weakBtnHtml = `<button class="action ghost" id="quiz-weak-theme-again-btn" style="margin-top:.6rem;margin-left:.5rem;">🎯 Retenter ces mots</button>`;
+  }
+
+  quizBox.innerHTML = `
+    <div class="quiz-result">
+      <div class="score">${quizScore} / ${total}</div>
+      ${isThemeWeak ? '<p>Série ciblée sur tes erreurs de ce thème.</p>' : bestLineHtml}
+      <button class="action primary" id="quiz-restart">Recommencer</button>
+      ${weakBtnHtml}
+    </div>
+  `;
+  document.getElementById("quiz-restart").addEventListener("click", ()=>{
+    if(isThemeWeak){ startThemeWeakQuiz(lastThemeWeakItems); }
+    else { startQuiz(); }
+  });
+  const weakBtn = document.getElementById("quiz-weak-theme-btn");
+  if(weakBtn){
+    weakBtn.addEventListener("click", ()=> startThemeWeakQuiz(quizSessionWrong));
+  }
+  const weakAgainBtn = document.getElementById("quiz-weak-theme-again-btn");
+  if(weakAgainBtn){
+    weakAgainBtn.addEventListener("click", ()=> startThemeWeakQuiz(lastThemeWeakItems));
+  }
+}
+
+renderQuizCountChips();
+renderQuizChips();
+startQuiz();
+
+/* ---------------- LUCY MINI REVIEW (flashcards / quiz / progress) ---------------- */
+function switchNavTo(target){
+  const btn = document.querySelector(`#nav button[data-target="${target}"]`);
+  if(btn) btn.click();
+}
+
+function renderLucyMiniProgress(){
+  const items = getWordItems("lucy");
+  const total = items.length;
+  const knownCount = items.filter((_, i)=>progress.known[knownKey("lucy", i)]).length;
+  const pct = total ? Math.round((knownCount/total)*100) : 0;
+  const quizTotal = Math.min(10, total);
+  const quizBest = progress.quizScores["lucy"] || 0;
+  document.getElementById("lucy-progress-label").textContent =
+    `Flashcards maîtrisées : ${knownCount}/${total} — Meilleur score au quiz : ${quizBest}/${quizTotal}`;
+  document.getElementById("lucy-progress-bar").style.width = pct + "%";
+}
+
+document.getElementById("lucy-go-flashcards").addEventListener("click", ()=>{
+  fcCat = "lucy";
+  fcIndex = 0;
+  renderFcChips();
+  renderFlashcard();
+  switchNavTo("flashcards");
+});
+
+document.getElementById("lucy-go-quiz").addEventListener("click", ()=>{
+  quizCat = "lucy";
+  renderQuizChips();
+  startQuiz();
+  switchNavTo("quiz");
+});
+
+renderLucyMiniProgress();
+
+/* ---------------- PROGRESS PAGE ---------------- */
+function renderProgressPage(){
+  const fcHost = document.getElementById("progress-flashcards");
+  fcHost.innerHTML = "";
+  Object.entries(VOCAB).forEach(([key, cat])=>{
+    const items = getWordItems(key);
+    const total = items.length;
+    const knownCount = items.filter((_,i)=>progress.known[knownKey(key,i)]).length;
+    const pct = total ? Math.round((knownCount/total)*100) : 0;
+    const row = document.createElement("div");
+    row.className = "prog-row";
+    row.innerHTML = `
+      <div class="lbl">${cat.label}</div>
+      <div class="bar-track"><div class="bar-fill" style="width:${pct}%"></div></div>
+      <div class="num">${knownCount}/${total}</div>
+    `;
+    fcHost.appendChild(row);
+  });
+
+  const quizHost = document.getElementById("progress-quiz");
+  quizHost.innerHTML = "";
+  Object.entries(VOCAB).forEach(([key, cat])=>{
+    const total = Math.min(10, getWordItems(key).length);
+    const score = progress.quizScores[key] || 0;
+    const pct = total ? Math.round((score/total)*100) : 0;
+    const row = document.createElement("div");
+    row.className = "prog-row";
+    row.innerHTML = `
+      <div class="lbl">${cat.label}</div>
+      <div class="bar-track"><div class="bar-fill" style="width:${pct}%; background:var(--gold);"></div></div>
+      <div class="num">${score}/${total}</div>
+    `;
+    quizHost.appendChild(row);
+  });
+}
+
+document.getElementById("reset-all").addEventListener("click", ()=>{
+  if(confirm("Réinitialiser toute la progression ?")){
+    progress = {known:{}, quizScores:{}};
+    saveProgress(progress);
+    renderProgressPage();
+    renderFlashcard();
+  }
+});
+
+
+/* ================= CULTURE : HISTOIRE / FÊTES / FIERTÉS ================= */
+
+/* ---- storage helpers (partagés avec le reste de la page) ---- */
+function cuKnownStore(){
+  if(!progress.cultureKnown) progress.cultureKnown = {};
+  return progress.cultureKnown;
+}
+function cuQuizStore(){
+  if(!progress.cultureQuiz) progress.cultureQuiz = {};
+  return progress.cultureQuiz;
+}
+function cuKey(cat, idx){ return cat + "#" + idx; }
+
+/* ---- state ---- */
+const cuChipsEl = document.getElementById("cu-chips");
+const cuCardsWrap = document.getElementById("cu-cards-wrap");
+const cuQuizBox = document.getElementById("cu-quiz-box");
+const cuFlashcardEl = document.getElementById("cu-flashcard");
+let cuCat = Object.keys(CULTURE)[0];
+let cuOrder = null;
+let cuPos = 0;
+let cuFlipped = false;
+let cuMode = "cards";
+let cuQuestions = [];
+let cuQIndex = 0;
+let cuScore = 0;
+
+function cuItems(){ return CULTURE[cuCat].items; }
+
+function cuBuildOrder(shuffled){
+  const n = cuItems().length;
+  const base = Array.from({length:n}, (_,i)=>i);
+  cuOrder = shuffled ? shuffle(base) : base;
+  cuPos = 0;
+}
+
+function cuRenderChips(){
+  cuChipsEl.innerHTML = "";
+  Object.entries(CULTURE).forEach(([key, cat])=>{
+    const chip = document.createElement("button");
+    chip.className = "chip" + (key===cuCat ? " active":"");
+    chip.textContent = cat.label;
+    chip.addEventListener("click", ()=>{
+      cuCat = key;
+      cuBuildOrder(false);
+      cuRenderChips();
+      if(cuMode === "cards") cuRenderCard(); else cuStartQuiz();
+    });
+    cuChipsEl.appendChild(chip);
+  });
+}
+
+cuFlashcardEl.addEventListener("click", ()=>{
+  cuFlipped = !cuFlipped;
+  cuFlashcardEl.classList.toggle("flipped", cuFlipped);
+});
+
+function cuRenderCard(){
+  const items = cuItems();
+  if(!cuOrder || cuOrder.length !== items.length) cuBuildOrder(false);
+  const idx = cuOrder[cuPos];
+  const it = items[idx];
+  document.getElementById("cu-front-word").textContent = it.q;
+  document.getElementById("cu-back-word").textContent = it.a;
+  document.getElementById("cu-back-sub").textContent = it.n || "";
+  cuFlipped = false;
+  cuFlashcardEl.classList.remove("flipped");
+  const known = cuKnownStore();
+  const knownCount = items.filter((_, i)=>known[cuKey(cuCat,i)]).length;
+  document.getElementById("cu-progress").textContent =
+    `Carte ${cuPos+1} / ${items.length} — ${knownCount}/${items.length} maîtrisées dans ce thème`;
+}
+
+function cuMove(step){
+  const n = cuOrder.length;
+  cuPos = (cuPos + step + n) % n;
+  cuRenderCard();
+}
+
+document.getElementById("cu-next").addEventListener("click", ()=>cuMove(1));
+document.getElementById("cu-prev").addEventListener("click", ()=>cuMove(-1));
+document.getElementById("cu-shuffle").addEventListener("click", ()=>{
+  cuBuildOrder(true);
+  cuRenderCard();
+});
+document.getElementById("cu-know").addEventListener("click", ()=>{
+  cuKnownStore()[cuKey(cuCat, cuOrder[cuPos])] = true;
+  saveProgress(progress);
+  cuMove(1);
+});
+document.getElementById("cu-dontknow").addEventListener("click", ()=>{
+  delete cuKnownStore()[cuKey(cuCat, cuOrder[cuPos])];
+  saveProgress(progress);
+  cuMove(1);
+});
+
+/* ---- quiz culture ---- */
+function cuBuildQuestions(){
+  const items = cuItems();
+  const pool = shuffle(items).slice(0, Math.min(10, items.length));
+  return pool.map(correct=>{
+    const distractors = shuffle(items.filter(i=>i!==correct && i.a !== correct.a)).slice(0,3);
+    const options = shuffle([correct, ...distractors]);
+    return { q: correct.q, correct: correct.a, note: correct.n || "", options: options.map(o=>o.a) };
+  });
+}
+
+function cuStartQuiz(){
+  cuQuestions = cuBuildQuestions();
+  cuQIndex = 0;
+  cuScore = 0;
+  cuRenderQuestion();
+}
+
+function cuRenderQuestion(){
+  if(cuQIndex >= cuQuestions.length){ cuRenderResult(); return; }
+  const q = cuQuestions[cuQIndex];
+  cuQuizBox.innerHTML = `
+    <div class="quiz-progress">Question ${cuQIndex+1} / ${cuQuestions.length} — ${CULTURE[cuCat].label}</div>
+    <div class="quiz-question">${q.q}</div>
+    <div class="quiz-options" id="cu-quiz-options"></div>
+    <div class="progress-label" id="cu-quiz-note"></div>
+  `;
+  const optionsEl = document.getElementById("cu-quiz-options");
+  q.options.forEach(opt=>{
+    const b = document.createElement("button");
+    b.className = "opt-btn";
+    b.textContent = opt;
+    b.addEventListener("click", ()=>{
+      const buttons = optionsEl.querySelectorAll(".opt-btn");
+      buttons.forEach(bb=>bb.disabled = true);
+      if(opt === q.correct){
+        b.classList.add("correct");
+        cuScore++;
+      } else {
+        b.classList.add("incorrect");
+        buttons.forEach(bb=>{ if(bb.textContent===q.correct) bb.classList.add("correct"); });
+      }
+      if(q.note) document.getElementById("cu-quiz-note").textContent = "💡 " + q.note;
+      setTimeout(()=>{ cuQIndex++; cuRenderQuestion(); }, q.note ? 1600 : 800);
+    });
+    optionsEl.appendChild(b);
+  });
+}
+
+function cuRenderResult(){
+  const total = cuQuestions.length;
+  const store = cuQuizStore();
+  const best = store[cuCat] || 0;
+  if(cuScore > best){ store[cuCat] = cuScore; saveProgress(progress); }
+  cuQuizBox.innerHTML = `
+    <div class="quiz-result">
+      <div class="score">${cuScore} / ${total}</div>
+      <p>Meilleur score dans ce thème : ${Math.max(cuScore,best)} / ${total}</p>
+      <button class="action primary" id="cu-quiz-restart">Recommencer ce thème</button>
+    </div>
+  `;
+  document.getElementById("cu-quiz-restart").addEventListener("click", cuStartQuiz);
+}
+
+/* ---- modes ---- */
+function cuSetMode(mode){
+  cuMode = mode;
+  const cardsBtn = document.getElementById("cu-mode-cards");
+  const quizBtn = document.getElementById("cu-mode-quiz");
+  const isCards = mode === "cards";
+  cardsBtn.className = "action " + (isCards ? "primary" : "ghost");
+  quizBtn.className = "action " + (isCards ? "ghost" : "primary");
+  cuCardsWrap.style.display = isCards ? "flex" : "none";
+  cuQuizBox.style.display = isCards ? "none" : "block";
+  if(isCards) cuRenderCard(); else cuStartQuiz();
+}
+document.getElementById("cu-mode-cards").addEventListener("click", ()=>cuSetMode("cards"));
+document.getElementById("cu-mode-quiz").addEventListener("click", ()=>cuSetMode("quiz"));
+
+/* ---- raccourcis depuis Histoire / Fêtes / Fiertés ---- */
+document.querySelectorAll(".cu-jump").forEach(btn=>{
+  btn.addEventListener("click", ()=>{
+    cuCat = btn.dataset.cat;
+    cuBuildOrder(false);
+    cuRenderChips();
+    cuSetMode(btn.dataset.mode);
+    switchNavTo("culture");
+  });
+});
+
+cuRenderChips();
+cuBuildOrder(false);
+cuSetMode("cards");
+
+/* ---- progression culture ---- */
+function renderCultureProgress(){
+  const host = document.getElementById("progress-culture");
+  if(!host) return;
+  host.innerHTML = "";
+  const known = cuKnownStore();
+  const quiz = cuQuizStore();
+  Object.entries(CULTURE).forEach(([key, cat])=>{
+    const total = cat.items.length;
+    const knownCount = cat.items.filter((_,i)=>known[cuKey(key,i)]).length;
+    const pct = total ? Math.round((knownCount/total)*100) : 0;
+    const qTotal = Math.min(10, total);
+    const qScore = quiz[key] || 0;
+    const qPct = qTotal ? Math.round((qScore/qTotal)*100) : 0;
+    const row = document.createElement("div");
+    row.className = "prog-row";
+    row.innerHTML = `
+      <div class="lbl">${cat.label}</div>
+      <div class="bar-track"><div class="bar-fill" style="width:${pct}%"></div></div>
+      <div class="num">${knownCount}/${total}</div>
+    `;
+    host.appendChild(row);
+    const row2 = document.createElement("div");
+    row2.className = "prog-row";
+    row2.innerHTML = `
+      <div class="lbl">${cat.label} — quiz</div>
+      <div class="bar-track"><div class="bar-fill" style="width:${qPct}%; background:var(--gold);"></div></div>
+      <div class="num">${qScore}/${qTotal}</div>
+    `;
+    host.appendChild(row2);
+  });
+}
+
+document.getElementById("reset-all").addEventListener("click", ()=>{
+  setTimeout(()=>{ renderCultureProgress(); cuRenderCard(); }, 0);
+});
+
+
+/* ---------------- THÈME SOMBRE ---------------- */
+(function(){
+  const root = document.documentElement;
+  const btn = document.getElementById('themeToggle');
+  function apply(t){
+    root.setAttribute('data-theme', t);
+    btn.setAttribute('aria-label', t === 'dark' ? 'Activer le thème clair' : 'Activer le thème sombre');
+    btn.title = t === 'dark' ? 'Thème clair' : 'Thème sombre';
+  }
+  apply(root.getAttribute('data-theme') || 'light');
+  btn.addEventListener('click', function(){
+    const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    apply(next);
+    try{ localStorage.setItem('sr_theme', next); }catch(e){}
+  });
+})();
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script>
+/* Modules restaurés du site bulgare : dépliage, navigation interne et audio. */
+document.querySelectorAll('[data-expand]').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    const section = btn.closest('section');
+    if(!section) return;
+    const open = btn.dataset.expand === 'all';
+    section.querySelectorAll('details.info-card').forEach(d=>d.open = open);
+  });
+});
+
+function goToSection(target){
+  const btn = document.querySelector('#nav button[data-target="' + target + '"]');
+  if(btn) btn.click();
+}
+document.querySelectorAll('[data-go]').forEach(btn=>{
+  btn.addEventListener('click', ()=>goToSection(btn.dataset.go));
+});
+document.querySelectorAll('[data-go-conj]').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    goToSection('conjugation');
+    setTimeout(()=>{
+      const el = document.querySelector('#sec-conjugation');
+      if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+    }, 50);
+  });
+});
+
+/* Prononciation : lecture native du navigateur, avec préférence serbe. */
+document.querySelectorAll('.say').forEach(el=>{
+  el.setAttribute('role','button');
+  el.setAttribute('tabindex','0');
+  const speak = ()=>{
+    const text = (el.dataset.say || el.textContent || '').replace(/🔊/g,'').trim();
+    if(!text || !('speechSynthesis' in window)) return;
+    window.speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = 'sr-RS';
+    u.rate = 0.82;
+    u.pitch = 1;
+    el.classList.add('playing');
+    u.onend = ()=>el.classList.remove('playing');
+    u.onerror = ()=>el.classList.remove('playing');
+    window.speechSynthesis.speak(u);
+  };
+  el.addEventListener('click', speak);
+  el.addEventListener('keydown', e=>{ if(e.key==='Enter' || e.key===' ') { e.preventDefault(); speak(); }});
+});
+
+/* Carte des monuments serbes. */
+(function(){
+  const MON_CATS = {
+    national:{label:"⭐ Icônes nationales",color:"#C08A2E"},
+    antique:{label:"🏺 Antiquité",color:"#A22C3B"},
+    medieval:{label:"☦️ Médiévale et orthodoxe",color:"#5F7052"},
+    fortress:{label:"🏰 Forteresses",color:"#3A5A8C"},
+    belgrade:{label:"🏛️ Belgrade",color:"#6B4C9A"},
+    modern:{label:"🛸 XXe siècle et mémoire",color:"#4a4a4a"},
+    monasteries:{label:"⛪ Monastères",color:"#2F7A6B"}
+  };
+  const MONUMENTS = [
+    {n:"Forteresse de Belgrade",bg:"Београдска тврђава",cat:"national",lat:44.8231,lng:20.4506,d:"Grande forteresse dominant le confluent de la Save et du Danube."},
+    {n:"Temple Saint-Sava",bg:"Храм Светог Саве",cat:"national",lat:44.7999,lng:20.4698,d:"Grand temple orthodoxe de Belgrade."},
+    {n:"Gamzigrad-Romuliana",bg:"Гамзиград-Ромулијана",cat:"antique",lat:43.898,lng:21.884,d:"Palais de l'empereur Galère, site romain majeur."},
+    {n:"Golubac",bg:"Голубачка тврђава",cat:"fortress",lat:44.662,lng:21.632,d:"Forteresse médiévale sur le Danube."},
+    {n:"Smederevo",bg:"Смедеревска тврђава",cat:"fortress",lat:44.666,lng:20.928,d:"Grande forteresse de la dernière capitale médiévale serbe."},
+    {n:"Studenica",bg:"Манастир Студеница",cat:"monasteries",lat:43.4877,lng:20.5337,d:"Chef-d'œuvre de l'art médiéval serbe, classé à l'UNESCO."},
+    {n:"Sopoćani",bg:"Манастир Сопоћани",cat:"monasteries",lat:43.1178,lng:20.000,d:"Monastère célèbre pour ses fresques."},
+    {n:"Žiča",bg:"Манастир Жича",cat:"monasteries",lat:43.7239,lng:20.6925,d:"Monastère lié à Saint Sava et aux couronnements médiévaux."},
+    {n:"Manasija",bg:"Манастир Манасија",cat:"monasteries",lat:44.110,lng:21.440,d:"Monastère fortifié de l'école de Resava."},
+    {n:"Kalemegdan",bg:"Калемегдан",cat:"belgrade",lat:44.8235,lng:20.4505,d:"Parc historique autour de la forteresse de Belgrade."},
+    {n:"Niš — forteresse",bg:"Нишка тврђава",cat:"modern",lat:43.324,lng:21.896,d:"Forteresse au cœur de Niš, héritage de plusieurs périodes."},
+    {n:"Đavolja Varoš",bg:"Ђавоља Варош",cat:"modern",lat:42.996,lng:21.408,d:"Formation naturelle spectaculaire du sud de la Serbie."}
+  ];
+  let map=null, layers={};
+  function init(){
+    const host=document.getElementById('monuments-map');
+    const legend=document.getElementById('mon-legend');
+    if(!host || !legend || typeof L==='undefined') return;
+    if(map){setTimeout(()=>map.invalidateSize(),50);return;}
+    map=L.map(host,{scrollWheelZoom:false}).setView([44.0,20.8],7);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+      maxZoom:18, attribution:'&copy; OpenStreetMap contributors'
+    }).addTo(map);
+    Object.keys(MON_CATS).forEach(k=>{
+      layers[k]=L.layerGroup().addTo(map);
+      const b=document.createElement('button');
+      b.type='button'; b.className='mon-chip';
+      b.innerHTML='<span class="dot" style="background:'+MON_CATS[k].color+'"></span>'+MON_CATS[k].label;
+      b.addEventListener('click',()=>{
+        if(map.hasLayer(layers[k])){map.removeLayer(layers[k]);b.classList.add('off');}
+        else{map.addLayer(layers[k]);b.classList.remove('off');}
+      });
+      legend.appendChild(b);
+    });
+    MONUMENTS.forEach(m=>{
+      const marker=L.circleMarker([m.lat,m.lng],{
+        radius:7,color:'#fff',weight:1.5,fillColor:MON_CATS[m.cat].color,fillOpacity:.95
+      });
+      marker.bindPopup('<div class="mon-pop"><b>'+m.n+'</b><br><span style="font-family:PT Serif,Georgia,serif">'+m.bg+'</span><p>'+m.d+'</p></div>');
+      marker.addTo(layers[m.cat]);
+    });
+    setTimeout(()=>map.invalidateSize(),80);
+  }
+  document.querySelectorAll('#nav button[data-target="monuments"]').forEach(b=>b.addEventListener('click',()=>setTimeout(init,30)));
+})();
+</script>
+
+</body>
+</html>
