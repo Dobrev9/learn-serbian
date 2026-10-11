@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🇷🇸</text></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22></text></svg>">
 <title>Почетак — Apprendre le serbe A1 & Culture</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <style>
@@ -772,11 +772,11 @@
     border-radius:14px; padding:0 .55rem; margin:.15rem .1rem; line-height:1.6;
     transition:background .15s, border-color .15s;
   }
-  .say::after{ content:" 🔊"; font-size:.8em; }
+  .say::after{ content:" "; font-size:.8em; }
   .say:hover, .say:focus-visible{ border-color:var(--gold); background:var(--linen-dark); outline:none; }
   .say.playing{ border-color:var(--madder); }
   td > .say:empty{ padding:0 .4rem; }
-  td > .say:empty::after{ content:"🔊"; }
+  td > .say:empty::after{ content:""; }
   #sec-pronunciation ol, #sec-pronunciation ul{ padding-left:1.3rem; margin:.4rem 0; }
   #sec-pronunciation li{ margin:.2rem 0; }
 
@@ -969,31 +969,31 @@
 
 <div class="shevitsa"></div>
 <nav id="nav">
-<div class="nav-group"><span class="nav-label">📖 Langue</span><div class="nav-btns">
+<div class="nav-group"><span class="nav-label"> Langue</span><div class="nav-btns">
 <button data-target="alphabet" class="active">Alphabet</button>
-<button data-target="pronunciation">Prononciation 🔊</button>
+<button data-target="pronunciation">Prononciation </button>
 <button data-target="vocab">Vocabulaire</button>
 <button data-target="verbs">Verbes</button>
-<button data-target="conjugation">Conjugaison ✍️</button>
+<button data-target="conjugation">Conjugaison </button>
 <button data-target="grammar-course">Grammaire A1-A2</button>
 </div></div>
-<div class="nav-group"><span class="nav-label">🎯 Entraînement</span><div class="nav-btns">
+<div class="nav-group"><span class="nav-label"> Entraînement</span><div class="nav-btns">
 <button data-target="flashcards">Flashcards</button>
 <button data-target="quiz">Quiz</button>
 <button data-target="culture">Culture : cartes & quiz</button>
 <button data-target="stories">Histoires A1</button>
 <button data-target="progress">Progression</button>
 </div></div>
-<div class="nav-group"><span class="nav-label">🇷🇸 Culture & patrimoine</span><div class="nav-btns">
+<div class="nav-group"><span class="nav-label"> Culture & patrimoine</span><div class="nav-btns">
 <button data-target="history">Histoire</button>
 <button data-target="holidays">Fêtes</button>
-<button data-target="pride">Fiertés 🇷🇸</button>
-<button data-target="cuisine">Cuisine 🍽️</button>
-<button data-target="monuments">Monuments 🏛️</button>
-<button data-target="nosiya">Носије 👗</button>
-<button data-target="montenegro">Monténégro 🇲🇪</button>
+<button data-target="pride">Fiertés </button>
+<button data-target="cuisine">Cuisine </button>
+<button data-target="monuments">Monuments </button>
+<button data-target="nosiya">Носије </button>
+<button data-target="montenegro">Monténégro </button>
 </div></div>
-<div class="nav-group"><span class="nav-label">🙏 Spiritualité & notes</span><div class="nav-btns">
+<div class="nav-group"><span class="nav-label"> Spiritualité & notes</span><div class="nav-btns">
 <button data-target="prayers">Prières</button>
 <button data-target="lucy">Notes & Expressions</button>
 </div></div>
@@ -1041,8 +1041,8 @@
       <div class="progress-label" id="lucy-progress-label">Progression : —</div>
       <div class="bar-track"><div class="bar-fill" id="lucy-progress-bar" style="width:0%"></div></div>
       <div class="lucy-review-actions">
-        <button class="action primary" id="lucy-go-flashcards">📇 Réviser avec les flashcards</button>
-        <button class="action ghost" id="lucy-go-quiz">📝 Faire le quiz</button>
+        <button class="action primary" id="lucy-go-flashcards"> Réviser avec les flashcards</button>
+        <button class="action ghost" id="lucy-go-quiz"> Faire le quiz</button>
       </div>
     </div>
 
@@ -1057,7 +1057,7 @@
         <div class="fc-deck-pile" id="fc-deck-pile"></div>
         <div class="fc-deck-count" id="fc-deck-count"></div>
         <div class="fc-deck-btns">
-          <button type="button" class="action primary" id="fc-shuffle">🔀 Mélanger</button>
+          <button type="button" class="action primary" id="fc-shuffle"> Mélanger</button>
           <button type="button" class="action ghost" id="fc-skip-shuffle">Commencer sans mélanger</button>
         </div>
       </div>
@@ -1070,7 +1070,7 @@
           <div class="face back">
             <div class="word" id="fc-back-word">—</div>
             <div class="sub" id="fc-back-sub"></div>
-            <button type="button" class="fc-say" id="fc-say" aria-label="Écouter la prononciation en serbe">🔊 Écouter</button>
+            <button type="button" class="fc-say" id="fc-say" aria-label="Écouter la prononciation en serbe"> Écouter</button>
             <div class="hint">clique pour revenir</div>
           </div>
         </div>
@@ -1082,7 +1082,7 @@
         <button class="action good" id="fc-know">Je connais</button>
         <button class="action ghost" id="fc-next">Suivant →</button>
       </div>
-      <div class="retry-bar" id="fc-retry-bar"><button type="button" class="action retry-btn" id="fc-retry" disabled>🔁 Retravailler mes erreurs (0)</button></div>
+      <div class="retry-bar" id="fc-retry-bar"><button type="button" class="action retry-btn" id="fc-retry" disabled> Retravailler mes erreurs (0)</button></div>
       <div class="progress-label" id="fc-progress"></div>
     </div>
   </section>
@@ -1094,7 +1094,7 @@
       <div class="chips" id="quiz-count-chips" style="margin-bottom:0;"></div>
     </div>
     <div class="chips" id="quiz-chips"></div>
-    <p class="quiz-weak-note" id="quiz-weak-note" style="display:none;">🎯 Priorité aux mots que tu maîtrises le moins bien, toutes catégories confondues.</p>
+    <p class="quiz-weak-note" id="quiz-weak-note" style="display:none;"> Priorité aux mots que tu maîtrises le moins bien, toutes catégories confondues.</p>
     <div class="quiz-box" id="quiz-box"></div>
   </section>
   <section id="sec-progress">
@@ -1114,8 +1114,8 @@
     <div class="chips" id="cu-chips"></div>
 
     <div class="culture-tools">
-      <button class="action primary" id="cu-mode-cards">📇 Flashcards</button>
-      <button class="action ghost" id="cu-mode-quiz">📝 Quiz</button>
+      <button class="action primary" id="cu-mode-cards"> Flashcards</button>
+      <button class="action ghost" id="cu-mode-quiz"> Quiz</button>
     </div>
 
     <div id="cu-cards-wrap" class="flashcard-wrap">
@@ -1139,9 +1139,9 @@
         <button class="action good" id="cu-know">Je connais</button>
         <button class="action ghost" id="cu-next">Suivant →</button>
       </div>
-      <div class="retry-bar" id="cu-retry-bar"><button type="button" class="action retry-btn" id="cu-retry" disabled>🔁 Retravailler mes erreurs (0)</button></div>
+      <div class="retry-bar" id="cu-retry-bar"><button type="button" class="action retry-btn" id="cu-retry" disabled> Retravailler mes erreurs (0)</button></div>
       <div class="card-controls" id="cu-shuffle-row">
-        <button class="action ghost" id="cu-shuffle">🔀 Mélanger les cartes</button>
+        <button class="action ghost" id="cu-shuffle"> Mélanger les cartes</button>
       </div>
       <div class="progress-label" id="cu-progress"></div>
     </div>
@@ -1150,7 +1150,7 @@
   </section>
 <section id="sec-pronunciation">
     <h2>Prononciation : avoir un vrai accent serbe</h2>
-    <p class="lead">Connaître l'alphabet ne suffit pas : il faut apprendre les sons réels, l'accent tonique, la longueur des voyelles et l'enchaînement des consonnes. Clique sur 🔊 pour écouter.</p>
+    <p class="lead">Connaître l'alphabet ne suffit pas : il faut apprendre les sons réels, l'accent tonique, la longueur des voyelles et l'enchaînement des consonnes. Clique sur  pour écouter.</p>
     <div class="tip">Convention : la voyelle <span class="st">soulignée</span> est la voyelle accentuée. Les transcriptions [API/IPA] sont volontairement approximatives ; le but est de t'orienter, pas de remplacer l'écoute de vrais locuteurs.</div>
     <div class="gram-card"><h3>1. Le principe : écrit ≠ prononcé</h3>
       <p>Le serbe est très phonétique : une lettre correspond généralement à un son, mais la position de l'accent et la longueur vocalique comptent. Travaille avec le <b>cyrillique + l'accent + l'API</b> plutôt qu'avec une romanisation approximative.</p>
@@ -1221,7 +1221,7 @@
   <div class="info-card"><h3>3. Saint Sava et l'Église serbe</h3><p><strong>Saint Sava (Sveti Sava)</strong>, fils de Stefan Nemanja, fonde l'autonomie de l'Église serbe en 1219 et devient l'une des figures les plus importantes de la culture et de la spiritualité serbes.</p></div>
   <div class="info-card"><h3>4. Stefan Dušan et l'apogée médiévale</h3><p><strong>Stefan Dušan</strong> règne au XIVe siècle et étend fortement l'État serbe. Son <strong>Code de Dušan</strong> constitue un texte juridique majeur du Moyen Âge balkanique.</p></div>
   <div class="info-card"><h3>5. Kosovo Polje (1389)</h3><p>La <strong>bataille de Kosovo Polje</strong> du 28 juin 1389 devient un événement fondateur de la mémoire historique serbe. La réalité militaire et politique est complexe, mais la bataille occupe une place centrale dans la tradition nationale.</p></div>
-  <div class="info-card" lang="en"><h3>🦅 Kosovo 1389 : Prince Lazar and the gray falcon (en anglais)</h3>
+  <div class="info-card" lang="en"><h3> Kosovo 1389 : Prince Lazar and the gray falcon (en anglais)</h3>
     <p>In 1389, the Ottoman army of Sultan Murad I marched on Serbia. Prince Lazar rode out to meet it at the Battle of Kosovo, in defense of his people and the Christian faith.</p>
     <p>According to Serbian tradition, on the eve of the battle the Prophet Elijah came to Lazar as a gray falcon from Jerusalem, carrying a letter from the Mother of God. It offered him a choice: an earthly kingdom, meaning victory, or the heavenly kingdom, meaning martyrdom. Lazar chose heaven: “The earthly kingdom lasts only a brief time, but the heavenly kingdom always and forever.” He told his soldiers: “We die with Christ, to live forever.” The prince and his warriors received Holy Communion and went into battle.</p>
     <p>Both rulers died that day. Murad remains the only Ottoman sultan ever killed in battle. Lazar was captured and beheaded. The Serbian Orthodox Church glorified him as a Great Martyr, and his relics rest at the Ravanica Monastery he himself built. Every June 28, on Vidovdan, Serbs still keep his feast.</p>
@@ -1232,7 +1232,7 @@
   <div class="info-card"><h3>8. Indépendance et royaume</h3><p>La Serbie obtient la reconnaissance internationale de son indépendance au <strong>Congrès de Berlin en 1878</strong>. En 1882, la principauté devient royaume sous Milan Ier.</p></div>
   <div class="info-card"><h3>9. XXe siècle</h3><p>Après les guerres balkaniques et la Première Guerre mondiale, le Royaume des Serbes, Croates et Slovènes est créé en 1918, puis devient le Royaume de Yougoslavie en 1929. Après 1945, la Serbie fait partie de la Yougoslavie socialiste.</p></div>
   <div class="info-card"><h3>10. Serbie contemporaine</h3><p>Après l'éclatement de la Yougoslavie, la Serbie devient un État indépendant en 2006. Belgrade est la capitale et le principal centre politique, économique et culturel du pays.</p></div>
-  <div class="info-card"><h3>🏺 Origines civilisationnelles</h3><p>Le territoire serbe abrite <strong>Lepenski Vir</strong> (vers 9500–6000 av. J.-C.) et la <strong>culture de Vinča</strong> (≈5700–4500 av. J.-C.), l'une des plus grandes cultures néolithiques d'Europe. Les Romains y fondent <strong>Singidunum</strong> (Belgrade), <strong>Sirmium</strong>, <strong>Viminacium</strong> et <strong>Naissus</strong> (Niš, ville natale de Constantin Ier). Une série d'empereurs romains y est née ; Galère construit Felix Romuliana. Les Slaves s'installent dans les Balkans aux VIe–VIIe siècles et se christianisent progressivement au IXe siècle.</p></div><div class="info-card"><h3>☦️ Orthodoxie serbe : repères</h3><p><strong>1219</strong> : autocéphalie de l'Église serbe, Sava premier archevêque (Žiča) · <strong>1346</strong> : élévation au rang de <strong>Patriarcat de Peć</strong> · <strong>1459–1557</strong> : siège patriarcal supprimé puis restauré par Makarije Sokolović · <strong>1690</strong> : Grande Migration du patriarche Arsenije III Čarnojević vers l'Empire des Habsbourg · <strong>1766</strong> : abolition du patriarcat par les Ottomans · <strong>1920</strong> : patriarcat rétabli à Belgrade. Saints majeurs : Siméon (Nemanja), Sava, prince Lazar, Vasilije d'Ostrog, Nikolaj Velimirović, Justin de Ćelije.</p></div><div class="info-card"><h3>👑 Dynasties et couronnements</h3><p><strong>Vlastimirović</strong> (IXe s.) · <strong>Časlav Klonimirović</strong> (Xe s.) · <strong>Vojislavljević</strong> de Duklja/Zeta (XIe s. ; Mihailo, puis Bodin proclamé roi en 1077) · <strong>Nemanjić</strong> : Stefan Prvovenčani, premier roi couronné (1217/1219) · <strong>1346</strong> : Dušan se fait couronner empereur à Skopje · <strong>Lazarević</strong> et <strong>Branković</strong> (despotat, capitale Smederevo, chute en 1459) · <strong>Crnojević</strong> de Zeta (Cetinje fondée en 1482).</p></div><div class="info-card"><h3>⚔️ Grandes victoires et batailles</h3><p><strong>Mišar</strong> et <strong>Deligrad</strong> (1806) · <strong>Ljubić</strong> et <strong>Dublje</strong> (1815) · <strong>Kumanovo</strong> (1912) et <strong>Bregalnica</strong> (1913) · <strong>Cer</strong> (août 1914), première victoire alliée de la Grande Guerre · <strong>Kolubara</strong> (déc. 1914) · <strong>Kajmakčalan</strong> (sept. 1916) et <strong>percée du front de Salonique</strong> (sept. 1918, Dobro Polje). Épreuves : <strong>Maritsa</strong> (1371), <strong>Kosovo</strong> (1389), <strong>Čegar</strong> (1809), le retrait à travers l'Albanie (1915). Résistance de 1941–45 : Kadinjača, Kraljevo, Kragujevac.</p></div><div class="info-card"><h3>🇲🇪 Monténégro : de Zeta à l'indépendance</h3><p><strong>Zeta/Duklja</strong> médiévale · <strong>1493</strong> : imprimerie de Cetinje, premier livre imprimé slave du Sud (Oktoih) · <strong>prince-évêques</strong> Petrović-Njegoš dès 1697 · <strong>Martinići</strong> et <strong>Krusi</strong> (1796) · <strong>Grahovac</strong> (1858) · <strong>Vučji Do</strong> (1876) · <strong>1878</strong> : indépendance reconnue à Berlin · <strong>1910</strong> : royaume de Nikola Ier · <strong>1918</strong> : union avec la Serbie et la future Yougoslavie · <strong>1941</strong> : soulèvement du 13 juillet · <strong>21 mai 2006</strong> : indépendance. Poète-évêque : <strong>Petar II Petrović-Njegoš</strong> (<em>Le Laurier de la montagne</em>, 1847).</p></div><div class="info-card"><h3>📜 Dates clés</h3><p><strong>1217/1219</strong> couronnement · <strong>1346</strong> empire · <strong>1349</strong> Code de Dušan · <strong>1389</strong> Kosovo · <strong>1459</strong> chute de Smederevo · <strong>1690</strong> Grande Migration · <strong>1804/1815</strong> soulèvements · <strong>1878</strong> indépendance · <strong>1914–18</strong> Grande Guerre · <strong>1918</strong> création du royaume · <strong>1941–45</strong> Seconde Guerre mondiale · <strong>2006</strong> Serbie et Monténégro indépendants.</p></div><div class="info-card"><h3>👑 Les grands souverains serbes</h3><p><strong>Stefan Nemanja</strong> (v. 1113–1199) : fondateur des Nemanjić, il unifie une grande partie des terres serbes ; son fils Rastko devient saint Sava. · <strong>Stefan Ier le Premier-Couronné</strong> (v. 1165–1228) : roi en 1217, la Serbie devient royaume. · <strong>Stefan Uroš II Milutin</strong> (1253–1321) : conquérant vers la Macédoine, grand bâtisseur de monastères. · <strong>Stefan Uroš III Dečanski</strong> (v. 1276–1331) : vainqueur des Bulgares à Velbazhd. · <strong>Stefan Dušan</strong> (1308–1355) ⭐ : le plus puissant, couronné empereur des Serbes et des Grecs en 1346 ; son empire couvre l'essentiel de la Serbie, du Kosovo, de la Macédoine du Nord, de l'Albanie et du nord de la Grèce ; auteur du Code de Dušan.</p></div><div class="info-card"><h3>✝️ Qui a évangélisé les Serbes ?</h3><p>Il faut distinguer deux choses. <strong>Cyrille, Méthode et leurs disciples</strong> sont à l'origine de la christianisation des Slaves ; les Serbes sont déjà largement christianisés au IXe siècle, sous l'influence de Byzance. <strong>Saint Sava</strong> (v. 1174–1236), moine du Mont Athos, devient en <strong>1219</strong> premier archevêque d'une Église serbe indépendante : il fonde évêchés et monastères et organise l'éducation. Résumé : Cyrille et Méthode → christianisation ; saint Sava → Église et identité orthodoxes serbes.</p></div><div class="info-card"><h3>🏆 Victoires serbes médiévales</h3><p><strong>Velbazhd (1330)</strong> : Dečanski bat les Bulgares, la Serbie devient la première puissance des Balkans occidentaux. · <strong>Conquêtes de Dušan (années 1340)</strong> : campagnes profitant des guerres civiles byzantines (Macédoine, Épire, Thessalie). · <strong>Pločnik (1386)</strong> : le prince Lazar bat les Ottomans. · <strong>Bileća (1388)</strong> : victoire serbo-bosniaque sur les Ottomans. · <strong>Kosovo (1389)</strong> : Lazar, prince et non tsar, dirige une coalition chrétienne ; Lazar et le sultan Murad Ier meurent. Tactiquement indécise, aux conséquences politiques défavorables, la bataille est devenue l'événement fondateur de la mémoire serbe.</p></div><div class="info-card"><h3>⛪ Monténégro : les vladikas</h3><p>Pendant des siècles, le Monténégro est gouverné par des <strong>princes-évêques orthodoxes (vladikas)</strong>, à la fois chefs religieux, politiques et militaires. La charge passe d'oncle à neveu dans la famille <strong>Petrović-Njegoš</strong>, les évêques étant célibataires. <strong>Danilo Ier</strong> (1670–1735) fonde la dynastie et résiste aux Ottomans (victoire de <strong>Carev Laz, 1712</strong>). <strong>Petar Ier</strong> (1747–1830), chef militaire et législateur, canonisé saint <strong>Pierre de Cetinje</strong> (victoire de <strong>Krusi, 1796</strong>). <strong>Petar II</strong> (1813–1851), évêque, poète et philosophe, auteur du <em>Gorski vijenac</em> (« Le Laurier de la montagne »), centralise et modernise le pays. <strong>Nicolas Ier</strong> (1841–1921), prince en 1860, roi en 1910, agrandit le Monténégro lors des guerres balkaniques de 1912–1913 (régions de Novi Pazar et de Métochie).</p></div><div class="info-card"><h3>🏆 Victoires monténégrines</h3><p><strong>Carev Laz (1712)</strong> · <strong>Martinići et Krusi (1796)</strong> · <strong>Grahovo (1858)</strong>, qui contribue à l'indépendance de fait reconnue ensuite en 1878 · <strong>guerres balkaniques (1912–1913)</strong> aux côtés de la Serbie, de la Bulgarie et de la Grèce. Christianisation : processus progressif sous influence byzantine, puis intégration à la tradition serbe de Sava ; le monastère de Cetinje devient le cœur religieux et politique du pays.</p></div><div class="culture-cta"><span>Réviser cette partie :</span><button class="action primary cu-jump" data-cat="hist" data-mode="cards">📇 Flashcards</button><button class="action ghost cu-jump" data-cat="hist" data-mode="quiz">📝 Quiz</button></div></section>
+  <div class="info-card"><h3> Origines civilisationnelles</h3><p>Le territoire serbe abrite <strong>Lepenski Vir</strong> (vers 9500–6000 av. J.-C.) et la <strong>culture de Vinča</strong> (≈5700–4500 av. J.-C.), l'une des plus grandes cultures néolithiques d'Europe. Les Romains y fondent <strong>Singidunum</strong> (Belgrade), <strong>Sirmium</strong>, <strong>Viminacium</strong> et <strong>Naissus</strong> (Niš, ville natale de Constantin Ier). Une série d'empereurs romains y est née ; Galère construit Felix Romuliana. Les Slaves s'installent dans les Balkans aux VIe–VIIe siècles et se christianisent progressivement au IXe siècle.</p></div><div class="info-card"><h3> Orthodoxie serbe : repères</h3><p><strong>1219</strong> : autocéphalie de l'Église serbe, Sava premier archevêque (Žiča) · <strong>1346</strong> : élévation au rang de <strong>Patriarcat de Peć</strong> · <strong>1459–1557</strong> : siège patriarcal supprimé puis restauré par Makarije Sokolović · <strong>1690</strong> : Grande Migration du patriarche Arsenije III Čarnojević vers l'Empire des Habsbourg · <strong>1766</strong> : abolition du patriarcat par les Ottomans · <strong>1920</strong> : patriarcat rétabli à Belgrade. Saints majeurs : Siméon (Nemanja), Sava, prince Lazar, Vasilije d'Ostrog, Nikolaj Velimirović, Justin de Ćelije.</p></div><div class="info-card"><h3> Dynasties et couronnements</h3><p><strong>Vlastimirović</strong> (IXe s.) · <strong>Časlav Klonimirović</strong> (Xe s.) · <strong>Vojislavljević</strong> de Duklja/Zeta (XIe s. ; Mihailo, puis Bodin proclamé roi en 1077) · <strong>Nemanjić</strong> : Stefan Prvovenčani, premier roi couronné (1217/1219) · <strong>1346</strong> : Dušan se fait couronner empereur à Skopje · <strong>Lazarević</strong> et <strong>Branković</strong> (despotat, capitale Smederevo, chute en 1459) · <strong>Crnojević</strong> de Zeta (Cetinje fondée en 1482).</p></div><div class="info-card"><h3> Grandes victoires et batailles</h3><p><strong>Mišar</strong> et <strong>Deligrad</strong> (1806) · <strong>Ljubić</strong> et <strong>Dublje</strong> (1815) · <strong>Kumanovo</strong> (1912) et <strong>Bregalnica</strong> (1913) · <strong>Cer</strong> (août 1914), première victoire alliée de la Grande Guerre · <strong>Kolubara</strong> (déc. 1914) · <strong>Kajmakčalan</strong> (sept. 1916) et <strong>percée du front de Salonique</strong> (sept. 1918, Dobro Polje). Épreuves : <strong>Maritsa</strong> (1371), <strong>Kosovo</strong> (1389), <strong>Čegar</strong> (1809), le retrait à travers l'Albanie (1915). Résistance de 1941–45 : Kadinjača, Kraljevo, Kragujevac.</p></div><div class="info-card"><h3> Monténégro : de Zeta à l'indépendance</h3><p><strong>Zeta/Duklja</strong> médiévale · <strong>1493</strong> : imprimerie de Cetinje, premier livre imprimé slave du Sud (Oktoih) · <strong>prince-évêques</strong> Petrović-Njegoš dès 1697 · <strong>Martinići</strong> et <strong>Krusi</strong> (1796) · <strong>Grahovac</strong> (1858) · <strong>Vučji Do</strong> (1876) · <strong>1878</strong> : indépendance reconnue à Berlin · <strong>1910</strong> : royaume de Nikola Ier · <strong>1918</strong> : union avec la Serbie et la future Yougoslavie · <strong>1941</strong> : soulèvement du 13 juillet · <strong>21 mai 2006</strong> : indépendance. Poète-évêque : <strong>Petar II Petrović-Njegoš</strong> (<em>Le Laurier de la montagne</em>, 1847).</p></div><div class="info-card"><h3> Dates clés</h3><p><strong>1217/1219</strong> couronnement · <strong>1346</strong> empire · <strong>1349</strong> Code de Dušan · <strong>1389</strong> Kosovo · <strong>1459</strong> chute de Smederevo · <strong>1690</strong> Grande Migration · <strong>1804/1815</strong> soulèvements · <strong>1878</strong> indépendance · <strong>1914–18</strong> Grande Guerre · <strong>1918</strong> création du royaume · <strong>1941–45</strong> Seconde Guerre mondiale · <strong>2006</strong> Serbie et Monténégro indépendants.</p></div><div class="info-card"><h3> Les grands souverains serbes</h3><p><strong>Stefan Nemanja</strong> (v. 1113–1199) : fondateur des Nemanjić, il unifie une grande partie des terres serbes ; son fils Rastko devient saint Sava. · <strong>Stefan Ier le Premier-Couronné</strong> (v. 1165–1228) : roi en 1217, la Serbie devient royaume. · <strong>Stefan Uroš II Milutin</strong> (1253–1321) : conquérant vers la Macédoine, grand bâtisseur de monastères. · <strong>Stefan Uroš III Dečanski</strong> (v. 1276–1331) : vainqueur des Bulgares à Velbazhd. · <strong>Stefan Dušan</strong> (1308–1355)  : le plus puissant, couronné empereur des Serbes et des Grecs en 1346 ; son empire couvre l'essentiel de la Serbie, du Kosovo, de la Macédoine du Nord, de l'Albanie et du nord de la Grèce ; auteur du Code de Dušan.</p></div><div class="info-card"><h3> Qui a évangélisé les Serbes ?</h3><p>Il faut distinguer deux choses. <strong>Cyrille, Méthode et leurs disciples</strong> sont à l'origine de la christianisation des Slaves ; les Serbes sont déjà largement christianisés au IXe siècle, sous l'influence de Byzance. <strong>Saint Sava</strong> (v. 1174–1236), moine du Mont Athos, devient en <strong>1219</strong> premier archevêque d'une Église serbe indépendante : il fonde évêchés et monastères et organise l'éducation. Résumé : Cyrille et Méthode → christianisation ; saint Sava → Église et identité orthodoxes serbes.</p></div><div class="info-card"><h3> Victoires serbes médiévales</h3><p><strong>Velbazhd (1330)</strong> : Dečanski bat les Bulgares, la Serbie devient la première puissance des Balkans occidentaux. · <strong>Conquêtes de Dušan (années 1340)</strong> : campagnes profitant des guerres civiles byzantines (Macédoine, Épire, Thessalie). · <strong>Pločnik (1386)</strong> : le prince Lazar bat les Ottomans. · <strong>Bileća (1388)</strong> : victoire serbo-bosniaque sur les Ottomans. · <strong>Kosovo (1389)</strong> : Lazar, prince et non tsar, dirige une coalition chrétienne ; Lazar et le sultan Murad Ier meurent. Tactiquement indécise, aux conséquences politiques défavorables, la bataille est devenue l'événement fondateur de la mémoire serbe.</p></div><div class="info-card"><h3> Monténégro : les vladikas</h3><p>Pendant des siècles, le Monténégro est gouverné par des <strong>princes-évêques orthodoxes (vladikas)</strong>, à la fois chefs religieux, politiques et militaires. La charge passe d'oncle à neveu dans la famille <strong>Petrović-Njegoš</strong>, les évêques étant célibataires. <strong>Danilo Ier</strong> (1670–1735) fonde la dynastie et résiste aux Ottomans (victoire de <strong>Carev Laz, 1712</strong>). <strong>Petar Ier</strong> (1747–1830), chef militaire et législateur, canonisé saint <strong>Pierre de Cetinje</strong> (victoire de <strong>Krusi, 1796</strong>). <strong>Petar II</strong> (1813–1851), évêque, poète et philosophe, auteur du <em>Gorski vijenac</em> (« Le Laurier de la montagne »), centralise et modernise le pays. <strong>Nicolas Ier</strong> (1841–1921), prince en 1860, roi en 1910, agrandit le Monténégro lors des guerres balkaniques de 1912–1913 (régions de Novi Pazar et de Métochie).</p></div><div class="info-card"><h3> Victoires monténégrines</h3><p><strong>Carev Laz (1712)</strong> · <strong>Martinići et Krusi (1796)</strong> · <strong>Grahovo (1858)</strong>, qui contribue à l'indépendance de fait reconnue ensuite en 1878 · <strong>guerres balkaniques (1912–1913)</strong> aux côtés de la Serbie, de la Bulgarie et de la Grèce. Christianisation : processus progressif sous influence byzantine, puis intégration à la tradition serbe de Sava ; le monastère de Cetinje devient le cœur religieux et politique du pays.</p></div><div class="culture-cta"><span>Réviser cette partie :</span><button class="action primary cu-jump" data-cat="hist" data-mode="cards"> Flashcards</button><button class="action ghost cu-jump" data-cat="hist" data-mode="quiz"> Quiz</button></div></section>
 
 <section id="sec-holidays"><h2>Fêtes, saints et grandes dates serbes</h2><p class="lead">Un calendrier réunissant fêtes orthodoxes, traditions populaires et grandes dates de la mémoire serbe.</p>
   <div class="info-card"><h3>1. Нова година — Nouvel An (1er janvier)</h3><p>Le Nouvel An est célébré avec des réunions familiales, des repas festifs et des célébrations publiques.</p></div>
@@ -1246,56 +1246,56 @@
   <div class="info-card"><h3>9. Митровдан — Saint-Démètre (8 novembre)</h3><p>Fête religieuse et populaire traditionnellement associée au passage vers la saison hivernale.</p></div>
   <div class="info-card"><h3>10. Никољдан — Saint-Nicolas (19 décembre)</h3><p>La <em>slava</em> de Saint-Nicolas est l'une des plus répandues en Serbie. Les familles orthodoxes célèbrent leur saint patron avec un repas rituel, le <em>slavski kolač</em> et le <em>koljivo</em>.</p></div>
   <div class="info-card"><h3>11. Слава — Slava familiale</h3><p>Tradition serbe particulière : chaque famille célèbre son saint patron. Les slavas les plus connues incluent Saint-Nicolas, Saint-Georges, Saint-Jean et Saint-Michel.</p></div>
-  <div class="info-card"><h3>➕ Compléments — Hiver</h3><p><strong>Српска Нова година</strong> (14 janv., Nouvel An julien, <em>Sveti Vasilije</em>) · <strong>Јовањдан</strong> (20 janv., Saint-Jean-Baptiste) · <strong>Савиндан — Sveti Sava</strong> (27 janv., fête de saint Sava, patron des écoles) · <strong>Свети Трифун</strong> (14 févr., patron des vignerons).</p></div><div class="info-card"><h3>➕ Compléments — Cycle pascal</h3><p><strong>Лазарева субота</strong> (samedi de Lazare) · <strong>Цвети</strong> (Rameaux) · <strong>Велики петак</strong> (Vendredi saint) · <strong>Спасовдан</strong> (Ascension, 40 jours après Pâques) · <strong>Duhovi / Тројице</strong> (Pentecôte et Trinité). <strong>Благовести</strong> (Annonciation) : 7 avril. Les fêtes mobiles suivent la date de Pâques du calendrier julien.</p></div><div class="info-card"><h3>➕ Compléments — Printemps et été</h3><p><strong>Dan rada</strong> (1–2 mai) · <strong>Дан победе</strong> (9 mai, victoire sur le nazisme) · <strong>Ћирило и Методије</strong> (24 mai, fête de l'alphabet et de la culture slaves) · <strong>Ивањдан</strong> (7 juil., nativité de Jean-Baptiste, feux de la Saint-Jean) · <strong>Петровдан</strong> (12 juil., saints Pierre et Paul) · <strong>Илиндан</strong> (2 août, saint Élie, patron de la foudre et des moissons).</p></div><div class="info-card"><h3>➕ Compléments — Automne et début d'hiver</h3><p><strong>Велика Госпојина</strong> (28 août, Dormition de la Vierge) · <strong>Мала Госпојина</strong> (21 sept., Nativité de la Vierge) · <strong>Крстовдан</strong> (27 sept., Exaltation de la Sainte Croix) · <strong>Дан примирја</strong> (11 nov., armistice de 1918) · <strong>Аранђеловдан</strong> (21 nov., saint Michel, slava très répandue) · <strong>Ваведење</strong> (4 déc., Présentation de la Vierge au Temple).</p></div><div class="info-card"><h3>➕ Fêtes et dates du Monténégro 🇲🇪</h3><p><strong>Dan nezavisnosti</strong> (21 mai, référendum de 2006) · <strong>Dan državnosti</strong> (13 juillet, reconnaissance de 1878 au Congrès de Berlin et soulèvement de 1941) · <strong>Petrovdan</strong>, <strong>Božić</strong>, <strong>Vaskrs</strong> et <strong>Đurđevdan</strong> sont fêtés selon le calendrier julien ; la <strong>Fašinada</strong> de Perast (22 juillet) commémore la légende de l'îlot Gospa od Škrpjela.</p></div><div class="info-card"><h3>📌 Rappel</h3><p>Dates fixes données dans le calendrier grégorien (les Églises orthodoxes serbes utilisent le calendrier julien, décalé de 13 jours).</p></div><div class="culture-cta"><span>Réviser le calendrier :</span><button class="action primary cu-jump" data-cat="fetes" data-mode="cards">📇 Flashcards</button><button class="action ghost cu-jump" data-cat="fetes" data-mode="quiz">📝 Quiz</button></div></section>
+  <div class="info-card"><h3> Compléments — Hiver</h3><p><strong>Српска Нова година</strong> (14 janv., Nouvel An julien, <em>Sveti Vasilije</em>) · <strong>Јовањдан</strong> (20 janv., Saint-Jean-Baptiste) · <strong>Савиндан — Sveti Sava</strong> (27 janv., fête de saint Sava, patron des écoles) · <strong>Свети Трифун</strong> (14 févr., patron des vignerons).</p></div><div class="info-card"><h3> Compléments — Cycle pascal</h3><p><strong>Лазарева субота</strong> (samedi de Lazare) · <strong>Цвети</strong> (Rameaux) · <strong>Велики петак</strong> (Vendredi saint) · <strong>Спасовдан</strong> (Ascension, 40 jours après Pâques) · <strong>Duhovi / Тројице</strong> (Pentecôte et Trinité). <strong>Благовести</strong> (Annonciation) : 7 avril. Les fêtes mobiles suivent la date de Pâques du calendrier julien.</p></div><div class="info-card"><h3> Compléments — Printemps et été</h3><p><strong>Dan rada</strong> (1–2 mai) · <strong>Дан победе</strong> (9 mai, victoire sur le nazisme) · <strong>Ћирило и Методије</strong> (24 mai, fête de l'alphabet et de la culture slaves) · <strong>Ивањдан</strong> (7 juil., nativité de Jean-Baptiste, feux de la Saint-Jean) · <strong>Петровдан</strong> (12 juil., saints Pierre et Paul) · <strong>Илиндан</strong> (2 août, saint Élie, patron de la foudre et des moissons).</p></div><div class="info-card"><h3> Compléments — Automne et début d'hiver</h3><p><strong>Велика Госпојина</strong> (28 août, Dormition de la Vierge) · <strong>Мала Госпојина</strong> (21 sept., Nativité de la Vierge) · <strong>Крстовдан</strong> (27 sept., Exaltation de la Sainte Croix) · <strong>Дан примирја</strong> (11 nov., armistice de 1918) · <strong>Аранђеловдан</strong> (21 nov., saint Michel, slava très répandue) · <strong>Ваведење</strong> (4 déc., Présentation de la Vierge au Temple).</p></div><div class="info-card"><h3> Fêtes et dates du Monténégro </h3><p><strong>Dan nezavisnosti</strong> (21 mai, référendum de 2006) · <strong>Dan državnosti</strong> (13 juillet, reconnaissance de 1878 au Congrès de Berlin et soulèvement de 1941) · <strong>Petrovdan</strong>, <strong>Božić</strong>, <strong>Vaskrs</strong> et <strong>Đurđevdan</strong> sont fêtés selon le calendrier julien ; la <strong>Fašinada</strong> de Perast (22 juillet) commémore la légende de l'îlot Gospa od Škrpjela.</p></div><div class="info-card"><h3> Rappel</h3><p>Dates fixes données dans le calendrier grégorien (les Églises orthodoxes serbes utilisent le calendrier julien, décalé de 13 jours).</p></div><div class="culture-cta"><span>Réviser le calendrier :</span><button class="action primary cu-jump" data-cat="fetes" data-mode="cards"> Flashcards</button><button class="action ghost cu-jump" data-cat="fetes" data-mode="quiz"> Quiz</button></div></section>
 
-<section id="sec-pride"><h2>🇷🇸 Fiertés serbes : héros, patrimoine, culture et symboles</h2><p class="lead">Une encyclopédie de révision consacrée à l'histoire, à la culture, à la spiritualité et aux symboles associés à la Serbie.</p>
-  <div class="info-card"><h3>🏆 Grandes figures historiques</h3><p><strong>Stefan Nemanja</strong> · <strong>Saint Sava</strong> · <strong>Stefan Dušan</strong> · <strong>Knez Lazar</strong> · <strong>Despot Stefan Lazarević</strong> · <strong>Karađorđe</strong> · <strong>Miloš Obrenović</strong> · <strong>Mihajlo Pupin</strong> · <strong>Nikola Tesla</strong>.</p></div>
-  <div class="info-card"><h3>🦅 Héros et personnalités</h3><p><strong>Karađorđe</strong> — chef du Premier soulèvement serbe · <strong>Miloš Obrenović</strong> — fondateur de la principauté autonome moderne · <strong>Milunka Savić</strong> — héroïne militaire · <strong>Vuk Karadžić</strong> — réformateur de la langue serbe.</p></div>
-  <div class="info-card"><h3>☦️ Spiritualité et monastères</h3><p>Les monastères de <strong>Studenica</strong>, <strong>Žiča</strong>, <strong>Visoki Dečani</strong>, <strong>Gračanica</strong>, <strong>Manasija</strong> et <strong>Sopoćani</strong> sont des repères majeurs de l'art et de la spiritualité orthodoxes serbes.</p></div>
-  <div class="info-card"><h3>📚 Langue, alphabet et littérature</h3><p><strong>Vuk Karadžić</strong> joue un rôle central dans la réforme de la langue et de l'orthographe serbes au XIXe siècle. La tradition littéraire comprend notamment <strong>Dositej Obradović</strong>, <strong>Petar II Petrović-Njegoš</strong> et de nombreux auteurs modernes.</p></div>
-  <div class="info-card"><h3>🏛️ Lieux emblématiques</h3><p><strong>Belgrade</strong> · <strong>forteresse de Kalemegdan</strong> · <strong>monastère de Studenica</strong> · <strong>Žiča</strong> · <strong>Sopoćani</strong> · <strong>Gamzigrad-Romuliana</strong> · <strong>forteresse de Golubac</strong> · <strong>Drvengrad</strong> · <strong>Đavolja Varoš</strong>.</p></div>
-  <div class="info-card"><h3>🎶 Folklore et traditions</h3><p><strong>kolo</strong> (danse en chaîne) · musique traditionnelle · <strong>gusle</strong> · costumes régionaux · <strong>slava</strong> · traditions de Noël · <strong>badnjak</strong> · <strong>česnica</strong>.</p></div>
-  <div class="info-card"><h3>⚽ Réussites sportives</h3><p>La Serbie est particulièrement connue pour le basketball, le tennis, le water-polo, le volleyball et certains sports collectifs. Parmi les figures internationales : <strong>Novak Đoković</strong>, <strong>Vlade Divac</strong>, <strong>Dejan Bodiroga</strong>, <strong>Ana Ivanović</strong> et <strong>Jelena Janković</strong>.</p></div>
-  <div class="info-card"><h3>🇷🇸 Symboles nationaux</h3><p>Le drapeau est <strong>rouge, bleu, blanc</strong>. Le <strong>lion bicéphale blanc</strong> et les armoiries royales sont des symboles historiques importants. L'hymne national est <strong>Bože pravde</strong>.</p></div>
-  <div class="culture-cta"><span>Réviser les fiertés :</span><button class="action primary cu-jump" data-cat="fierte" data-mode="cards">📇 Flashcards</button><button class="action ghost cu-jump" data-cat="fierte" data-mode="quiz">📝 Quiz</button></div></section>
+<section id="sec-pride"><h2> Fiertés serbes : héros, patrimoine, culture et symboles</h2><p class="lead">Une encyclopédie de révision consacrée à l'histoire, à la culture, à la spiritualité et aux symboles associés à la Serbie.</p>
+  <div class="info-card"><h3> Grandes figures historiques</h3><p><strong>Stefan Nemanja</strong> · <strong>Saint Sava</strong> · <strong>Stefan Dušan</strong> · <strong>Knez Lazar</strong> · <strong>Despot Stefan Lazarević</strong> · <strong>Karađorđe</strong> · <strong>Miloš Obrenović</strong> · <strong>Mihajlo Pupin</strong> · <strong>Nikola Tesla</strong>.</p></div>
+  <div class="info-card"><h3> Héros et personnalités</h3><p><strong>Karađorđe</strong> — chef du Premier soulèvement serbe · <strong>Miloš Obrenović</strong> — fondateur de la principauté autonome moderne · <strong>Milunka Savić</strong> — héroïne militaire · <strong>Vuk Karadžić</strong> — réformateur de la langue serbe.</p></div>
+  <div class="info-card"><h3> Spiritualité et monastères</h3><p>Les monastères de <strong>Studenica</strong>, <strong>Žiča</strong>, <strong>Visoki Dečani</strong>, <strong>Gračanica</strong>, <strong>Manasija</strong> et <strong>Sopoćani</strong> sont des repères majeurs de l'art et de la spiritualité orthodoxes serbes.</p></div>
+  <div class="info-card"><h3> Langue, alphabet et littérature</h3><p><strong>Vuk Karadžić</strong> joue un rôle central dans la réforme de la langue et de l'orthographe serbes au XIXe siècle. La tradition littéraire comprend notamment <strong>Dositej Obradović</strong>, <strong>Petar II Petrović-Njegoš</strong> et de nombreux auteurs modernes.</p></div>
+  <div class="info-card"><h3> Lieux emblématiques</h3><p><strong>Belgrade</strong> · <strong>forteresse de Kalemegdan</strong> · <strong>monastère de Studenica</strong> · <strong>Žiča</strong> · <strong>Sopoćani</strong> · <strong>Gamzigrad-Romuliana</strong> · <strong>forteresse de Golubac</strong> · <strong>Drvengrad</strong> · <strong>Đavolja Varoš</strong>.</p></div>
+  <div class="info-card"><h3> Folklore et traditions</h3><p><strong>kolo</strong> (danse en chaîne) · musique traditionnelle · <strong>gusle</strong> · costumes régionaux · <strong>slava</strong> · traditions de Noël · <strong>badnjak</strong> · <strong>česnica</strong>.</p></div>
+  <div class="info-card"><h3> Réussites sportives</h3><p>La Serbie est particulièrement connue pour le basketball, le tennis, le water-polo, le volleyball et certains sports collectifs. Parmi les figures internationales : <strong>Novak Đoković</strong>, <strong>Vlade Divac</strong>, <strong>Dejan Bodiroga</strong>, <strong>Ana Ivanović</strong> et <strong>Jelena Janković</strong>.</p></div>
+  <div class="info-card"><h3> Symboles nationaux</h3><p>Le drapeau est <strong>rouge, bleu, blanc</strong>. Le <strong>lion bicéphale blanc</strong> et les armoiries royales sont des symboles historiques importants. L'hymne national est <strong>Bože pravde</strong>.</p></div>
+  <div class="culture-cta"><span>Réviser les fiertés :</span><button class="action primary cu-jump" data-cat="fierte" data-mode="cards"> Flashcards</button><button class="action ghost cu-jump" data-cat="fierte" data-mode="quiz"> Quiz</button></div></section>
 
-<section id="sec-cuisine"><h2>🍽️ Cuisine et patrimoine culinaire serbe</h2><p class="lead">La cuisine serbe associe grillades, pains, légumes, produits laitiers, préparations de fête et influences balkaniques, ottomanes et austro-hongroises.</p><div class="section-toolbar"><button type="button" class="mini-btn" data-expand="all">Tout déplier</button><button type="button" class="mini-btn" data-expand="none">Tout replier</button></div>
-  <details class="info-card" open><summary>⭐ Les incontournables</summary><p>• <strong>Ćevapi — Ћевапи</strong> : petits rouleaux de viande hachée grillée, servis avec oignons et pain.</p><p>• <strong>Pljeskavica — Пљескавица</strong> : galette de viande hachée grillée, emblématique des grillades serbes.</p><p>• <strong>Ajvar — Ајвар</strong> : préparation de poivrons rouges rôtis, souvent conservée pour l'hiver.</p><p>• <strong>Gibanica — Гибаница</strong> : gâteau salé de pâte filo et de fromage frais.</p><p>• <strong>Kajmak — Кајмак</strong> : produit laitier crémeux traditionnel.</p><p>• <strong>Proja — Проја</strong> : pain/gâteau de maïs traditionnel.</p><p>• <strong>Rakija — Ракија</strong> : eau-de-vie de fruits, notamment šljivovica à base de prune.</p></details>
-  <details class="info-card"><summary>🥗 Salades et préparations froides</summary><p>Šopska salata, srpska salata, urnebes, ajvar et poivrons rôtis sont des classiques de table.</p></details>
-  <details class="info-card"><summary>🍲 Soupes et plats mijotés</summary><p>La <strong>čorba</strong>, la <strong>pasulj</strong> (haricots) et diverses soupes de légumes occupent une place importante dans la cuisine familiale.</p></details>
-  <details class="info-card"><summary>🥘 Viandes et grillades</summary><p>Ćevapi, pljeskavica, ražnjići, kobasice et rôti d'agneau sont très présents dans la cuisine et les restaurants.</p></details>
-  <details class="info-card"><summary>🥧 Pains et pâtisseries salées</summary><p>Gibanica, burek, proja et différents pains régionaux accompagnent les repas et les fêtes.</p></details>
-  <details class="info-card"><summary>🍰 Desserts</summary><p>Baklava, vanilice, palačinke, tufahije et diverses pâtisseries de fête montrent les influences balkaniques et ottomanes.</p></details>
-  <details class="info-card"><summary>🎄 Cuisine rituelle</summary><p>Pour Noël orthodoxe, on retrouve notamment <strong>česnica</strong> et le <strong>badnjak</strong>. La <strong>slava</strong> s'accompagne de <strong>slavski kolač</strong> et de <strong>koljivo</strong>.</p></details>
-  <details class="info-card"><summary>🗺️ Spécialités régionales</summary><p>La Voïvodine possède une forte influence pannonienne et austro-hongroise ; la Šumadija est connue pour ses vergers et sa šljivovica ; le sud de la Serbie est réputé pour ses grillades et ses préparations pimentées.</p></details><details class="info-card"><summary>🥩 Plats serbes de viande</summary><p>• <strong>Karađorđeva šnicla</strong> (escalope farcie de kajmak), <strong>sarma</strong> (feuilles de chou farcies), <strong>punjene paprike</strong> (poivrons farcis), <strong>gulaš</strong>, <strong>paprikaš</strong>, <strong>podvarak</strong>, <strong>ćufte</strong>, <strong>musaka</strong>, <strong>prebranac</strong>, <strong>pečenje</strong> (cochon ou agneau à la broche), <strong>sudžuk</strong>, <strong>kulen</strong> (Syrmie), <strong>užička pršuta</strong>, <strong>čvarci</strong>, <strong>pihtije</strong>.</p><p>• <strong>Riblji paprikaš / fiš</strong> (Voïvodine) et <strong>riblja čorba</strong> (soupe de poisson du Danube).</p></details><details class="info-card"><summary>🧀 Fromages, pains, pâtes salées</summary><p>• <strong>Sjenički sir</strong>, <strong>pirotski kačkavalj</strong>, <strong>zlatarski sir</strong>, <strong>kajmak</strong>, <strong>kiselo mleko</strong>.</p><p>• <strong>Lepinja</strong> (pain plat), <strong>pogača</strong>, <strong>kifla</strong>, <strong>pita</strong>, <strong>zeljanica</strong>, <strong>sirnica</strong>, <strong>krompiruša</strong>, <strong>štrudla</strong>, <strong>uštipci</strong>, <strong>đevrek</strong>.</p><p>• <strong>Zimnica</strong> (conserves d'hiver) : ajvar, <strong>kiseli kupus</strong>, <strong>turšija</strong>, <strong>slatko</strong> (confiture de fruits servie à l'accueil).</p></details><details class="info-card"><summary>🍮 Gâteaux et douceurs</summary><p>• <strong>Vasina torta</strong>, <strong>reforma torta</strong>, <strong>Moskva šnit</strong>, <strong>krempita</strong>, <strong>šampita</strong>, <strong>ruske kape</strong>, <strong>orasnice</strong>, <strong>ledene kocke</strong>, <strong>kuglof</strong>, <strong>krofne</strong>, <strong>tulumbe</strong>, <strong>hurmašice</strong>, <strong>ratluk</strong>, <strong>palačinke</strong>, <strong>baklava</strong>, <strong>tufahije</strong>.</p></details><details class="info-card"><summary>🍷 Boissons</summary><p>• <strong>Rakija</strong> : šljivovica, dunjevača (coing), kajsijevača (abricot), loza (raisin), medovača (miel), travarica (herbes).</p><p>• <strong>Vins</strong> : Fruška Gora, Vršac, Župa, Negotin ; <strong>bermet</strong> de Sremski Karlovci. <strong>Domaća kafa</strong> (café turc), <strong>boza</strong>, <strong>kompot</strong>, bières locales (Jelen, Nikšićko).</p></details><details class="info-card"><summary>🇲🇪 Cuisine du Monténégro</summary><p>• <strong>Njeguški pršut</strong> et <strong>njeguški sir</strong> (Njeguši), <strong>kačamak</strong> (polenta au fromage et pommes de terre), <strong>cicvara</strong>, <strong>raštan</strong> (chou vert), <strong>kastradina</strong> (mouton fumé), <strong>jagnjetina ispod sača</strong> (agneau sous cloche), <strong>Pljevaljski sir</strong>, <strong>popeci</strong>, <strong>priganice</strong>.</p><p>• Côte : <strong>crni rižot</strong> (risotto à l'encre de seiche), <strong>buzara</strong>, <strong>brodet</strong>, <strong>lignje</strong> ; lac de Skadar : <strong>šaran</strong> (carpe), <strong>ukljeva</strong>. Vins <strong>Vranac</strong> et <strong>Krstač</strong>, <strong>loza</strong> (rakija de raisin).</p></details></section>
+<section id="sec-cuisine"><h2> Cuisine et patrimoine culinaire serbe</h2><p class="lead">La cuisine serbe associe grillades, pains, légumes, produits laitiers, préparations de fête et influences balkaniques, ottomanes et austro-hongroises.</p><div class="section-toolbar"><button type="button" class="mini-btn" data-expand="all">Tout déplier</button><button type="button" class="mini-btn" data-expand="none">Tout replier</button></div>
+  <details class="info-card" open><summary> Les incontournables</summary><p>• <strong>Ćevapi — Ћевапи</strong> : petits rouleaux de viande hachée grillée, servis avec oignons et pain.</p><p>• <strong>Pljeskavica — Пљескавица</strong> : galette de viande hachée grillée, emblématique des grillades serbes.</p><p>• <strong>Ajvar — Ајвар</strong> : préparation de poivrons rouges rôtis, souvent conservée pour l'hiver.</p><p>• <strong>Gibanica — Гибаница</strong> : gâteau salé de pâte filo et de fromage frais.</p><p>• <strong>Kajmak — Кајмак</strong> : produit laitier crémeux traditionnel.</p><p>• <strong>Proja — Проја</strong> : pain/gâteau de maïs traditionnel.</p><p>• <strong>Rakija — Ракија</strong> : eau-de-vie de fruits, notamment šljivovica à base de prune.</p></details>
+  <details class="info-card"><summary> Salades et préparations froides</summary><p>Šopska salata, srpska salata, urnebes, ajvar et poivrons rôtis sont des classiques de table.</p></details>
+  <details class="info-card"><summary> Soupes et plats mijotés</summary><p>La <strong>čorba</strong>, la <strong>pasulj</strong> (haricots) et diverses soupes de légumes occupent une place importante dans la cuisine familiale.</p></details>
+  <details class="info-card"><summary> Viandes et grillades</summary><p>Ćevapi, pljeskavica, ražnjići, kobasice et rôti d'agneau sont très présents dans la cuisine et les restaurants.</p></details>
+  <details class="info-card"><summary> Pains et pâtisseries salées</summary><p>Gibanica, burek, proja et différents pains régionaux accompagnent les repas et les fêtes.</p></details>
+  <details class="info-card"><summary> Desserts</summary><p>Baklava, vanilice, palačinke, tufahije et diverses pâtisseries de fête montrent les influences balkaniques et ottomanes.</p></details>
+  <details class="info-card"><summary> Cuisine rituelle</summary><p>Pour Noël orthodoxe, on retrouve notamment <strong>česnica</strong> et le <strong>badnjak</strong>. La <strong>slava</strong> s'accompagne de <strong>slavski kolač</strong> et de <strong>koljivo</strong>.</p></details>
+  <details class="info-card"><summary> Spécialités régionales</summary><p>La Voïvodine possède une forte influence pannonienne et austro-hongroise ; la Šumadija est connue pour ses vergers et sa šljivovica ; le sud de la Serbie est réputé pour ses grillades et ses préparations pimentées.</p></details><details class="info-card"><summary> Plats serbes de viande</summary><p>• <strong>Karađorđeva šnicla</strong> (escalope farcie de kajmak), <strong>sarma</strong> (feuilles de chou farcies), <strong>punjene paprike</strong> (poivrons farcis), <strong>gulaš</strong>, <strong>paprikaš</strong>, <strong>podvarak</strong>, <strong>ćufte</strong>, <strong>musaka</strong>, <strong>prebranac</strong>, <strong>pečenje</strong> (cochon ou agneau à la broche), <strong>sudžuk</strong>, <strong>kulen</strong> (Syrmie), <strong>užička pršuta</strong>, <strong>čvarci</strong>, <strong>pihtije</strong>.</p><p>• <strong>Riblji paprikaš / fiš</strong> (Voïvodine) et <strong>riblja čorba</strong> (soupe de poisson du Danube).</p></details><details class="info-card"><summary> Fromages, pains, pâtes salées</summary><p>• <strong>Sjenički sir</strong>, <strong>pirotski kačkavalj</strong>, <strong>zlatarski sir</strong>, <strong>kajmak</strong>, <strong>kiselo mleko</strong>.</p><p>• <strong>Lepinja</strong> (pain plat), <strong>pogača</strong>, <strong>kifla</strong>, <strong>pita</strong>, <strong>zeljanica</strong>, <strong>sirnica</strong>, <strong>krompiruša</strong>, <strong>štrudla</strong>, <strong>uštipci</strong>, <strong>đevrek</strong>.</p><p>• <strong>Zimnica</strong> (conserves d'hiver) : ajvar, <strong>kiseli kupus</strong>, <strong>turšija</strong>, <strong>slatko</strong> (confiture de fruits servie à l'accueil).</p></details><details class="info-card"><summary> Gâteaux et douceurs</summary><p>• <strong>Vasina torta</strong>, <strong>reforma torta</strong>, <strong>Moskva šnit</strong>, <strong>krempita</strong>, <strong>šampita</strong>, <strong>ruske kape</strong>, <strong>orasnice</strong>, <strong>ledene kocke</strong>, <strong>kuglof</strong>, <strong>krofne</strong>, <strong>tulumbe</strong>, <strong>hurmašice</strong>, <strong>ratluk</strong>, <strong>palačinke</strong>, <strong>baklava</strong>, <strong>tufahije</strong>.</p></details><details class="info-card"><summary> Boissons</summary><p>• <strong>Rakija</strong> : šljivovica, dunjevača (coing), kajsijevača (abricot), loza (raisin), medovača (miel), travarica (herbes).</p><p>• <strong>Vins</strong> : Fruška Gora, Vršac, Župa, Negotin ; <strong>bermet</strong> de Sremski Karlovci. <strong>Domaća kafa</strong> (café turc), <strong>boza</strong>, <strong>kompot</strong>, bières locales (Jelen, Nikšićko).</p></details><details class="info-card"><summary> Cuisine du Monténégro</summary><p>• <strong>Njeguški pršut</strong> et <strong>njeguški sir</strong> (Njeguši), <strong>kačamak</strong> (polenta au fromage et pommes de terre), <strong>cicvara</strong>, <strong>raštan</strong> (chou vert), <strong>kastradina</strong> (mouton fumé), <strong>jagnjetina ispod sača</strong> (agneau sous cloche), <strong>Pljevaljski sir</strong>, <strong>popeci</strong>, <strong>priganice</strong>.</p><p>• Côte : <strong>crni rižot</strong> (risotto à l'encre de seiche), <strong>buzara</strong>, <strong>brodet</strong>, <strong>lignje</strong> ; lac de Skadar : <strong>šaran</strong> (carpe), <strong>ukljeva</strong>. Vins <strong>Vranac</strong> et <strong>Krstač</strong>, <strong>loza</strong> (rakija de raisin).</p></details></section>
 
 <section id="sec-monuments">
     <div class="mon-map-card">
-      <h3 style="margin-bottom:.6rem">🗺️ Carte interactive des monuments</h3>
+      <h3 style="margin-bottom:.6rem"> Carte interactive des monuments</h3>
       <div class="mon-map-legend" id="mon-legend"></div>
       <div class="mon-map-wrap"><div id="monuments-map"></div></div>
       <p class="mon-map-hint">Clique sur un repère pour voir le monument. Les boutons permettent d'afficher ou masquer les catégories.</p>
     </div>
-<h2>🏛️ Les monuments de Serbie et du Monténégro</h2><p class="lead">Des monastères médiévaux aux forteresses, sites romains et monuments modernes.</p>
-  <details class="info-card" open><summary>⭐ Icônes nationales</summary><p><strong>Forteresse de Belgrade</strong> · <strong>église Saint-Sava</strong> · <strong>monastère de Studenica</strong> · <strong>Golubac</strong> · <strong>Žiča</strong>.</p></details>
-  <details class="info-card"><summary>🏺 Antiquité romaine</summary><p><strong>Gamzigrad-Romuliana</strong>, palais de l'empereur Galère, est l'un des grands sites romains de Serbie.</p></details>
-  <details class="info-card"><summary>☦️ Serbie médiévale orthodoxe</summary><p>Studenica, Sopoćani, Žiča, Manasija et les monastères du Kosovo-Métochie constituent un patrimoine majeur de l'art serbe médiéval.</p></details>
-  <details class="info-card"><summary>🏰 Forteresses</summary><p>Forteresse de Belgrade, Golubac, Smederevo, Niš et Maglič sont parmi les plus connues.</p></details>
-  <details class="info-card"><summary>🏙️ Belgrade</summary><p>À connaître : Kalemegdan, Knez Mihailova, Skadarlija, église Saint-Marc, temple Saint-Sava et confluence de la Save et du Danube.</p></details>
-  <details class="info-card"><summary>🌄 Nature et patrimoine</summary><p>Đavolja Varoš, Tara, Đerdap et Uvac complètent le patrimoine culturel et naturel du pays.</p></details><details class="info-card"><summary>☦️ Monastères serbes (Raška, Šumadija, Morava)</summary><p>• <strong>Studenica</strong> (fondé par Stefan Nemanja, v. 1190, UNESCO), <strong>Žiča</strong> (1219, couronnements), <strong>Sopoćani</strong> et <strong>Stari Ras / Đurđevi stupovi / Petrova crkva</strong> (UNESCO), <strong>Mileševa</strong> (« Ange blanc »), <strong>Gradac</strong>.</p><p>• <strong>École de la Morava</strong> : <strong>Ravanica</strong> (tombeau du prince Lazar), <strong>Manasija</strong> (Resava), <strong>Ljubostinja</strong>, <strong>Kalenić</strong>, <strong>Lazarica</strong> à Kruševac, <strong>Naupara</strong>, <strong>Vrdnik</strong>.</p></details><details class="info-card"><summary>☦️ Monastères de Voïvodine et d'ailleurs</summary><p>• <strong>Fruška Gora</strong> (« Sainte Montagne », une quinzaine de monastères) : <strong>Krušedol</strong>, <strong>Hopovo</strong>, <strong>Grgeteg</strong>, <strong>Vrdnik-Ravanica</strong>, <strong>Šišatovac</strong>, <strong>Jazak</strong>, <strong>Beočin</strong>. <strong>Ostrog</strong>, <strong>Zlatica</strong>, <strong>Tronoša</strong>, <strong>Hilandar</strong> (Mont Athos, fondation de Sava et Siméon), <strong>Sveti Roman</strong>, <strong>Sveta Petka</strong>.</p></details><details class="info-card"><summary>☦️ Kosovo-Métochie (UNESCO, patrimoine en péril)</summary><p>• <strong>Visoki Dečani</strong> (Stefan Dečanski), <strong>Patriarcat de Peć</strong>, <strong>Gračanica</strong>, <strong>Bogorodica Ljeviška</strong> (Prizren), <strong>Banjska</strong>, <strong>Sveti Arhangeli</strong>. Ces sites sont gardés par des forces internationales ; le statut du Kosovo reste contesté.</p></details><details class="info-card"><summary>🏰 Forteresses et châteaux</summary><p>• <strong>Belgrade</strong> (Kalemegdan), <strong>Smederevo</strong>, <strong>Golubac</strong>, <strong>Petrovaradin</strong> (« Gibraltar du Danube »), <strong>Niš</strong>, <strong>Maglič</strong>, <strong>Ram</strong>, <strong>Kruševac (Lazarev grad)</strong>, <strong>Novo Brdo</strong>, <strong>Koznik</strong>, <strong>Jerina (Đurđev grad)</strong>, <strong>Ras</strong>, <strong>Bač</strong>, <strong>Sokograd</strong>.</p><p>• Châteaux et demeures : <strong>Dvorac Dunđerski</strong>, <strong>Dvorac Fantast</strong> (Bečej), <strong>Dvorac Ljubičevo</strong>, <strong>Stari dvor / Novi dvor</strong> (Belgrade), <strong>Kraljevski dvor Dedinje</strong>.</p></details><details class="info-card"><summary>🏺 Antiquité et préhistoire</summary><p>• <strong>Lepenski Vir</strong>, <strong>Vinča</strong>, <strong>Viminacium</strong>, <strong>Sirmium</strong>, <strong>Mediana</strong>, <strong>Ćele kula</strong> (Niš), <strong>Caričin Grad</strong> (Justiniana Prima), <strong>Felix Romuliana</strong> (UNESCO), <strong>Trajanova tabla</strong>, <strong>limes du Danube</strong>.</p></details><details class="info-card"><summary>🏛️ Mémoire, églises et monuments modernes</summary><p>• <strong>Temple Saint-Sava</strong>, <strong>Oplenac</strong> (mausolée des Karađorđević), <strong>Monument de l'Inconnu à Avala</strong>, <strong>Gazimestan</strong>, <strong>Šumarice</strong>, <strong>Kadinjača</strong>, <strong>Pont de Varadin</strong>, <strong>Tour Genex</strong>, <strong>Église Saint-Marc</strong>, <strong>Saborna crkva</strong>, <strong>Hram u Novom Sadu</strong>, <strong>Drvengrad</strong>.</p></details><details class="info-card"><summary>🇲🇪 Monastères et patrimoine du Monténégro</summary><p>• <strong>Ostrog</strong> (rocher de saint Vasilije), <strong>Cetinje</strong> (monastère de 1484, Biljarda, Vlaška crkva), <strong>Morača</strong> (1252), <strong>Piva</strong>, <strong>Sveta Trojica (Pljevlja)</strong>, <strong>Podmaine</strong>, <strong>Dajbabe</strong>, <strong>Savina</strong>, <strong>Ćelija Piperska</strong>, <strong>Đurđevi stupovi</strong> (Berane).</p><p>• <strong>Mausolée de Njegoš</strong> (mont Lovćen), <strong>Cathédrale Saint-Tryphon</strong> (Kotor), <strong>Notre-Dame-du-Rocher</strong> (Perast), <strong>Sveti Stefan</strong>, <strong>Stećci</strong> (UNESCO), <strong>Durmitor</strong> (UNESCO), <strong>Kotor</strong> (UNESCO).</p></details><details class="info-card"><summary>🇲🇪 Forteresses du Monténégro</summary><p>• <strong>Stari Bar</strong>, <strong>Kotor</strong> (remparts), <strong>Žabljak Crnojevića</strong>, <strong>Medun</strong>, <strong>Spuž</strong>, <strong>Haj-Nehaj</strong>, <strong>Besac</strong>, <strong>Ulcinj</strong>, <strong>Lesendro</strong>, <strong>Kanli kula</strong>, <strong>Nikšić (Bedem)</strong>.</p></details><h3 style="margin:1.2rem 0 .5rem">📖 Fiches détaillées</h3><details class="info-card"><summary>🕊️ Studenica — fondation et nécropole</summary><p>Fondé vers 1190 par Stefan Nemanja, c'est le « monastère fondateur » de la Serbie médiévale : nécropole des Nemanjić, lié à saint Sava, célèbre pour ses fresques byzantines, UNESCO.</p></details><details class="info-card"><summary>🕊️ Žiča — le royaume orthodoxe</summary><p>Construit au début du XIIIe siècle par Stefan Ier et saint Sava. Siège de l'archevêché serbe après 1219 ; plusieurs rois y furent couronnés. Incontournable pour comprendre la naissance de la Serbie royale.</p></details><details class="info-card"><summary>👑 Visoki Dečani</summary><p>Fondé au XIVe siècle par Stefan Dečanski ; chef-d'œuvre de l'architecture médiévale serbe, fresques exceptionnelles.</p></details><details class="info-card"><summary>🏛️ Gračanica</summary><p>Fondée par Milutin vers 1321 ; sommet de l'architecture serbo-byzantine, église compacte aux fresques remarquables.</p></details><details class="info-card"><summary>👑 Patriarcat de Peć</summary><p>Siège de l'ancien patriarcat serbe, plusieurs églises et tombeaux de patriarches.</p></details><details class="info-card"><summary>🏙️ Temple Saint-Sava (Belgrade)</summary><p>Immense église orthodoxe dédiée à saint Sava, aux mosaïques impressionnantes. Elle est moderne (construction commencée au XXe siècle), donc sans lien d'ancienneté avec les monastères Nemanjić.</p></details><details class="info-card"><summary>⛪ Ostrog (Monténégro)</summary><p>Le sanctuaire orthodoxe le plus célèbre du pays, accroché à une falaise, lié à saint Basile d'Ostrog (XVIIe s.), grand lieu de pèlerinage.</p></details><details class="info-card"><summary>🏔️ Cetinje (Monténégro)</summary><p>Cœur spirituel de l'ancien Monténégro, lié aux vladikas, centre religieux et politique du pays.</p></details><details class="info-card"><summary>🏰 Morača (Monténégro)</summary><p>Fondé en 1252, traditionnellement attribué au prince Stefan, petit-fils de Nemanja ; remarquables fresques médiévales.</p></details><details class="info-card"><summary>⛪ Côte catholique : Saint-Tryphon et Notre-Dame-des-Rochers</summary><p>La <strong>cathédrale Saint-Tryphon de Kotor</strong> (XIIe s.) est catholique romaine, tout comme <strong>Notre-Dame-des-Rochers</strong>, îlot devant Perast. Elles reflètent l'influence de Venise sur le littoral, contrairement à l'intérieur orthodoxe : le Monténégro historique n'était pas religieusement homogène.</p></details></section>
+<h2> Les monuments de Serbie et du Monténégro</h2><p class="lead">Des monastères médiévaux aux forteresses, sites romains et monuments modernes.</p>
+  <details class="info-card" open><summary> Icônes nationales</summary><p><strong>Forteresse de Belgrade</strong> · <strong>église Saint-Sava</strong> · <strong>monastère de Studenica</strong> · <strong>Golubac</strong> · <strong>Žiča</strong>.</p></details>
+  <details class="info-card"><summary> Antiquité romaine</summary><p><strong>Gamzigrad-Romuliana</strong>, palais de l'empereur Galère, est l'un des grands sites romains de Serbie.</p></details>
+  <details class="info-card"><summary> Serbie médiévale orthodoxe</summary><p>Studenica, Sopoćani, Žiča, Manasija et les monastères du Kosovo-Métochie constituent un patrimoine majeur de l'art serbe médiéval.</p></details>
+  <details class="info-card"><summary> Forteresses</summary><p>Forteresse de Belgrade, Golubac, Smederevo, Niš et Maglič sont parmi les plus connues.</p></details>
+  <details class="info-card"><summary> Belgrade</summary><p>À connaître : Kalemegdan, Knez Mihailova, Skadarlija, église Saint-Marc, temple Saint-Sava et confluence de la Save et du Danube.</p></details>
+  <details class="info-card"><summary> Nature et patrimoine</summary><p>Đavolja Varoš, Tara, Đerdap et Uvac complètent le patrimoine culturel et naturel du pays.</p></details><details class="info-card"><summary> Monastères serbes (Raška, Šumadija, Morava)</summary><p>• <strong>Studenica</strong> (fondé par Stefan Nemanja, v. 1190, UNESCO), <strong>Žiča</strong> (1219, couronnements), <strong>Sopoćani</strong> et <strong>Stari Ras / Đurđevi stupovi / Petrova crkva</strong> (UNESCO), <strong>Mileševa</strong> (« Ange blanc »), <strong>Gradac</strong>.</p><p>• <strong>École de la Morava</strong> : <strong>Ravanica</strong> (tombeau du prince Lazar), <strong>Manasija</strong> (Resava), <strong>Ljubostinja</strong>, <strong>Kalenić</strong>, <strong>Lazarica</strong> à Kruševac, <strong>Naupara</strong>, <strong>Vrdnik</strong>.</p></details><details class="info-card"><summary> Monastères de Voïvodine et d'ailleurs</summary><p>• <strong>Fruška Gora</strong> (« Sainte Montagne », une quinzaine de monastères) : <strong>Krušedol</strong>, <strong>Hopovo</strong>, <strong>Grgeteg</strong>, <strong>Vrdnik-Ravanica</strong>, <strong>Šišatovac</strong>, <strong>Jazak</strong>, <strong>Beočin</strong>. <strong>Ostrog</strong>, <strong>Zlatica</strong>, <strong>Tronoša</strong>, <strong>Hilandar</strong> (Mont Athos, fondation de Sava et Siméon), <strong>Sveti Roman</strong>, <strong>Sveta Petka</strong>.</p></details><details class="info-card"><summary> Kosovo-Métochie (UNESCO, patrimoine en péril)</summary><p>• <strong>Visoki Dečani</strong> (Stefan Dečanski), <strong>Patriarcat de Peć</strong>, <strong>Gračanica</strong>, <strong>Bogorodica Ljeviška</strong> (Prizren), <strong>Banjska</strong>, <strong>Sveti Arhangeli</strong>. Ces sites sont gardés par des forces internationales ; le statut du Kosovo reste contesté.</p></details><details class="info-card"><summary> Forteresses et châteaux</summary><p>• <strong>Belgrade</strong> (Kalemegdan), <strong>Smederevo</strong>, <strong>Golubac</strong>, <strong>Petrovaradin</strong> (« Gibraltar du Danube »), <strong>Niš</strong>, <strong>Maglič</strong>, <strong>Ram</strong>, <strong>Kruševac (Lazarev grad)</strong>, <strong>Novo Brdo</strong>, <strong>Koznik</strong>, <strong>Jerina (Đurđev grad)</strong>, <strong>Ras</strong>, <strong>Bač</strong>, <strong>Sokograd</strong>.</p><p>• Châteaux et demeures : <strong>Dvorac Dunđerski</strong>, <strong>Dvorac Fantast</strong> (Bečej), <strong>Dvorac Ljubičevo</strong>, <strong>Stari dvor / Novi dvor</strong> (Belgrade), <strong>Kraljevski dvor Dedinje</strong>.</p></details><details class="info-card"><summary> Antiquité et préhistoire</summary><p>• <strong>Lepenski Vir</strong>, <strong>Vinča</strong>, <strong>Viminacium</strong>, <strong>Sirmium</strong>, <strong>Mediana</strong>, <strong>Ćele kula</strong> (Niš), <strong>Caričin Grad</strong> (Justiniana Prima), <strong>Felix Romuliana</strong> (UNESCO), <strong>Trajanova tabla</strong>, <strong>limes du Danube</strong>.</p></details><details class="info-card"><summary> Mémoire, églises et monuments modernes</summary><p>• <strong>Temple Saint-Sava</strong>, <strong>Oplenac</strong> (mausolée des Karađorđević), <strong>Monument de l'Inconnu à Avala</strong>, <strong>Gazimestan</strong>, <strong>Šumarice</strong>, <strong>Kadinjača</strong>, <strong>Pont de Varadin</strong>, <strong>Tour Genex</strong>, <strong>Église Saint-Marc</strong>, <strong>Saborna crkva</strong>, <strong>Hram u Novom Sadu</strong>, <strong>Drvengrad</strong>.</p></details><details class="info-card"><summary> Monastères et patrimoine du Monténégro</summary><p>• <strong>Ostrog</strong> (rocher de saint Vasilije), <strong>Cetinje</strong> (monastère de 1484, Biljarda, Vlaška crkva), <strong>Morača</strong> (1252), <strong>Piva</strong>, <strong>Sveta Trojica (Pljevlja)</strong>, <strong>Podmaine</strong>, <strong>Dajbabe</strong>, <strong>Savina</strong>, <strong>Ćelija Piperska</strong>, <strong>Đurđevi stupovi</strong> (Berane).</p><p>• <strong>Mausolée de Njegoš</strong> (mont Lovćen), <strong>Cathédrale Saint-Tryphon</strong> (Kotor), <strong>Notre-Dame-du-Rocher</strong> (Perast), <strong>Sveti Stefan</strong>, <strong>Stećci</strong> (UNESCO), <strong>Durmitor</strong> (UNESCO), <strong>Kotor</strong> (UNESCO).</p></details><details class="info-card"><summary> Forteresses du Monténégro</summary><p>• <strong>Stari Bar</strong>, <strong>Kotor</strong> (remparts), <strong>Žabljak Crnojevića</strong>, <strong>Medun</strong>, <strong>Spuž</strong>, <strong>Haj-Nehaj</strong>, <strong>Besac</strong>, <strong>Ulcinj</strong>, <strong>Lesendro</strong>, <strong>Kanli kula</strong>, <strong>Nikšić (Bedem)</strong>.</p></details><h3 style="margin:1.2rem 0 .5rem"> Fiches détaillées</h3><details class="info-card"><summary> Studenica — fondation et nécropole</summary><p>Fondé vers 1190 par Stefan Nemanja, c'est le « monastère fondateur » de la Serbie médiévale : nécropole des Nemanjić, lié à saint Sava, célèbre pour ses fresques byzantines, UNESCO.</p></details><details class="info-card"><summary> Žiča — le royaume orthodoxe</summary><p>Construit au début du XIIIe siècle par Stefan Ier et saint Sava. Siège de l'archevêché serbe après 1219 ; plusieurs rois y furent couronnés. Incontournable pour comprendre la naissance de la Serbie royale.</p></details><details class="info-card"><summary> Visoki Dečani</summary><p>Fondé au XIVe siècle par Stefan Dečanski ; chef-d'œuvre de l'architecture médiévale serbe, fresques exceptionnelles.</p></details><details class="info-card"><summary> Gračanica</summary><p>Fondée par Milutin vers 1321 ; sommet de l'architecture serbo-byzantine, église compacte aux fresques remarquables.</p></details><details class="info-card"><summary> Patriarcat de Peć</summary><p>Siège de l'ancien patriarcat serbe, plusieurs églises et tombeaux de patriarches.</p></details><details class="info-card"><summary> Temple Saint-Sava (Belgrade)</summary><p>Immense église orthodoxe dédiée à saint Sava, aux mosaïques impressionnantes. Elle est moderne (construction commencée au XXe siècle), donc sans lien d'ancienneté avec les monastères Nemanjić.</p></details><details class="info-card"><summary> Ostrog (Monténégro)</summary><p>Le sanctuaire orthodoxe le plus célèbre du pays, accroché à une falaise, lié à saint Basile d'Ostrog (XVIIe s.), grand lieu de pèlerinage.</p></details><details class="info-card"><summary> Cetinje (Monténégro)</summary><p>Cœur spirituel de l'ancien Monténégro, lié aux vladikas, centre religieux et politique du pays.</p></details><details class="info-card"><summary> Morača (Monténégro)</summary><p>Fondé en 1252, traditionnellement attribué au prince Stefan, petit-fils de Nemanja ; remarquables fresques médiévales.</p></details><details class="info-card"><summary> Côte catholique : Saint-Tryphon et Notre-Dame-des-Rochers</summary><p>La <strong>cathédrale Saint-Tryphon de Kotor</strong> (XIIe s.) est catholique romaine, tout comme <strong>Notre-Dame-des-Rochers</strong>, îlot devant Perast. Elles reflètent l'influence de Venise sur le littoral, contrairement à l'intérieur orthodoxe : le Monténégro historique n'était pas religieusement homogène.</p></details></section>
 
-<section id="sec-nosiya"><h2>👗 Носије — Les costumes traditionnels serbes par région</h2><p class="lead">Les costumes traditionnels serbes varient selon la Šumadija, la Voïvodine, l'est, le sud et les régions montagneuses.</p>
-  <details class="info-card" open><summary>🌾 Šumadijska nošnja — Šumadija</summary><p>Costumes ruraux caractérisés par des chemises brodées, gilets, ceintures et coiffes, avec de fortes variantes locales.</p></details>
-  <details class="info-card"><summary>🌾 Vojvođanska nošnja — Voïvodine</summary><p>Influences pannoniennes et austro-hongroises, avec tissus, tabliers et coiffes caractéristiques.</p></details>
-  <details class="info-card"><summary>⛰️ Costume des régions montagneuses</summary><p>La laine, les gilets, les chaussettes épaisses et les ornements colorés répondent aux conditions climatiques.</p></details>
-  <details class="info-card"><summary>🧵 Основни делови — Les pièces du costume</summary><p>Chemise (<strong>кошуља</strong>), gilet (<strong>јелек</strong>), ceinture (<strong>појас</strong>), tablier (<strong>прегача</strong>), chaussures traditionnelles (<strong>опанци</strong>) et coiffes.</p></details>
-  <details class="info-card"><summary>🪡 Шаре и вез — Broderies</summary><p>Les broderies utilisent des motifs géométriques, floraux et symboliques qui peuvent identifier une région ou une occasion.</p></details>
-  <details class="info-card"><summary>🎉 Quand porte-t-on les costumes ?</summary><p>Lors de fêtes religieuses, mariages, festivals folkloriques, danses et événements culturels.</p></details></section>
+<section id="sec-nosiya"><h2> Носије — Les costumes traditionnels serbes par région</h2><p class="lead">Les costumes traditionnels serbes varient selon la Šumadija, la Voïvodine, l'est, le sud et les régions montagneuses.</p>
+  <details class="info-card" open><summary> Šumadijska nošnja — Šumadija</summary><p>Costumes ruraux caractérisés par des chemises brodées, gilets, ceintures et coiffes, avec de fortes variantes locales.</p></details>
+  <details class="info-card"><summary> Vojvođanska nošnja — Voïvodine</summary><p>Influences pannoniennes et austro-hongroises, avec tissus, tabliers et coiffes caractéristiques.</p></details>
+  <details class="info-card"><summary> Costume des régions montagneuses</summary><p>La laine, les gilets, les chaussettes épaisses et les ornements colorés répondent aux conditions climatiques.</p></details>
+  <details class="info-card"><summary> Основни делови — Les pièces du costume</summary><p>Chemise (<strong>кошуља</strong>), gilet (<strong>јелек</strong>), ceinture (<strong>појас</strong>), tablier (<strong>прегача</strong>), chaussures traditionnelles (<strong>опанци</strong>) et coiffes.</p></details>
+  <details class="info-card"><summary> Шаре и вез — Broderies</summary><p>Les broderies utilisent des motifs géométriques, floraux et symboliques qui peuvent identifier une région ou une occasion.</p></details>
+  <details class="info-card"><summary> Quand porte-t-on les costumes ?</summary><p>Lors de fêtes religieuses, mariages, festivals folkloriques, danses et événements culturels.</p></details></section>
 
-<section id="sec-montenegro"><h2>🇲🇪 Монтенегро — Црна Гора : symboles du Monténégro</h2><p class="lead">Le Monténégro (en serbe <span class="bg-cell">Црна Гора</span>, « Montagne noire ») est un voisin proche de la Serbie, avec une histoire et une tradition orthodoxe partagées. Voici ses symboles, et la croix serbe.</p>
+<section id="sec-montenegro"><h2> Монтенегро — Црна Гора : symboles du Monténégro</h2><p class="lead">Le Monténégro (en serbe <span class="bg-cell">Црна Гора</span>, « Montagne noire ») est un voisin proche de la Serbie, avec une histoire et une tradition orthodoxe partagées. Voici ses symboles, et la croix serbe.</p>
   <div class="symbol-grid">
     <div class="symbol-card">
-      <div class="symbol-img"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Montenegro.svg?width=400" alt="Drapeau du Monténégro" loading="lazy" onerror="this.outerHTML='<span style=&quot;font-size:5rem&quot;>🇲🇪</span>'"></div>
+      <div class="symbol-img"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Montenegro.svg?width=400" alt="Drapeau du Monténégro" loading="lazy" onerror="this.outerHTML='<span style=&quot;font-size:5rem&quot;></span>'"></div>
       <h3>Drapeau du Monténégro</h3>
       <p><span class="bg-cell">Застава Црне Горе</span></p>
       <p>Champ rouge entouré d'une bordure dorée, avec l'aigle bicéphale doré au centre portant un écu.</p>
@@ -1316,7 +1316,7 @@
     </div>
   </div>
   <div class="info-card"><h3>Repères</h3><p><strong>Capitale :</strong> Podgorica (<span class="bg-cell">Подгорица</span>) · <strong>Ancienne capitale royale :</strong> Cetinje (<span class="bg-cell">Цетиње</span>) · <strong>Indépendance :</strong> 2006 (référendum du 21 mai) · <strong>Langue :</strong> monténégrin, très proche du serbe.</p></div>
-<div class="info-card"><h3>🌍 Patrimoine UNESCO</h3><p><strong>Serbie</strong> : Stari Ras et Sopoćani (1979), Studenica (1986), monuments médiévaux du Kosovo (2004/2006), Gamzigrad-Romuliana (2007), stećci (2016). <strong>Monténégro</strong> : Kotor (1979), Durmitor (1980), stećci (2016), fortifications vénitiennes (2017). <strong>Immatériel (Serbie)</strong> : slava (2014), kolo (2017), gusle (2018), poterie de Zlakusa (2020).</p></div><div class="info-card"><h3>☦️ Église et peuple</h3><p>Le Monténégro est de tradition orthodoxe, avec la <strong>Métropole du Monténégro et du Littoral</strong> (Église serbe), saint <strong>Pierre de Cetinje</strong> et saint <strong>Vasilije d'Ostrog</strong>. Une Église orthodoxe monténégrine existe aussi, sans reconnaissance canonique. Les Monténégrins sont réputés pour la <strong>gusle</strong>, la poésie épique et la tradition guerrière.</p></div></section>
+<div class="info-card"><h3> Patrimoine UNESCO</h3><p><strong>Serbie</strong> : Stari Ras et Sopoćani (1979), Studenica (1986), monuments médiévaux du Kosovo (2004/2006), Gamzigrad-Romuliana (2007), stećci (2016). <strong>Monténégro</strong> : Kotor (1979), Durmitor (1980), stećci (2016), fortifications vénitiennes (2017). <strong>Immatériel (Serbie)</strong> : slava (2014), kolo (2017), gusle (2018), poterie de Zlakusa (2020).</p></div><div class="info-card"><h3> Église et peuple</h3><p>Le Monténégro est de tradition orthodoxe, avec la <strong>Métropole du Monténégro et du Littoral</strong> (Église serbe), saint <strong>Pierre de Cetinje</strong> et saint <strong>Vasilije d'Ostrog</strong>. Une Église orthodoxe monténégrine existe aussi, sans reconnaissance canonique. Les Monténégrins sont réputés pour la <strong>gusle</strong>, la poésie épique et la tradition guerrière.</p></div></section>
 
 <section id="sec-stories"><h2>5 histoires courtes (niveau A1)</h2>
   <div class="info-card"><h3>1. Јутро у Београду <span style="font-weight:400;font-size:.9rem;color:var(--muted2)">— Une matinée à Belgrade</span></h3><p class="story-sr">Марко живи у Београду. Има тридесет година.<br>Сваког јутра устаје у седам сати.<br>Пије кафу и једе хлеб и сир.<br>Затим се тушира и облачи.<br>У осам сати излјаи из куће и иде на посао.<br>Увече се враћа кући, спрема вечеру и чита.</p><details><summary>▸ Traduction française</summary><div class="story-fr">Marko habite à Belgrade. Il a trente ans. Chaque matin, il se lève à sept heures. Il boit du café et mange du pain et du fromage. Ensuite il se douche et s'habille. À huit heures il sort de chez lui et va au travail. Le soir il rentre, prépare le dîner et lit.</div></details><details><summary>▸ Mots utiles</summary><div class="wordbox">живети (habiter) • устајати (se lever) • сваки дан (chaque jour) • излјаити (sortir) • враћати се (rentrer) • кући (à la maison)</div></details></div>
@@ -1345,7 +1345,7 @@
       </table>
     </div>
 
-    <h4 style="margin-top:1.2rem">📐 Les trois modèles à connaître</h4>
+    <h4 style="margin-top:1.2rem"> Les trois modèles à connaître</h4>
     <p class="lead" style="font-size:.95rem">Apprends d'abord ces trois noms : <strong>žena</strong> (féminin), <strong>grad</strong> (masculin) et <strong>selo</strong> (neutre).</p>
     <div class="tbl-scroll">
       <table class="gtable">
@@ -1363,7 +1363,7 @@
     <div class="tip"><strong>À retenir pour l'accusatif :</strong> pour un masculin animé, l'accusatif prend généralement la forme du génitif : <span class="bg-cell">Vidim čoveka.</span> = Je vois l'homme. Pour un masculin inanimé, il reste souvent identique au nominatif : <span class="bg-cell">Vidim grad.</span> = Je vois la ville.</div>
     <div class="tip"><strong>Prépositions très utiles :</strong> <span class="bg-cell">bez + génitif</span> (sans), <span class="bg-cell">od + génitif</span> (de), <span class="bg-cell">do + génitif</span> (jusqu'à) · <span class="bg-cell">ka + datif</span> (vers), <span class="bg-cell">prema + datif</span> (vers) · <span class="bg-cell">u/na + accusatif</span> (mouvement), <span class="bg-cell">u/na + locatif</span> (position) · <span class="bg-cell">sa/s + instrumental</span> (avec).</div>
 
-    <details class="info-card" open><summary>🔎 Le piège « où ? » / « où aller ? »</summary>
+    <details class="info-card" open><summary> Le piège « où ? » / « où aller ? »</summary>
       <p><span class="bg-cell">Živim u Beogradu.</span> = J'habite à Belgrade → <strong>locatif</strong>, position.</p>
       <p><span class="bg-cell">Idem u Beograd.</span> = Je vais à Belgrade → <strong>accusatif</strong>, mouvement vers une destination.</p>
       <p>Même logique avec <span class="bg-cell">na</span> : <span class="bg-cell">na poslu</span> (au travail, lieu) mais <span class="bg-cell">na posao</span> (au travail, destination).</p>
@@ -1384,8 +1384,8 @@
     <h2>Conjugaison</h2>
     <p class="lead">Consulte les fiches de 14 verbes essentiels (présent, passé, futur, impératif), puis entraîne-toi avec des exercices variés : choix, saisie, reconnaissance, phrases à trous et tableaux à remplir.</p>
     <div class="cj-tabs" role="tablist">
-      <button type="button" class="cj-tab active" data-cj="fiches" role="tab">📖 Fiches</button>
-      <button type="button" class="cj-tab" data-cj="train" role="tab">📝 Entraînement</button>
+      <button type="button" class="cj-tab active" data-cj="fiches" role="tab"> Fiches</button>
+      <button type="button" class="cj-tab" data-cj="train" role="tab"> Entraînement</button>
     </div>
 
     <div id="cj-pane-fiches">
@@ -1589,7 +1589,7 @@ oni|oni|ils / elles
 још|još|encore
 много|mnogo|beaucoup / très
 мало|malo|peu / un peu`)},
-difficult:{label:"Mots difficiles ⭐",items:P(`
+difficult:{label:"Mots difficiles ",items:P(`
 сусед|sused|voisin
 сусетка|susetka|voisine
 име|ime|nom / prénom
@@ -1882,14 +1882,14 @@ Quelle fête familiale est propre aux Serbes ?|La Slava|Fête du saint patron de
 Que célèbre le 15 février ?|Sretenje|Fête de l'État et de la Constitution de 1835.
 Comment dit-on Pâques en serbe ?|Uskrs|On casse des œufs colorés (tucanje).
 Quand tombe le Nouvel An orthodoxe serbe ?|13 janvier|Srpska Nova godina.`)},
-fierte:{label:"Fiertés 🇷🇸",items:C(`
+fierte:{label:"Fiertés ",items:C(`
 Quel inventeur d'origine serbe a développé le courant alternatif ?|Nikola Tesla|Né en 1856 à Smiljan.
 Quel tennisman serbe a été n°1 mondial de nombreuses années ?|Novak Djoković|Né à Belgrade.
 Quel écrivain yougoslave a reçu le Nobel de littérature en 1961 ?|Ivo Andrić|Auteur du « Pont sur la Drina ».
 Quel savant a décrit les cycles climatiques liés à l'orbite terrestre ?|Milutin Milanković|Les « cycles de Milanković ».
 Quel instrument accompagne la poésie épique serbe ?|La gusle|Instrument à corde unique.
 Quelle danse collective serbe est inscrite à l'UNESCO ?|Le kolo|Inscrite au patrimoine immatériel en 2017.`)},
-cuisine:{label:"Cuisine 🍽️",items:C(`
+cuisine:{label:"Cuisine ",items:C(`
 Quelle purée de poivrons grillés est une spécialité serbe ?|L'ajvar|Souvent servie avec du pain.
 Quelle eau-de-vie de prune est emblématique ?|La šljivovica|Boisson nationale de la rakija de prune.
 Quelles petites saucisses grillées sont très populaires ?|Les ćevapi|Servis avec pain lepinja et oignon.
@@ -2189,10 +2189,10 @@ function buildRoundEnd(host, missedCount, totalCount, onMissed, onAll){
     ? `<div class="re-title">Tour terminé !</div>
        <div class="re-text">Tu as cliqué sur « Pas encore » pour <b>${missedCount}</b> carte${plural?"s":""} sur ${totalCount}.<br>Que veux-tu faire ?</div>
        <div class="re-btns">
-         <button class="action primary" data-act="missed">🔁 Refaire uniquement les ${missedCount} carte${plural?"s":""} « Pas encore »</button>
+         <button class="action primary" data-act="missed"> Refaire uniquement les ${missedCount} carte${plural?"s":""} « Pas encore »</button>
          <button class="action ghost" data-act="all">↺ Recommencer avec toutes les cartes (${totalCount})</button>
        </div>`
-    : `<div class="re-title">🎉 Tour terminé !</div>
+    : `<div class="re-title"> Tour terminé !</div>
        <div class="re-text">Aucune carte « Pas encore » sur ce tour. Bravo !</div>
        <div class="re-btns">
          <button class="action primary" data-act="all">↺ Recommencer avec toutes les cartes (${totalCount})</button>
@@ -2230,7 +2230,7 @@ function fcUpdateRetry(){
   const b = document.getElementById("fc-retry");
   const n = fcMissed.size;
   b.disabled = n === 0;
-  b.textContent = `🔁 Retravailler mes erreurs (${n})`;
+  b.textContent = ` Retravailler mes erreurs (${n})`;
 }
 
 function renderFlashcard(){
@@ -2444,7 +2444,7 @@ function renderQuizChips(){
   const weakChip = document.createElement("button");
   weakChip.type = "button";
   weakChip.className = "chip weak" + (quizCat===WEAK_KEY ? " active":"");
-  weakChip.textContent = "🎯 Points faibles";
+  weakChip.textContent = " Points faibles";
   weakChip.addEventListener("click", ()=>{ quizCat = WEAK_KEY; renderQuizChips(); startQuiz(); });
   quizChips.appendChild(weakChip);
 
@@ -2602,7 +2602,7 @@ function renderQuizQuestion(){
   const retryNow = document.getElementById("quiz-retry-now");
   const updRetryNow = ()=>{
     retryNow.disabled = quizSessionWrong.length === 0;
-    retryNow.textContent = `🔁 Retravailler mes erreurs (${quizSessionWrong.length})`;
+    retryNow.textContent = ` Retravailler mes erreurs (${quizSessionWrong.length})`;
   };
   updRetryNow();
   retryNow.addEventListener("click", ()=>{
@@ -2655,10 +2655,10 @@ function renderQuizResult(){
   const nbWrong = quizSessionWrong.length;
   let weakBtnHtml = "";
   if(nbWrong>0){
-    weakBtnHtml += `<button class="action ghost" id="quiz-weak-theme-btn" style="margin-top:.6rem;margin-left:.5rem;">🎯 Travailler ${nbWrong===1 ? "le mot raté" : "les "+nbWrong+" mots ratés"}${isThemeWeak ? "" : " de ce thème"}</button>`;
+    weakBtnHtml += `<button class="action ghost" id="quiz-weak-theme-btn" style="margin-top:.6rem;margin-left:.5rem;"> Travailler ${nbWrong===1 ? "le mot raté" : "les "+nbWrong+" mots ratés"}${isThemeWeak ? "" : " de ce thème"}</button>`;
   }
   if(isThemeWeak){
-    weakBtnHtml += `<button class="action ghost" id="quiz-weak-theme-again-btn" style="margin-top:.6rem;margin-left:.5rem;">🎯 Retenter tous ces mots</button>`;
+    weakBtnHtml += `<button class="action ghost" id="quiz-weak-theme-again-btn" style="margin-top:.6rem;margin-left:.5rem;"> Retenter tous ces mots</button>`;
   }
 
   quizBox.innerHTML = `
@@ -2848,7 +2848,7 @@ function cuUpdateRetry(){
   const b = document.getElementById("cu-retry");
   const n = cuMissed.size;
   b.disabled = n === 0;
-  b.textContent = `🔁 Retravailler mes erreurs (${n})`;
+  b.textContent = ` Retravailler mes erreurs (${n})`;
 }
 
 function cuRenderChips(){
@@ -2970,7 +2970,7 @@ function cuRenderQuestion(){
   const cuRetryNow = document.getElementById("cu-quiz-retry-now");
   const cuUpdRetryNow = ()=>{
     cuRetryNow.disabled = cuWrong.length === 0;
-    cuRetryNow.textContent = `🔁 Retravailler mes erreurs (${cuWrong.length})`;
+    cuRetryNow.textContent = ` Retravailler mes erreurs (${cuWrong.length})`;
   };
   cuUpdRetryNow();
   cuRetryNow.addEventListener("click", cuStartRetryQuiz);
@@ -2991,7 +2991,7 @@ function cuRenderQuestion(){
         if(!cuWrong.includes(q.item)) cuWrong.push(q.item);
         cuUpdRetryNow();
       }
-      if(q.note) document.getElementById("cu-quiz-note").textContent = "💡 " + q.note;
+      if(q.note) document.getElementById("cu-quiz-note").textContent = " " + q.note;
       cuQTimer = setTimeout(()=>{ cuQIndex++; cuRenderQuestion(); }, q.note ? 1600 : 800);
     });
     optionsEl.appendChild(b);
@@ -3007,7 +3007,7 @@ function cuRenderResult(){
     <div class="quiz-result">
       <div class="score">${cuScore} / ${total}</div>
       ${cuQRetry ? "<p>Série ciblée sur tes erreurs.</p>" : `<p>Meilleur score dans ce thème : ${Math.max(cuScore,best)} / ${total}</p>`}
-      ${cuWrong.length ? `<button class="action retry-btn" id="cu-quiz-retry-end" style="margin-right:.5rem;">🔁 Retravailler mes erreurs (${cuWrong.length})</button>` : ""}
+      ${cuWrong.length ? `<button class="action retry-btn" id="cu-quiz-retry-end" style="margin-right:.5rem;"> Retravailler mes erreurs (${cuWrong.length})</button>` : ""}
       <button class="action primary" id="cu-quiz-restart">Recommencer ce thème</button>
     </div>
   `;
@@ -3136,7 +3136,7 @@ document.querySelectorAll('.say').forEach(el=>{
   el.setAttribute('role','button');
   el.setAttribute('tabindex','0');
   const speak = ()=>{
-    const text = (el.dataset.say || el.textContent || '').replace(/🔊/g,'').trim();
+    const text = (el.dataset.say || el.textContent || '').replace(//g,'').trim();
     if(!text || !('speechSynthesis' in window)) return;
     window.speechSynthesis.cancel();
     const u = new SpeechSynthesisUtterance(text);
@@ -3208,7 +3208,7 @@ document.querySelectorAll('.say').forEach(el=>{
     }
   }
 
-  /* stopPropagation : cliquer sur 🔊 ne doit pas retourner la carte */
+  /* stopPropagation : cliquer sur  ne doit pas retourner la carte */
   btn.addEventListener('click', e=>{ e.stopPropagation(); speak(); });
   btn.addEventListener('keydown', e=>e.stopPropagation());
 })();
@@ -3216,14 +3216,14 @@ document.querySelectorAll('.say').forEach(el=>{
 /* Carte des monuments serbes. */
 (function(){
   const MON_CATS = {
-    national:{label:"⭐ Icônes nationales",color:"#C08A2E"},
-    antique:{label:"🏺 Antiquité",color:"#A22C3B"},
-    medieval:{label:"☦️ Médiévale et orthodoxe",color:"#5F7052"},
-    fortress:{label:"🏰 Forteresses",color:"#3A5A8C"},
-    belgrade:{label:"🏛️ Belgrade",color:"#6B4C9A"},
-    modern:{label:"🛸 XXe siècle et mémoire",color:"#4a4a4a"},
-    monasteries:{label:"⛪ Monastères",color:"#2F7A6B"},
-    montenegro:{label:"🇲🇪 Monténégro",color:"#D4781C"}
+    national:{label:" Icônes nationales",color:"#C08A2E"},
+    antique:{label:" Antiquité",color:"#A22C3B"},
+    medieval:{label:" Médiévale et orthodoxe",color:"#5F7052"},
+    fortress:{label:" Forteresses",color:"#3A5A8C"},
+    belgrade:{label:" Belgrade",color:"#6B4C9A"},
+    modern:{label:" XXe siècle et mémoire",color:"#4a4a4a"},
+    monasteries:{label:" Monastères",color:"#2F7A6B"},
+    montenegro:{label:" Monténégro",color:"#D4781C"}
   };
   const MONUMENTS = [
     {n:"Forteresse de Belgrade",bg:"Београдска тврђава",cat:"national",lat:44.8231,lng:20.4506,d:"Grande forteresse dominant le confluent de la Save et du Danube."},
